@@ -51,7 +51,6 @@
             padding: 0 24px;
         }
 
-        /* Profile Header */
         .header-content {
             margin-top: -100px;
             display: flex;
@@ -92,10 +91,7 @@
             display: block;
         }
 
-        .linkedin-svg:hover {
-            transform: scale(1.1);
-            fill: var(--accent-cyan);
-        }
+        .linkedin-svg:hover { transform: scale(1.1); fill: var(--accent-cyan); }
 
         .main-subtitle {
             font-size: 1.1rem;
@@ -109,7 +105,6 @@
             flex-wrap: wrap;
         }
 
-        /* Portfolio Link in Header */
         .header-cta {
             text-decoration: none;
             color: var(--text-dim);
@@ -121,12 +116,8 @@
             letter-spacing: normal;
         }
 
-        .header-cta:hover {
-            color: var(--accent-cyan);
-            border-color: var(--accent-cyan);
-        }
+        .header-cta:hover { color: var(--accent-cyan); border-color: var(--accent-cyan); }
 
-        /* About Section */
         .about-section {
             margin-bottom: 50px;
             padding: 30px;
@@ -135,16 +126,8 @@
             border-left: 2px solid var(--accent-cyan);
         }
 
-        .about-text {
-            color: var(--text-dim);
-            font-size: 1.1rem;
-            max-width: 850px;
-            margin: 0;
-        }
-
-        .about-text strong {
-            color: var(--text-main);
-        }
+        .about-text { color: var(--text-dim); font-size: 1.1rem; max-width: 850px; margin: 0; }
+        .about-text strong { color: var(--text-main); }
 
         .section-header-wrapper {
             display: flex;
@@ -172,10 +155,7 @@
             margin-right: 20px;
         }
 
-        .controls {
-            display: flex;
-            gap: 10px;
-        }
+        .controls { display: flex; gap: 10px; }
 
         .btn-control {
             background: transparent;
@@ -189,25 +169,27 @@
             transition: all 0.2s;
         }
 
-        .btn-control:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
+        .btn-control:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
 
-        /* Accordion Grid System */
+        /* Grid Layout for Focus Section */
         .accordion-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 20px;
+            margin-top: 25px;
         }
 
         details {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 8px;
+            border-radius: 12px;
             transition: all 0.3s ease;
             overflow: hidden;
-            margin-bottom: 15px;
+            height: fit-content;
+        }
+
+        .focus-details {
+            background: linear-gradient(145deg, var(--bg-card), #251352);
         }
 
         details[open] { border-color: var(--accent-cyan); }
@@ -242,10 +224,7 @@
             margin-left: 15px;
         }
 
-        details[open] summary::after {
-            content: "−";
-            transform: rotate(90deg);
-        }
+        details[open] summary::after { content: "−"; transform: rotate(90deg); }
 
         .accordion-content {
             padding: 0 20px 20px 20px;
@@ -285,6 +264,7 @@
             .header-content { flex-direction: column; align-items: flex-start; margin-top: -60px; }
             h1 { font-size: 2.5rem; }
             .section-header-wrapper { flex-direction: column; align-items: flex-start; gap: 15px; }
+            .accordion-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -321,22 +301,39 @@
         </p>
     </div>
 
-    <div class="section-label">Professional Focus</div>
-    <div class="accordion-grid" style="margin-top: 25px;">
-        <details>
+    <div class="section-header-wrapper">
+        <div class="section-label">Professional Focus</div>
+        <div class="controls">
+            <button class="btn-control" onclick="toggleFocus(true)">Expand All</button>
+            <button class="btn-control" onclick="toggleFocus(false)">Collapse All</button>
+        </div>
+    </div>
+
+    <div class="accordion-grid">
+        <details class="focus-details">
             <summary>Enterprise Leadership @ Bayer</summary>
             <div class="accordion-content">
                 <strong>Head of Cyber and AI Security Innovation Squad</strong><br><br>
                 Leading horizon scanning, technology scouting, and strategic implementation for a global Fortune 500 company. Spearheading technical evaluations of stealth-mode startups.
             </div>
         </details>
-        <details>
+
+        <details class="focus-details">
+            <summary>Purple Team & Defensive Cyber @ Clalit</summary>
+            <div class="accordion-content">
+                <strong>14 Years of Strategic Cyber Operations</strong><br><br>
+                Led two specialized Information Security teams at Israel's largest healthcare organization. As the Purple Team & Defensive Cyber Team Leader, I orchestrated complex defense strategies for nationwide critical infrastructure.
+            </div>
+        </details>
+
+        <details class="focus-details">
             <summary>Venture Capital Advisory</summary>
             <div class="accordion-content">
                 Providing technical due diligence and strategic evaluation for top-tier venture funds. Focused on identifying high-potential cybersecurity and AI startups for investment.
             </div>
         </details>
-        <details>
+
+        <details class="focus-details">
             <summary>Advisory Board Portfolio</summary>
             <div class="accordion-content">
                 Strategic advisor to emerging cybersecurity startups on product-market fit, enterprise go-to-market strategies, and technical roadmaps.
@@ -350,8 +347,8 @@
             <span id="timeline-counter" style="margin-left: 10px; color: var(--text-dim); text-transform: none; letter-spacing: normal; font-size: 0.8rem; font-weight: 400;"></span>
         </div>
         <div class="controls">
-            <button class="btn-control" onclick="toggleAll(true)">Expand All</button>
-            <button class="btn-control" onclick="toggleAll(false)">Collapse All</button>
+            <button class="btn-control" onclick="toggleTimeline(true)">Expand All</button>
+            <button class="btn-control" onclick="toggleTimeline(false)">Collapse All</button>
         </div>
     </div>
 
@@ -360,10 +357,7 @@
             <summary><span class="year-text" style="font-size: 1.2rem; color: var(--accent-cyan);">2026</span></summary>
             <div class="accordion-content">
                 <div class="timeline-link">
-                    <div>
-                        <span class="item-title">Future Initiatives</span>
-                        <span class="item-meta">Active Development</span>
-                    </div>
+                    <div><span class="item-title">Future Initiatives</span><span class="item-meta">Active Development</span></div>
                     <span style="color: var(--accent-cyan)">⚡ Working in Progress...</span>
                 </div>
             </div>
@@ -408,9 +402,7 @@
         </details>
     </div>
 
-    <footer>
-        &copy; 2026 Ophir Oren | #IStandWithIsrael
-    </footer>
+    <footer>&copy; 2026 Ophir Oren | #IStandWithIsrael</footer>
 </div>
 
 <script>
@@ -421,10 +413,8 @@
         yearSections.forEach(section => {
             const projects = section.querySelectorAll('.timeline-link').length;
             totalProjects += projects;
-
             const summary = section.querySelector('summary');
             const yearTextSpan = summary.querySelector('.year-text');
-            
             let badge = summary.querySelector('.year-count');
             if (!badge) {
                 badge = document.createElement('span');
@@ -436,18 +426,25 @@
 
         const headerCounter = document.getElementById('header-counter');
         if(headerCounter) headerCounter.textContent = totalProjects;
-
         const timelineCounter = document.getElementById('timeline-counter');
         if(timelineCounter) timelineCounter.textContent = `(${totalProjects} Total)`;
     }
 
-    function toggleAll(open) {
-        document.querySelectorAll('.year-details').forEach(details => {
-            details.open = open;
-        });
+    function toggleTimeline(open) {
+        document.querySelectorAll('.year-details').forEach(details => details.open = open);
     }
 
-    window.onload = updateCounters;
+    function toggleFocus(open) {
+        document.querySelectorAll('.focus-details').forEach(details => details.open = open);
+    }
+
+    // Fix for scroll jump on refresh
+    if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+
+    window.onload = function() {
+        updateCounters();
+        window.scrollTo(0, 0);
+    };
 </script>
 
 </body>
