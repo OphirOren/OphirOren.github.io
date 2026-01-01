@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="fCPkw8CyQyRT8MzWACVIYtRJVDJZw2oQZHSSdZWcoQ4" />
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <title>Ophir Oren | Cyber & AI Security Innovation</title>
+    <style>
+        :root {
+            --bg-deep: #0f0524; 
+            --bg-card: #1a0b3d; 
+            --accent-cyan: #00ffcc;
+            --text-main: #ffffff;
+            --text-dim: #b3a9c9;
+            --border: #2d1b5a;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+        }
+
+        .cover-image {
+            width: 100%;
+            height: 320px;
+            background-image: url('linkedincover.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-bottom: 2px solid var(--accent-cyan);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Profile Header */
+        .header-content {
+            margin-top: -100px;
+            display: flex;
+            align-items: flex-end;
+            gap: 25px;
+            margin-bottom: 40px;
+            padding-top: 30px;
+        }
+
+        .logo-main {
+            width: 180px; 
+            height: 180px;
+            object-fit: cover;
+            background: var(--bg-deep);
+            border: 4px solid var(--accent-cyan);
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .name-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        .linkedin-svg {
+            width: 32px;
+            height: 32px;
+            fill: #ffffff;
+            transition: transform 0.2s, fill 0.2s;
+            display: block;
+        }
+
+        .linkedin-svg:hover {
+            transform: scale(1.1);
+            fill: var(--accent-cyan);
+        }
+
+        .main-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-cyan);
+            font-weight: 600;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Portfolio Link in Header */
+        .header-cta {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.2s;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .header-cta:hover {
+            color: var(--accent-cyan);
+            border-color: var(--accent-cyan);
+        }
+
+        /* About Section */
+        .about-section {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            border-left: 2px solid var(--accent-cyan);
+        }
+
+        .about-text {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            max-width: 850px;
+            margin: 0;
+        }
+
+        .about-text strong {
+            color: var(--text-main);
+        }
+
+        .section-header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 60px 0 25px 0;
+        }
+
+        .section-label {
+            color: var(--accent-cyan);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-grow: 1;
+        }
+
+        .section-label::after {
+            content: "";
+            height: 1px;
+            background: var(--border);
+            flex-grow: 1;
+            margin-right: 20px;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-control {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            transition: all 0.2s;
+        }
+
+        .btn-control:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* Accordion Grid System */
+        .accordion-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        details {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        details[open] { border-color: var(--accent-cyan); }
+
+        summary {
+            padding: 20px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+
+        summary::-webkit-details-marker { display: none; }
+
+        .year-count {
+            font-size: 0.7rem;
+            background: var(--border);
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-left: 10px;
+            color: var(--accent-cyan);
+            text-transform: none;
+            font-weight: 400;
+        }
+
+        summary::after {
+            content: "+";
+            color: var(--accent-cyan);
+            transition: transform 0.3s;
+            margin-left: 15px;
+        }
+
+        details[open] summary::after {
+            content: "−";
+            transform: rotate(90deg);
+        }
+
+        .accordion-content {
+            padding: 0 20px 20px 20px;
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .timeline-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .timeline-link:hover { color: var(--accent-cyan); }
+        .timeline-link:last-child { border-bottom: none; }
+        .item-title { display: block; font-weight: 700; color: #fff; }
+        .item-meta { font-size: 0.85rem; color: var(--text-dim); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            margin: 80px 0 40px 0;
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; align-items: flex-start; margin-top: -60px; }
+            h1 { font-size: 2.5rem; }
+            .section-header-wrapper { flex-direction: column; align-items: flex-start; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cover-image"></div>
+
+<div class="container">
+    <header class="header-content">
+        <img src="logo.png" alt="Ophir Oren" class="logo-main">
+        <div class="name-area-wrapper">
+            <div class="name-area">
+                <h1>Ophir Oren</h1>
+                <a href="https://www.linkedin.com/in/ophiro/" target="_blank" aria-label="LinkedIn Profile">
+                    <svg class="linkedin-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+            </div>
+            <span class="main-subtitle">
+                Cyber & AI Innovation Strategist 
+                <span style="color: var(--border); margin: 0 10px;">|</span> 
+                <a href="#portfolio-section" class="header-cta"><span id="header-counter"></span> Strategic Projects</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="section-label">About Me</div>
+    <div class="about-section">
+        <p class="about-text">
+            With over <strong>20 years of experience</strong> in the cybersecurity ecosystem, I specialize in bridging the gap between emerging threats and innovative defense. 
+            Currently leading innovation for a <strong>Global Fortune 500</strong> company, my focus lies at the intersection of AI security and enterprise-scale resilience, 
+            driven by a portfolio of <strong>strategic research and initiatives</strong>.
+        </p>
+    </div>
+
+    <div class="section-label">Professional Focus</div>
+    <div class="accordion-grid" style="margin-top: 25px;">
+        <details>
+            <summary>Enterprise Leadership @ Bayer</summary>
+            <div class="accordion-content">
+                <strong>Head of Cyber and AI Security Innovation Squad</strong><br><br>
+                Leading horizon scanning, technology scouting, and strategic implementation for a global Fortune 500 company. Spearheading technical evaluations of stealth-mode startups.
+            </div>
+        </details>
+        <details>
+            <summary>Venture Capital Advisory</summary>
+            <div class="accordion-content">
+                Providing technical due diligence and strategic evaluation for top-tier venture funds. Focused on identifying high-potential cybersecurity and AI startups for investment.
+            </div>
+        </details>
+        <details>
+            <summary>Advisory Board Portfolio</summary>
+            <div class="accordion-content">
+                Strategic advisor to emerging cybersecurity startups on product-market fit, enterprise go-to-market strategies, and technical roadmaps.
+            </div>
+        </details>
+    </div>
+
+    <div id="portfolio-section" class="section-header-wrapper">
+        <div class="section-label">
+            Timeline & Projects 
+            <span id="timeline-counter" style="margin-left: 10px; color: var(--text-dim); text-transform: none; letter-spacing: normal; font-size: 0.8rem; font-weight: 400;"></span>
+        </div>
+        <div class="controls">
+            <button class="btn-control" onclick="toggleAll(true)">Expand All</button>
+            <button class="btn-control" onclick="toggleAll(false)">Collapse All</button>
+        </div>
+    </div>
+
+    <div id="timeline-container">
+        <details class="year-details" open>
+            <summary><span class="year-text" style="font-size: 1.2rem; color: var(--accent-cyan);">2026</span></summary>
+            <div class="accordion-content">
+                <div class="timeline-link">
+                    <div>
+                        <span class="item-title">Future Initiatives</span>
+                        <span class="item-meta">Active Development</span>
+                    </div>
+                    <span style="color: var(--accent-cyan)">⚡ Working in Progress...</span>
+                </div>
+            </div>
+        </details>
+
+        <details class="year-details">
+            <summary><span class="year-text" style="font-size: 1.2rem;">2025</span></summary>
+            <div class="accordion-content">
+                <a href="https://astrix.security/learn/blog/astrix-research-presents-touchpoints-between-ai-and-non-human-identities/" target="_blank" class="timeline-link">
+                    <div style="width: 100%;">
+                        <span class="item-title">AI & Non-Human Identities (NHI) Research</span>
+                        <span class="item-meta">Joint research with Astrix Security, featured at <strong>BSidesTLV 2025</strong>.</span>
+                    </div>
+                    <span>↗</span>
+                </a>
+                <a href="https://ophiroren.github.io/threatmap/" target="_blank" class="timeline-link">
+                    <div><span class="item-title">ThreatMap Dashboard</span><span class="item-meta">Cyber Intelligence Visualization</span></div>
+                    <span>↗</span>
+                </a>
+                <a href="https://kamaband.lovable.app/" target="_blank" class="timeline-link">
+                    <div><span class="item-title">KamaBand</span><span class="item-meta">Fintech for Musicians</span></div>
+                    <span>↗</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=811cq2zBpJs" target="_blank" class="timeline-link">
+                    <div style="width: 100%;">
+                        <span class="item-title">ICS Cyber Talks Podcast [Hebrew]</span>
+                        <span class="item-meta">A deep dive into cyber innovation and the future of AI.</span>
+                    </div>
+                    <span>↗</span>
+                </a>
+            </div>
+        </details>
+
+        <details class="year-details">
+            <summary><span class="year-text" style="font-size: 1.2rem;">2024</span></summary>
+            <div class="accordion-content">
+                <a href="https://www.youtube.com/watch?v=DZvj-X0ON60" target="_blank" class="timeline-link">
+                    <div><span class="item-title">Lasso Security Webinar</span><span class="item-meta">Securing the Wild West: AI Security for Enterprises</span></div>
+                    <span>↗</span>
+                </a>
+            </div>
+        </details>
+    </div>
+
+    <footer>
+        &copy; 2026 Ophir Oren | #IStandWithIsrael
+    </footer>
+</div>
+
+<script>
+    function updateCounters() {
+        const yearSections = document.querySelectorAll('.year-details');
+        let totalProjects = 0;
+
+        yearSections.forEach(section => {
+            const projects = section.querySelectorAll('.timeline-link').length;
+            totalProjects += projects;
+
+            const summary = section.querySelector('summary');
+            const yearTextSpan = summary.querySelector('.year-text');
+            
+            let badge = summary.querySelector('.year-count');
+            if (!badge) {
+                badge = document.createElement('span');
+                badge.className = 'year-count';
+                yearTextSpan.after(badge);
+            }
+            badge.textContent = `${projects} Project${projects !== 1 ? 's' : ''}`;
+        });
+
+        const headerCounter = document.getElementById('header-counter');
+        if(headerCounter) headerCounter.textContent = totalProjects;
+
+        const timelineCounter = document.getElementById('timeline-counter');
+        if(timelineCounter) timelineCounter.textContent = `(${totalProjects} Total)`;
+    }
+
+    function toggleAll(open) {
+        document.querySelectorAll('.year-details').forEach(details => {
+            details.open = open;
+        });
+    }
+
+    window.onload = updateCounters;
+</script>
+
+</body>
+</html>
