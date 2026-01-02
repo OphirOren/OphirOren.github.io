@@ -63,6 +63,23 @@
         .max-header { background: #0a0a0a; padding: 6px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--neon-cyan); }
         
         .footer-credit { position: fixed; bottom: 10px; right: 15px; font-size: 10px; color: rgba(255, 255, 255, 0.4); z-index: 500; pointer-events: none; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; }
+                .footer-credit {
+            position: fixed; bottom: 10px; right: 15px; font-size: 10px; color: rgba(255, 255, 255, 0.4);
+            z-index: 500; text-transform: uppercase; letter-spacing: 1px; font-weight: bold;
+        }
+
+/* הוספת ה-CSS עבור הקישור עצמו */
+.footer-link {
+    color: var(--neon-cyan);
+    text-decoration: none;
+    transition: 0.3s;
+    pointer-events: auto; /* מוודא שהקישור ספציפית לחיץ */
+}
+
+.footer-link:hover {
+    color: #fff;
+    text-shadow: 0 0 8px var(--neon-cyan);
+}
     </style>
 </head>
 <body>
@@ -142,7 +159,7 @@
     <iframe id="max-frame"></iframe>
 </div>
 
-<div class="footer-credit">Developed by Ophir Oren</div>
+<div class="footer-credit">Developed by <a href="https://ophiroren.github.io/" class="footer-link">Ophir Oren</a>
 
 <script>
     const sites = [
