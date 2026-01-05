@@ -1,64 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0">
 <channel>
-    <title><![CDATA[Ophir Oren - Cyber & AI Security Updates]]></title>
+    <title>Ophir Oren Test Feed</title>
     <link>https://ophiroren.github.io/</link>
-    <description><![CDATA[Latest professional milestones and impact in Cyber Security and AI.]]></description>
-    <language>en-us</language>
-    <image>
-        <url>https://ophiroren.github.io/logo.png</url>
-        <title>Ophir Oren</title>
+    <description>Reset Test</description>
+    <item>
+        <title>Test Item</title>
         <link>https://ophiroren.github.io/</link>
-    </image>
-    <atom:link href="https://ophiroren.github.io/feed.xml" rel="self" type="application/rss+xml" />
-
-    <item>
-        <title><![CDATA[[App] ThreatMap Dashboard]]></title>
-        <link>https://ophiroren.github.io/threatmap/</link>
-        <description><![CDATA[Cyber Intel Visualization & Analysis platform.]]></description>
-        <pubDate>Mon, 05 Jan 2026 00:00:00 +0000</pubDate>
-        <guid>https://ophiroren.github.io/threatmap/</guid>
+        <description>Testing RSS basic structure</description>
     </item>
-
-    <item>
-        <title><![CDATA[[Strategic] Cyber Innovation Lab]]></title>
-        <link>https://www.linkedin.com/feed/update/urn:li:activity:7400908923446243328/</link>
-        <description><![CDATA[Established Global Internal Innovation Hub.]]></description>
-        <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-        <guid>https://www.linkedin.com/feed/update/urn:li:activity:7400908923446243328/</guid>
-    </item>
-
-    <item>
-        <title><![CDATA[[Research] AI & NHI Research]]></title>
-        <link>https://astrix.security/learn/blog/astrix-research-presents-touchpoints-between-ai-and-non-human-identities/</link>
-        <description><![CDATA[Featured research at BSidesTLV 2025. Deep dive into AI and Non-Human Identities.]]></description>
-        <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-        <guid>https://astrix.security/learn/blog/astrix-research-presents-touchpoints-between-ai-and-non-human-identities/</guid>
-    </item>
-
-    <item>
-        <title><![CDATA[[App] KamaBand]]></title>
-        <link>https://kamaband.lovable.app/</link>
-        <description><![CDATA[Fintech for Musicians - Project Showcase.]]></description>
-        <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-        <guid>https://kamaband.lovable.app/</guid>
-    </item>
-
-    <item>
-        <title><![CDATA[[Podcast] ICS Cyber Talks Podcast]]></title>
-        <link>https://www.youtube.com/watch?v=811cq2zBpJs</link>
-        <description><![CDATA[Deep dive into the future of AI in the industrial sector.]]></description>
-        <pubDate>Wed, 01 Jan 2025 00:00:00 +0000</pubDate>
-        <guid>https://www.youtube.com/watch?v=811cq2zBpJs</guid>
-    </item>
-
-    <item>
-        <title><![CDATA[[Webinar] Lasso Security Webinar]]></title>
-        <link>https://www.youtube.com/watch?v=DZvj-X0ON60</link>
-        <description><![CDATA[Securing AI for Enterprises - Technical session.]]></description>
-        <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
-        <guid>https://www.youtube.com/watch?v=DZvj-X0ON60</guid>
-    </item>
-
 </channel>
 </rss>
