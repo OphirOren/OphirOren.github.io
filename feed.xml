@@ -1,13 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
 <channel>
-    <title>Ophir Oren Test Feed</title>
+    <title>Ophir Oren Feed</title>
     <link>https://ophiroren.github.io/</link>
-    <description>Reset Test</description>
+    <description>Professional Updates</description>
+
     <item>
-        <title>Test Item</title>
-        <link>https://ophiroren.github.io/</link>
-        <description>Testing RSS basic structure</description>
+        <title>[App] ThreatMap Dashboard</title>
     </item>
+
+    <item>
+        <title>[Strategic] Cyber Innovation Lab</title>
+    </item>
+
+    <item>
+        <title>[Research] AI &amp; NHI Research</title>
+    </item>
+
+    <item>
+        <title>[App] KamaBand</title>
+    </item>
+
+    <item>
+        <title>[Podcast] ICS Cyber Talks Podcast</title>
+    </item>
+
+    <item>
+        <title>[Webinar] Lasso Security Webinar</title>
+    </item>
+
 </channel>
 </rss>
