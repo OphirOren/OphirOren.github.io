@@ -13,6 +13,14 @@
     </image>
 
     <item>
+        <title>New Tool: ChromeTabsBackup</title>
+        <link>https://github.com/OphirOren/ChromeTabsBackup</link>
+        <guid>https://github.com/OphirOren/ChromeTabsBackup</guid>
+        <pubDate>Sat, 08 Aug 2026 02:00:00 +0300</pubDate>
+        <description>Launched ChromeTabsBackup, a specialized Python-based CLI utility to back up and restore Chrome tab states without admin privileges or extension installation.</description>
+    </item>
+
+    <item>
         <title>New App: FiveWhys - Root Cause Analysis Tool</title>
         <link>https://fivewhys.lovable.app</link>
         <guid>https://fivewhys.lovable.app</guid>
