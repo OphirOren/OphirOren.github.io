@@ -52,9 +52,13 @@
         .name-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0; letter-spacing: -1.5px; }
         
-        .linkedin-link { display: flex; align-items: center; text-decoration: none; }
+        .linkedin-link, .substack-link { display: flex; align-items: center; text-decoration: none; gap: 8px; }
         .linkedin-icon { width: 32px; height: 32px; fill: #fff; transition: 0.3s; }
         .linkedin-icon:hover { fill: var(--accent); transform: scale(1.1); }
+        .substack-icon { width: 24px; height: 24px; color: #fff; stroke: #fff; transition: 0.3s; flex-shrink: 0; }
+        .substack-text { font-size: 0.9rem; font-weight: 600; color: #fff; transition: 0.3s; }
+        .substack-link:hover .substack-icon { color: var(--accent); stroke: var(--accent); transform: scale(1.1); }
+        .substack-link:hover .substack-text { color: var(--accent); }
 
         .badge { 
             background: rgba(0, 255, 204, 0.1); 
@@ -154,6 +158,10 @@
                 <h1>Ophir Oren</h1>
                 <a href="https://www.linkedin.com/in/ophiro/" target="_blank" class="linkedin-link">
                     <svg class="linkedin-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="https://ophiroren.substack.com/" target="_blank" class="substack-link">
+                    <svg class="substack-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="2" width="18" height="20" rx="1" ry="1" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"/><line x1="6" y1="8" x2="18" y2="8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="12" x2="18" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="6" y1="16" x2="14" y2="16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span class="substack-text">Substack</span>
                 </a>
                 <a href="#impact-section" id="header-total-badge" class="badge">0 Key Milestones</a>
             </div>
