@@ -13,6 +13,14 @@
     </image>
 
     <item>
+        <title>[Podcast] ICS Cyber Talks Podcast</title>
+        <link>https://www.youtube.com/watch?v=bG80KKV9oiI</link>
+        <guid isPermaLink="true">https://www.youtube.com/watch?v=bG80KKV9oiI</guid>
+        <description>protecting against a Future only a step away</description>
+        <pubDate>Sat, 22 Aug 2026 00:00:00 +0300</pubDate>
+    </item>
+
+    <item>
         <title>New Tool: ChromeTabsBackup</title>
         <link>https://github.com/OphirOren/ChromeTabsBackup</link>
         <guid>https://github.com/OphirOren/ChromeTabsBackup</guid>
