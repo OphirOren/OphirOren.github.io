@@ -47,6 +47,27 @@ html, body {
   grid-template-rows: auto 1fr auto;
 }
 
+#screen-setup > .topbar {
+  flex-wrap: wrap;
+}
+
+.builder-credit {
+  margin: 0.25rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.4;
+}
+
+.builder-credit a {
+  color: var(--accent);
+  text-underline-offset: 0.15em;
+}
+
+.builder-credit a:hover,
+.builder-credit a:focus-visible {
+  color: var(--ink);
+}
+
 #screen-about {
   grid-template-rows: auto 1fr auto;
 }
