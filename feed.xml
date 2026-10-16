@@ -13,6 +13,14 @@
     </image>
 
     <item>
+        <title>[App] PQC Practice</title>
+        <link>https://ophiroren.github.io/pqc/</link>
+        <guid isPermaLink="true">https://ophiroren.github.io/pqc/</guid>
+        <description>Test your knowledge of Post-Quantum Cryptography (PQC) with an interactive practice exam.</description>
+        <pubDate>Fri, 16 Oct 2026 17:28:00 +0300</pubDate>
+    </item>
+
+    <item>
         <title>[Podcast] ICS Cyber Talks Podcast</title>
         <link>https://www.youtube.com/watch?v=bG80KKV9oiI</link>
         <guid isPermaLink="true">https://www.youtube.com/watch?v=bG80KKV9oiI</guid>

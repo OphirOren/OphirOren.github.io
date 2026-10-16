@@ -244,7 +244,15 @@
         <details class="y-item" open>
             <summary><span>2026</span></summary>
             <div class="content">
-                <a href="https://www.youtube.com/watch?v=bG80KKV9oiI" target="_blank" class="t-link">
+                <a href="https://ophiroren.github.io/pqc/" target="_blank" class="t-link" data-date="2026-10-16">
+                    <div>
+                        <span class="t-tag app">App</span>
+                        <span class="t-title">PQC Practice</span>
+                        <span class="t-meta">Post-Quantum Cryptography Knowledge Test</span>
+                    </div>
+                    <span>↗</span>
+                </a>
+                <a href="https://www.youtube.com/watch?v=bG80KKV9oiI" target="_blank" class="t-link" data-date="2026-08-22">
                     <div>
                         <span class="t-tag podcast">Podcast</span>
                         <span class="t-title">ICS Cyber Talks Podcast</span>
@@ -252,7 +260,7 @@
                     </div>
                     <span>↗</span>
                 </a>
-				<a href="https://github.com/OphirOren/ChromeTabsBackup" target="_blank" class="t-link">
+                <a href="https://github.com/OphirOren/ChromeTabsBackup" target="_blank" class="t-link" data-date="2026-08-08">
             		<div>
 		                <span class="t-tag tool">Tool</span>
 		                <span class="t-title">ChromeTabsBackup</span>
@@ -260,7 +268,7 @@
 		            </div>
             		<span>↗</span>
         		</a>
-                <a href="https://fivewhys.lovable.app" target="_blank" class="t-link">
+                <a href="https://fivewhys.lovable.app" target="_blank" class="t-link" data-date="2026-02-07">
                     <div>
                         <span class="t-tag app">App</span>
                         <span class="t-title">FiveWhys</span>
@@ -268,7 +276,7 @@
                     </div>
                     <span>↗</span>
                </a>
-		        <a href="https://www.globes.co.il/news/article.aspx?did=1001531627" target="_blank" class="t-link" data-				category="interview">
+                <a href="https://www.globes.co.il/news/article.aspx?did=1001531627" target="_blank" class="t-link" data-date="2026-01-11" data-				category="interview">
     			    <div>
         				<span class="t-tag interview">Interview</span>
     				    <span class="t-title">Globes - Bayer's Cyber Innovation OT Lab</span>
@@ -276,7 +284,7 @@
     			    </div>
     			    <span>↗</span>
 		        </a>
-                <a href="https://ophiroren.github.io/threatmap/" target="_blank" class="t-link">
+                <a href="https://ophiroren.github.io/threatmap/" target="_blank" class="t-link" data-date="2026-01-01">
                     <div>
                         <span class="t-tag app">App</span>
                         <span class="t-title">ThreatMap Dashboard</span>
@@ -298,7 +306,7 @@
         <details class="y-item">
             <summary><span>2025</span></summary>
             <div class="content">
-                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7400908923446243328/" target="_blank" class="t-link">
+                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7400908923446243328/" target="_blank" class="t-link" data-date="2025-12-01">
                     <div>
                         <span class="t-tag strategic">Strategic</span>
                         <span class="t-title">Cyber Innovation Lab</span>
@@ -306,7 +314,7 @@
                     </div>
                     <span>↗</span>
                 </a>
-                <a href="https://astrix.security/learn/blog/astrix-research-presents-touchpoints-between-ai-and-non-human-identities/" target="_blank" class="t-link">
+                <a href="https://astrix.security/learn/blog/astrix-research-presents-touchpoints-between-ai-and-non-human-identities/" target="_blank" class="t-link" data-date="2025-06-09">
                     <div>
                         <span class="t-tag research">Research</span>
                         <span class="t-title">AI & NHI Research</span>
@@ -314,7 +322,7 @@
                     </div>
                     <span>↗</span>
                 </a>
-                <a href="https://kamaband.lovable.app/" target="_blank" class="t-link">
+                <a href="https://kamaband.lovable.app/" target="_blank" class="t-link" data-date="2025-12-15">
                     <div>
                         <span class="t-tag app">App</span>
                         <span class="t-title">KamaBand</span>
@@ -322,7 +330,7 @@
                     </div>
                     <span>↗</span>
                 </a>
-                <a href="https://www.youtube.com/watch?v=811cq2zBpJs" target="_blank" class="t-link">
+                <a href="https://www.youtube.com/watch?v=811cq2zBpJs" target="_blank" class="t-link" data-date="2025-09-25">
                     <div>
                         <span class="t-tag podcast">Podcast</span>
                         <span class="t-title">ICS Cyber Talks Podcast</span>
@@ -336,7 +344,7 @@
         <details class="y-item">
             <summary><span>2024</span></summary>
             <div class="content">
-                <a href="https://www.youtube.com/watch?v=DZvj-X0ON60" target="_blank" class="t-link">
+                <a href="https://www.youtube.com/watch?v=DZvj-X0ON60" target="_blank" class="t-link" data-date="2024-08-29">
                     <div>
                         <span class="t-tag webinar">Webinar</span>
                         <span class="t-title">Lasso Security Webinar</span>
@@ -363,8 +371,17 @@
     let tagCounts = {};
 
     function initPage() {
+        sortTimeline();
         calculateStats();
         renderFilters();
+    }
+
+    function sortTimeline() {
+        document.querySelectorAll('.y-item > .content').forEach(content => {
+            const items = Array.from(content.querySelectorAll('.t-link'));
+            items.sort((first, second) => (second.dataset.date || '').localeCompare(first.dataset.date || ''));
+            items.forEach(item => content.appendChild(item));
+        });
     }
 
     function calculateStats() {
