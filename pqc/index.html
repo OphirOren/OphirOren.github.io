@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PQC Practice</title>
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'none'; media-src 'none'; worker-src 'none';"
+  />
+  <meta name="referrer" content="no-referrer" />
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SETUP -->
+    <section id="screen-setup" class="screen">
+      <header class="topbar">
+        <div class="brand">
+          <img class="logo" src="assets/logo.jpg" alt="PQC Practice logo" />
+          <div>
+            <p class="eyebrow">Post-Quantum Learning</p>
+            <h1>PQC Practice</h1>
+          </div>
+        </div>
+        <div class="top-actions">
+          <p class="rules">50 Q · 60 min · Pass 66%</p>
+          <button type="button" class="ghost" id="about-btn">About</button>
+        </div>
+      </header>
+
+      <div class="setup-grid">
+        <div class="panel config">
+          <label class="field">
+            <span>Your name</span>
+            <input
+              id="candidate-name"
+              type="text"
+              placeholder="Letters only, e.g. Ophir Oren"
+              autocomplete="name"
+              maxlength="40"
+              spellcheck="false"
+              inputmode="text"
+            />
+            <p id="name-status" class="hint">Use letters and spaces only (no numbers or symbols).</p>
+          </label>
+
+          <div class="field">
+            <span>Question bank</span>
+            <p id="bank-status" class="status">Loading built-in question bank…</p>
+            <p class="hint">Questions and answers come only from app files (Markdown banks or embedded bank-data.js). No upload.</p>
+          </div>
+
+          <div class="field" id="count-row">
+            <span>Questions</span>
+            <div class="chips" id="count-chips">
+              <button type="button" data-count="10">10</button>
+              <button type="button" data-count="25">25</button>
+              <button type="button" class="active" data-count="50">50</button>
+              <button type="button" data-count="100">100</button>
+              <button type="button" data-count="custom">Other</button>
+            </div>
+            <div class="count-custom-row hidden" id="count-custom-row">
+              <label class="count-custom-label" for="count-custom-input">Exact number</label>
+              <input
+                id="count-custom-input"
+                type="number"
+                min="1"
+                max="526"
+                step="1"
+                value="12"
+                inputmode="numeric"
+              />
+              <span id="count-custom-hint" class="hint">Choose any number from 1 up to the available pool.</span>
+            </div>
+          </div>
+
+          <div class="field inline">
+            <span>Mode</span>
+            <div class="chips" id="mode-chips">
+              <button type="button" class="active" data-mode="exam" title="Timed, score at the end">Exam</button>
+              <button type="button" data-mode="practice" title="No timer, check answers as you go">Practice</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel domains-panel">
+          <div class="panel-head">
+            <span>Domains</span>
+            <span class="domain-actions">
+              <button type="button" class="link" id="select-all-domains">All</button>
+              <button type="button" class="link" id="clear-domains">None</button>
+            </span>
+          </div>
+          <p id="mock-hint" class="status">Shuffle: an equal share from each checked domain, drawn at random from all 526 questions.</p>
+          <div id="domain-list" class="domain-list"></div>
+        </div>
+      </div>
+
+      <footer class="bottombar">
+        <p id="ready-status" class="status">Load question and answer files to begin</p>
+        <button type="button" class="primary" id="start-btn" disabled>Start</button>
+      </footer>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="screen-about" class="screen hidden">
+      <header class="topbar">
+        <div class="brand">
+          <img class="logo" src="assets/logo.jpg" alt="PQC Practice logo" />
+          <div>
+            <p class="eyebrow">Post-Quantum Learning</p>
+            <h1>About</h1>
+          </div>
+        </div>
+      </header>
+
+      <div class="about-grid">
+        <article class="panel about-card">
+          <div class="panel-head"><span>This app</span></div>
+          <h2>PQC Practice</h2>
+          <p>
+            A practice-exam app for people learning post-quantum cryptography (PQC).
+            Use it to enrich your knowledge, drill key concepts, and check how ready you are —
+            whether you are studying PQC in general or preparing for an exam-style assessment
+            such as CQSP.
+          </p>
+          <ul class="about-list">
+            <li>Timed mocks and practice mode for self-check</li>
+            <li>Domain drills across foundations, threats, QKD, PQC algorithms, standards, migration, protocols, and cybersecurity fundamentals</li>
+            <li>Exam-style format available: 50 questions · 60 minutes · pass at 66%</li>
+            <li>Loads local Markdown question and answer banks — no cloud account required</li>
+          </ul>
+        </article>
+
+        <article class="panel about-card">
+          <div class="panel-head"><span>Built by</span></div>
+          <div class="builder">
+            <img class="logo" src="assets/logo.jpg" alt="Ophir Oren" />
+            <div>
+              <h2>Ophir Oren</h2>
+              <p>Creator of PQC Practice.</p>
+              <a
+                class="linkedin-btn"
+                href="https://www.linkedin.com/in/ophiro/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >LinkedIn profile</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="bottombar">
+        <p class="status">Unofficial practice tool · not affiliated with any exam body</p>
+        <button type="button" class="primary" id="about-back-btn">Back to dashboard</button>
+      </footer>
+    </section>
+
+    <!-- EXAM -->
+    <section id="screen-exam" class="screen hidden">
+      <header class="topbar exam-top">
+        <div class="brand">
+          <img class="logo logo-sm" src="assets/logo.jpg" alt="PQC Practice logo" />
+          <div>
+            <p class="eyebrow" id="exam-name"></p>
+            <h1 id="exam-progress">Question 1 / 1</h1>
+          </div>
+        </div>
+        <div class="meta">
+          <span class="pill" id="exam-domain"></span>
+          <span class="timer" id="exam-timer">Practice</span>
+        </div>
+      </header>
+
+      <div class="track"><div class="fill" id="exam-fill"></div></div>
+
+      <article class="panel question-panel">
+        <p class="stem" id="q-stem"></p>
+        <div class="choices" id="q-choices"></div>
+        <p class="explanation hidden" id="q-explanation"></p>
+        <div id="q-acronyms" class="acronyms hidden" aria-live="polite"></div>
+
+        <div class="nav-main">
+          <button type="button" class="btn-prev" id="prev-btn">← Previous</button>
+          <button type="button" class="btn-flag" id="flag-btn">Flag</button>
+          <button type="button" class="ghost hidden" id="check-btn">Check</button>
+          <button type="button" class="btn-next" id="next-btn">Next →</button>
+        </div>
+      </article>
+
+      <div id="exam-review-bar" class="exam-review-bar hidden">
+        <p id="exam-review-label"></p>
+        <div class="exam-review-actions">
+          <button type="button" id="exam-review-prev">Previous</button>
+          <button type="button" id="exam-review-next">Next</button>
+          <button type="button" class="ghost" id="exam-review-stop">Stop review</button>
+        </div>
+      </div>
+
+      <div class="qmap" id="q-map"></div>
+
+      <div id="end-review" class="end-review hidden" role="dialog" aria-modal="true" aria-labelledby="end-review-title">
+        <div class="end-review-card">
+          <h2 id="end-review-title">Before you end</h2>
+          <p id="end-review-summary" class="status"></p>
+          <div class="end-review-block">
+            <p class="end-review-label" id="end-unanswered-label"></p>
+            <div id="end-unanswered-list" class="qmap end-review-map"></div>
+          </div>
+          <div class="end-review-block">
+            <p class="end-review-label" id="end-flagged-label"></p>
+            <div id="end-flagged-list" class="qmap end-review-map"></div>
+          </div>
+          <div class="end-review-actions">
+            <button type="button" id="review-unanswered-btn">Review unanswered</button>
+            <button type="button" id="review-flagged-btn">Review flagged</button>
+            <button type="button" class="ghost" id="cancel-end-btn">Back to exam</button>
+            <button type="button" class="btn-end" id="confirm-end-btn">End exam</button>
+          </div>
+        </div>
+      </div>
+
+      <footer class="bottombar exam-bottom">
+        <p class="status" id="answer-count"></p>
+        <div class="actions">
+          <button type="button" class="ghost" id="abort-btn">Exit</button>
+          <button type="button" class="btn-end" id="submit-btn">End Exam</button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="screen-results" class="screen hidden">
+      <header class="topbar">
+        <div class="brand">
+          <img class="logo logo-sm" src="assets/logo.jpg" alt="PQC Practice logo" />
+          <div>
+            <p class="eyebrow" id="result-name"></p>
+            <h1>Results</h1>
+          </div>
+        </div>
+        <div class="meta" id="result-pills"></div>
+      </header>
+
+      <div class="score-hero" id="score-hero">
+        <div class="score-hero-main">
+          <p class="score-label">Score</p>
+          <p class="score-big" id="result-score">0%</p>
+          <p class="score-detail" id="result-summary"></p>
+        </div>
+        <div class="score-verdict" id="result-verdict">
+          <span class="verdict-badge" id="result-title">—</span>
+          <p class="verdict-note" id="result-verdict-note"></p>
+        </div>
+      </div>
+
+      <div class="results-grid">
+        <div class="panel domain-panel">
+          <div class="panel-head">
+            <span>By domain</span>
+            <span class="panel-hint">Click a domain to filter review</span>
+          </div>
+          <div class="score-grid" id="score-grid"></div>
+          <div class="insight-box" id="domain-insights"></div>
+        </div>
+        <div class="panel missed-panel">
+          <div class="panel-head">
+            <span id="review-title">Review</span>
+            <button type="button" class="link hidden" id="review-clear-btn">All domains</button>
+          </div>
+          <div class="chips review-filters" id="review-filters">
+            <button type="button" class="active" data-review="all">All</button>
+            <button type="button" data-review="correct">Correct</button>
+            <button type="button" data-review="wrong">Wrong</button>
+            <button type="button" data-review="unanswered">Skipped</button>
+            <button type="button" data-review="missed" title="Wrong answers and skipped questions together">Wrong &amp; skipped</button>
+          </div>
+          <div id="missed-list" class="missed-list"></div>
+        </div>
+      </div>
+
+      <footer class="bottombar">
+        <button type="button" class="ghost" id="home-btn">Dashboard</button>
+        <button type="button" class="primary" id="retry-btn">Retry</button>
+      </footer>
+    </section>
+  </div>
+
+  <script src="bank-data.js"></script>
+  <script src="domain-assign.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
