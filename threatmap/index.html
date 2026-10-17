@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Threat Map Dashboard</title>
+    <title>Cyber Threat Map Dashboard | Global Attack Maps</title>
+    <meta name="description" content="Explore public cyber threat maps from security providers in one interactive dashboard, with direct links to each provider's map.">
+    <link rel="canonical" href="https://ophiroren.github.io/threatmap/">
     <style>
         :root { --neon-cyan: #00ffcc; --bg-dark: #000; --bar-bg: #1a1a1a; }
         body, html { margin: 0; padding: 0; background: var(--bg-dark); color: #fff; font-family: 'Segoe UI', sans-serif; height: 100vh; width: 100vw; overflow: hidden; }
@@ -81,6 +83,21 @@
     text-shadow: 0 0 8px var(--neon-cyan);
 }
 
+.no-script-fallback {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    overflow-y: auto;
+    box-sizing: border-box;
+    padding: clamp(24px, 6vw, 72px);
+    background: var(--bg-dark);
+    color: #fff;
+    font: 16px/1.6 'Segoe UI', sans-serif;
+}
+
+.no-script-fallback h1 { font-size: 2rem; }
+.no-script-fallback a { color: var(--neon-cyan); }
+
 /* --- התאמה למובייל (טלפונים) --- */
 @media (max-width: 768px) {
     /* סידור המפות אחת מתחת לשנייה במקום גריד של 2x2 */
@@ -113,9 +130,24 @@
 
 <div id="drag-shield"></div>
 
+<noscript>
+    <main class="no-script-fallback">
+        <h1>Cyber Threat Map Dashboard</h1>
+        <p>This dashboard brings together public cyber threat maps. Embedded maps may be unavailable when JavaScript is disabled or a provider blocks embedding. Open a provider's map directly:</p>
+        <ul>
+            <li><a href="https://threatmap.bitdefender.com/">Bitdefender threat map</a></li>
+            <li><a href="https://livethreatmap.radware.com/">Radware live threat map</a></li>
+            <li><a href="https://fortiguard.fortinet.com/threat-map">Fortinet threat map</a></li>
+            <li><a href="https://cybermap.kaspersky.com/">Kaspersky cyber map</a></li>
+            <li><a href="https://threatmap.checkpoint.com/">Check Point threat map</a></li>
+        </ul>
+        <p><a href="../">Back to Ophir Oren's website</a></p>
+    </main>
+</noscript>
+
 <div id="central-logo">
     <div class="logo-row">
-        <img src="logo.png" alt="Logo" class="logo-img">
+        <img src="../logo.png" alt="Logo" class="logo-img">
         <div class="logo-divider"></div>
         <div class="logo-text-box">
             <h1>Cyber Security</h1>
@@ -174,7 +206,7 @@
 
 <div id="max-overlay">
     <div class="max-header">
-        <div style="display:flex; align-items:center; gap:10px;"><img src="logo.png" style="height: 25px;"><span style="font-size:11px; font-weight:bold; color:var(--neon-cyan);">FULLSCREEN MONITOR</span></div>
+        <div style="display:flex; align-items:center; gap:10px;"><img src="../logo.png" style="height: 25px;"><span style="font-size:11px; font-weight:bold; color:var(--neon-cyan);">FULLSCREEN MONITOR</span></div>
         <div style="display:flex; gap:8px;">
             <select id="max-select" onchange="maxSync()"></select>
             <button class="btn-tool btn-ext" title="Open in new window" onclick="openExternal('max')">↗</button>
