@@ -182,12 +182,19 @@
           <div class="details-wrap hidden" id="details-wrap">
             <button
               type="button"
-              class="ghost details-btn"
+              class="details-btn"
               id="details-btn"
               aria-haspopup="true"
               aria-expanded="false"
               title="Open learning resources for this question in a new tab"
-            >Additional details ↗</button>
+            >
+              <span class="details-mark" aria-hidden="true">?</span>
+              <span class="details-copy">
+                <strong>Additional details</strong>
+                <span>Open a page that explains this topic</span>
+              </span>
+              <span class="details-arrow" aria-hidden="true">↗</span>
+            </button>
             <ul class="details-list hidden" id="details-list"></ul>
           </div>
         </div>
