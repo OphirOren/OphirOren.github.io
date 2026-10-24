@@ -21,6 +21,8 @@
     <link rel="canonical" href="https://ophiroren.github.io/">
     
     <link rel="alternate" type="application/rss+xml" title="Ophir Oren RSS Feed" href="feed.xml" />
+    <link rel="stylesheet" href="share.css">
+    <script src="share.js" defer></script>
     
     <style>
         :root {
@@ -91,6 +93,9 @@
         .booking-link:hover { background: var(--bg); color: var(--accent); }
         .booking-link:focus-visible { outline: 3px solid var(--text); outline-offset: 4px; }
 
+        .header-actions { display: flex; align-items: flex-start; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+        .header-actions .booking-link { margin-top: 0; }
+
         .section-header-row { display: flex; justify-content: space-between; align-items: center; margin: 50px 0 20px; }
         .section-label { color: var(--accent); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 3px; display: flex; align-items: center; gap: 15px; flex: 1; }
         .section-label::after { content: ""; height: 1px; background: var(--border); flex: 1; margin-right: 20px; }
@@ -155,6 +160,7 @@
             .logo { width: 115px; height: 115px; }
             .info-area { padding-top: 0; }
             .booking-link { align-self: center; }
+            .header-actions { justify-content: center; }
             h1 { font-size: 1.7rem; width: 100%; }
         }
     </style>
@@ -179,7 +185,14 @@
                 <a href="#impact-section" id="header-total-badge" class="badge">0 Key Milestones</a>
             </div>
             <div class="subtitle">Cyber & AI Innovation Strategist</div>
-            <a href="https://shorturl.at/lAqgD" target="_blank" rel="noopener noreferrer" class="booking-link">Schedule a Meeting</a>
+            <div class="header-actions">
+                <a href="https://shorturl.at/lAqgD" target="_blank" rel="noopener noreferrer" class="booking-link">Schedule a Meeting</a>
+                <div class="share-tools" data-share-url="https://ophiroren.github.io/" data-share-title="Ophir Oren" data-share-text="Cyber &amp; AI Security Innovation">
+                    <button type="button" class="share-button" disabled>Share</button>
+                    <span class="share-status" role="status" aria-live="polite"></span>
+                    <input class="share-url" type="text" aria-label="Page link to copy" readonly hidden>
+                </div>
+            </div>
         </div>
     </header>
 

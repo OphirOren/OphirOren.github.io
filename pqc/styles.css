@@ -54,7 +54,43 @@ html, body {
 .top-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 0.65rem;
+}
+
+#screen-setup .topbar {
+  flex-wrap: wrap;
+}
+
+.site-link {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+.website-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  max-width: 100%;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.top-actions .website-btn {
+  margin-top: 0;
+}
+
+.site-link:hover {
+  color: var(--ink);
+}
+
+.site-link:focus-visible,
+.website-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .about-grid {

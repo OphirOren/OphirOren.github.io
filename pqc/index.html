@@ -11,6 +11,8 @@
   <meta name="referrer" content="no-referrer" />
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../share.css" />
+  <script src="../share.js" defer></script>
 </head>
 <body>
   <div class="app">
@@ -26,6 +28,12 @@
         </div>
         <div class="top-actions">
           <p class="rules">50 Q · 60 min · Pass 66%</p>
+          <a class="linkedin-btn website-btn" href="https://ophiroren.github.io/">Ophir Oren's website</a>
+          <div class="share-tools" data-share-url="https://ophiroren.github.io/pqc/" data-share-title="PQC Practice" data-share-text="Practice post-quantum cryptography with PQC Practice by Ophir Oren.">
+            <button type="button" class="share-button" disabled>Share</button>
+            <span class="share-status" role="status" aria-live="polite"></span>
+            <input class="share-url" type="text" aria-label="Page link to copy" readonly hidden />
+          </div>
           <button type="button" class="ghost" id="about-btn">About</button>
         </div>
       </header>
@@ -132,6 +140,21 @@
             <li>Exam-style format available: 50 questions · 60 minutes · pass at 66%</li>
             <li>Loads local Markdown question and answer banks — no cloud account required</li>
           </ul>
+          <h2>Content accuracy</h2>
+          <p>
+            This is an independent learning resource. Questions, answers, and explanations
+            may contain errors, omissions, or outdated information. Accuracy and completeness
+            are not guaranteed. Verify important points against current standards and
+            authoritative sources. Practice scores do not guarantee exam readiness or success.
+          </p>
+          <h2>Use and attribution</h2>
+          <p>
+            You are welcome to use this app and its question bank for learning and practice.
+            If you share, reproduce, or adapt any part of this project, clearly credit
+            Ophir Oren and include a link to
+            <a class="site-link" href="https://ophiroren.github.io/pqc/">PQC Practice</a>.
+            Please retain existing attribution and do not present this work as your own.
+          </p>
         </article>
 
         <article class="panel about-card">
@@ -141,6 +164,7 @@
             <div>
               <h2>Ophir Oren</h2>
               <p>Creator of PQC Practice.</p>
+              <a class="linkedin-btn website-btn" href="https://ophiroren.github.io/">Visit my website</a>
               <a
                 class="linkedin-btn"
                 href="https://www.linkedin.com/in/ophiro/"
