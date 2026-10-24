@@ -241,11 +241,8 @@ function toExternalHttps(value) {
   }
 }
 
-function fillTextWithLinks(el, value) {
-  if (!el) return;
-  const text = value == null ? '' : String(value);
+function appendTextWithLinks(el, text) {
   const pattern = /\[([^\]\n]+)\]\((https?:\/\/[^\s)]+)\)|(https?:\/\/[^\s)]+)/g;
-  el.replaceChildren();
   let cursor = 0;
   let match;
   while ((match = pattern.exec(text))) {
@@ -269,6 +266,81 @@ function fillTextWithLinks(el, value) {
   if (cursor < text.length) {
     el.appendChild(document.createTextNode(text.slice(cursor)));
   }
+}
+
+function mathSourceToText(source) {
+  const symbols = {
+    alpha: 'α', beta: 'β', gamma: 'γ', delta: 'δ', epsilon: 'ε', theta: 'θ',
+    lambda: 'λ', mu: 'μ', pi: 'π', rho: 'ρ', sigma: 'σ', phi: 'φ', psi: 'ψ',
+    omega: 'ω', Gamma: 'Γ', Delta: 'Δ', Theta: 'Θ', Pi: 'Π', Sigma: 'Σ',
+    Phi: 'Φ', Psi: 'Ψ', Omega: 'Ω', times: '×', cdot: '·', otimes: '⊗', pm: '±',
+    infty: '∞', leq: '≤', geq: '≥', neq: '≠', approx: '≈', equiv: '≡',
+    rightarrow: '→', leftarrow: '←', mapsto: '↦', dagger: '†', ell: '…',
+    lvert: '|', rvert: '|', vert: '|', lVert: '‖', rVert: '‖',
+    langle: '⟨', rangle: '⟩',
+  };
+  const convert = (value) => {
+    let result = value
+      .replace(/\\(?:left|right)\b/g, '')
+      .replace(/\\(?:frac|dfrac|tfrac)\s*\{([^{}]*)\}\s*\{([^{}]*)\}/g, '($1)/($2)')
+      .replace(/\\sqrt\s*\{([^{}]*)\}/g, '√($1)')
+      .replace(/\\(?:text|mathrm|mathbf|mathit|mathsf|mathtt|mathbb|operatorname)\s*\{([^{}]*)\}/g, '$1')
+      .replace(/\\ket\s*\{([^{}]*)\}/g, '|$1⟩')
+      .replace(/\\bra\s*\{([^{}]*)\}/g, '⟨$1|')
+      .replace(/\\begin\{pmatrix\}/g, '(')
+      .replace(/\\end\{pmatrix\}/g, ')')
+      .replace(/\\begin\{bmatrix\}/g, '[')
+      .replace(/\\end\{bmatrix\}/g, ']')
+      .replace(/\\begin\{Bmatrix\}/g, '{')
+      .replace(/\\end\{Bmatrix\}/g, '}')
+      .replace(/\\begin\{vmatrix\}/g, '|')
+      .replace(/\\end\{vmatrix\}/g, '|')
+      .replace(/\\begin\{Vmatrix\}/g, '‖')
+      .replace(/\\end\{Vmatrix\}/g, '‖')
+      .replace(/\\\\/g, '; ')
+      .replace(/\\[,;!:\s]/g, ' ')
+      .replace(/\\([A-Za-z]+)(?![A-Za-z])/g, (command, name) => symbols[name] || name)
+      .replace(/\^\{([^{}]*)\}/g, '^$1')
+      .replace(/_\{([^{}]*)\}/g, '_$1')
+      .replace(/[{}]/g, '');
+    return result;
+  };
+
+  let result = source;
+  for (let pass = 0; pass < 3; pass += 1) {
+    const next = convert(result);
+    if (next === result) break;
+    result = next;
+  }
+  return result.replace(/\s+/g, ' ').trim();
+}
+
+function fillTextWithMath(el, value, linkify = false) {
+  if (!el) return;
+  const text = value == null ? '' : String(value);
+  const pattern = /\\\((.*?)\\\)|\\\[([\s\S]*?)\\\]/g;
+  el.replaceChildren();
+  let cursor = 0;
+  let match;
+  while ((match = pattern.exec(text))) {
+    const plainText = text.slice(cursor, match.index);
+    if (linkify) appendTextWithLinks(el, plainText);
+    else if (plainText) el.appendChild(document.createTextNode(plainText));
+
+    const math = document.createElement('span');
+    math.className = match[2] === undefined ? 'math-inline' : 'math-block';
+    math.setAttribute('aria-label', mathSourceToText(match[1] ?? match[2]));
+    math.textContent = mathSourceToText(match[1] ?? match[2]);
+    el.appendChild(math);
+    cursor = match.index + match[0].length;
+  }
+  const remainder = text.slice(cursor);
+  if (linkify) appendTextWithLinks(el, remainder);
+  else if (remainder) el.appendChild(document.createTextNode(remainder));
+}
+
+function fillTextWithLinks(el, value) {
+  fillTextWithMath(el, value, true);
 }
 
 function bankSize() {
@@ -1255,7 +1327,7 @@ function renderExam() {
   $('exam-domain').textContent = domainLabel(question.domain);
   $('exam-domain').title = domainLabel(question.domain, false);
   $('exam-fill').style.width = `${((state.index + 1) / session.questions.length) * 100}%`;
-  setText($('q-stem'), question.stem);
+  fillTextWithMath($('q-stem'), question.stem);
 
   const choices = $('q-choices');
   choices.replaceChildren();
@@ -1273,7 +1345,7 @@ function renderExam() {
     keyEl.className = 'key';
     keyEl.textContent = key;
     const textEl = document.createElement('span');
-    textEl.textContent = question.choices[key];
+    fillTextWithMath(textEl, question.choices[key]);
     btn.append(keyEl, textEl);
     btn.addEventListener('click', () => {
       session.answers[question.id] = key;
@@ -1703,7 +1775,7 @@ function renderReviewList() {
 
     const stem = document.createElement('p');
     stem.className = 'review-stem';
-    stem.textContent = question.stem;
+    fillTextWithMath(stem, question.stem);
 
     const choices = document.createElement('div');
     choices.className = 'review-choices';
@@ -1719,7 +1791,7 @@ function renderReviewList() {
       keyEl.textContent = key;
       const textEl = document.createElement('span');
       textEl.className = 'review-text';
-      textEl.textContent = question.choices[key];
+      fillTextWithMath(textEl, question.choices[key]);
       row.append(keyEl, textEl);
 
       if (key === question.answer || selected === key) {

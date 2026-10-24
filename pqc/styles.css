@@ -788,6 +788,32 @@ button.link {
   overflow-wrap: anywhere;
 }
 
+.math-inline,
+.math-block {
+  font-family: "Cambria Math", "STIX Two Math", "Noto Serif", serif;
+  font-style: italic;
+  overflow-wrap: anywhere;
+}
+
+.math-inline {
+  display: inline;
+  padding: 0 0.08em;
+  white-space: normal;
+}
+
+.math-block {
+  display: block;
+  margin: 0.3rem 0;
+  padding: 0.45rem 0.65rem;
+  border-left: 2px solid var(--accent);
+  background: rgba(255, 255, 255, 0.035);
+  font-size: 1.05em;
+  line-height: 1.6;
+  text-align: center;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
 .choices {
   display: grid;
   gap: 0.4rem;
