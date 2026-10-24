@@ -41,7 +41,7 @@
             border-bottom: 2px solid var(--accent); 
         }
         .header { 
-            padding-top: 120px; display: flex; align-items: flex-end; gap: 25px; 
+            padding-top: 120px; display: flex; align-items: flex-start; gap: 25px;
             margin-bottom: 40px; margin-top: -180px; 
         }
         .logo { 
@@ -49,7 +49,7 @@
             border: 4px solid var(--accent); background: var(--bg); object-fit: cover; z-index: 10;
         }
 
-        .info-area { display: flex; flex-direction: column; gap: 8px; min-width: 0; max-width: 100%; }
+        .info-area { display: flex; flex-direction: column; gap: 8px; min-width: 0; max-width: 100%; padding-top: 72px; }
         .name-row { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
         h1 { font-size: clamp(2rem, 6vw, 3rem); margin: 0; letter-spacing: -1.5px; }
         
@@ -153,6 +153,7 @@
             .cover { height: 180px; }
             .header { flex-direction: column; align-items: center; text-align: center; padding-top: 40px; margin-top: -60px; gap: 15px; }
             .logo { width: 115px; height: 115px; }
+            .info-area { padding-top: 0; }
             .booking-link { align-self: center; }
             h1 { font-size: 1.7rem; width: 100%; }
         }
