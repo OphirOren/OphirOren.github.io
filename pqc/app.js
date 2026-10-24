@@ -14,6 +14,18 @@ const DOMAINS = [
 
 const DOMAIN_BY_CODE = Object.fromEntries(DOMAINS.map((d) => [d.code, d.id]));
 
+/** Study-bank domain codes from `**Domain:** …` in the Markdown files. */
+const STUDY_DOMAIN_BY_CODE = {
+  QF: 'foundations',
+  QR: 'threats',
+  QKD: 'qkd',
+  PQC: 'algorithms',
+  SCR: 'standards',
+  MIG: 'migration',
+  IPT: 'protocols',
+  CYB: 'cyber',
+};
+
 /** Parser labels for Q301–Q500. Not selectable exams. */
 const MODULE_ID_BY_LETTER = { E: 'modE', T: 'modT', C: 'modC', G: 'modG' };
 
@@ -60,7 +72,8 @@ const BANK_QUESTIONS_URL = './pqc-questions.md';
 const BANK_ANSWERS_URL = './pqc-answers.md';
 const MAX_BANK_BYTES = 5 * 1024 * 1024;
 const MIN_QUESTION_COUNT = 1;
-const MAX_QUESTION_COUNT = 526;
+/** Soft ceiling only; the live max is always the loaded bank size. */
+const MAX_QUESTION_COUNT_CEILING = 9999;
 const NAME_MAX_LEN = 40;
 const NAME_PATTERN = /^[\p{L}](?:[\p{L} '\-]{0,38}[\p{L}])?$/u;
 
@@ -137,6 +150,56 @@ const FALLBACK_GLOSSARY = {
   RNG: 'Random Number Generator',
   CSPRNG: 'Cryptographically Secure Pseudorandom Number Generator',
   SBOM: 'Software Bill of Materials',
+  CNOT: 'Controlled-NOT two-qubit gate',
+  CZ: 'Controlled-Z two-qubit gate',
+  SWAP: 'Two-qubit gate that exchanges the states of two qubits',
+  SX: 'Square-root-of-X gate (half of an X rotation)',
+  LMS: 'Leighton–Micali Signature scheme (stateful hash-based)',
+  XMSS: 'eXtended Merkle Signature Scheme (stateful hash-based)',
+  WOTS: 'Winternitz One-Time Signature (WOTS+ in SPHINCS+/SLH-DSA and XMSS)',
+  SPHINCS: 'SPHINCS+ stateless hash-based signature (basis of SLH-DSA)',
+  SHA: 'Secure Hash Algorithm',
+  EC: 'Elliptic Curve',
+  DHE: 'Ephemeral Diffie–Hellman',
+  ECDHE: 'Ephemeral Elliptic-Curve Diffie–Hellman',
+  MAC: 'Message Authentication Code',
+  IV: 'Initialization Vector',
+  CTR: 'Counter mode (block-cipher mode of operation)',
+  EKU: 'Extended Key Usage (X.509 certificate extension)',
+  SA: 'Security Association (IPsec/IKE)',
+  DEK: 'Data Encryption Key',
+  KEK: 'Key Encryption Key',
+  JWT: 'JSON Web Token',
+  ChaCha20: 'ChaCha20 stream cipher',
+  API: 'Application Programming Interface',
+  VPN: 'Virtual Private Network',
+  IP: 'Internet Protocol',
+  TCP: 'Transmission Control Protocol',
+  HTTP: 'Hypertext Transfer Protocol',
+  HTTPS: 'HTTP over TLS (secure HTTP)',
+  CDN: 'Content Delivery Network',
+  WAN: 'Wide Area Network',
+  CPU: 'Central Processing Unit',
+  GPU: 'Graphics Processing Unit',
+  RAM: 'Random-Access Memory',
+  ROM: 'Read-Only Memory',
+  DoS: 'Denial of Service',
+  CVE: 'Common Vulnerabilities and Exposures (public vulnerability ID)',
+  CI: 'Continuous Integration',
+  CD: 'Continuous Delivery / Deployment',
+  EU: 'European Union',
+  UK: 'United Kingdom',
+  US: 'United States',
+  TR: 'Technical Report (e.g., ETSI TR)',
+  CISA: 'Cybersecurity and Infrastructure Security Agency (US)',
+  CNSS: 'Committee on National Security Systems (US)',
+  CNSSP: 'CNSS Policy',
+  OMB: 'Office of Management and Budget (US)',
+  NCCoE: 'National Cybersecurity Center of Excellence (NIST)',
+  IANA: 'Internet Assigned Numbers Authority',
+  CISO: 'Chief Information Security Officer',
+  FAR: 'Federal Acquisition Regulation (US)',
+  HVA: 'High Value Asset (US federal systems)',
 };
 
 const state = {
@@ -208,9 +271,15 @@ function fillTextWithLinks(el, value) {
   }
 }
 
+function bankSize() {
+  return state.bank.length;
+}
+
 function maxAvailableQuestions() {
   const pool = state.bank.filter((q) => state.selectedDomains.includes(q.domain));
-  return Math.min(MAX_QUESTION_COUNT, pool.length || MAX_QUESTION_COUNT);
+  const size = bankSize();
+  if (!size) return MAX_QUESTION_COUNT_CEILING;
+  return Math.min(size, pool.length || size);
 }
 
 function validateQuestionCount(raw) {
@@ -280,7 +349,10 @@ function resolveDomainId(raw) {
   const normalized = String(raw || '').trim().toLowerCase();
   if (!normalized) return null;
 
-  const byCode = DOMAIN_BY_CODE[normalized.toUpperCase()];
+  const upper = String(raw || '').trim().toUpperCase();
+  if (STUDY_DOMAIN_BY_CODE[upper]) return STUDY_DOMAIN_BY_CODE[upper];
+
+  const byCode = DOMAIN_BY_CODE[upper];
   if (byCode) return byCode;
 
   const byId = DOMAINS.find((d) => d.id === normalized);
@@ -400,6 +472,7 @@ function parseStudyQuestionRecords(text) {
     if (sectionEnd >= 0) body = body.slice(0, sectionEnd);
 
     const difficultyMatch = body.match(/^-\s+\*\*Difficulty:\*\*\s*(.+)$/m);
+    const domainMatch = body.match(/^-\s+\*\*Domain:\*\*\s*(.+)$/m);
     const content = body
       .split('\n')
       .filter((line) => !/^-\s+\*\*(?:Domain|Subtopic|Subtopic name|Difficulty|Tags):\*\*/.test(line))
@@ -419,7 +492,7 @@ function parseStudyQuestionRecords(text) {
       id,
       mock: 'study',
       difficulty: difficultyMatch ? difficultyMatch[1].trim() : '',
-      domain: null,
+      domain: domainMatch ? resolveDomainId(domainMatch[1]) : null,
       stem,
       choices,
       answer: null,
@@ -490,6 +563,7 @@ function parsePqcAnswers(markdown) {
       topic: next.topic || prev.topic || '',
       difficulty: next.difficulty || prev.difficulty || '',
       explanation: next.explanation || prev.explanation || '',
+      learnLinks: next.learnLinks || [],
     };
   });
 
@@ -514,6 +588,9 @@ function parseStudyAnswerRecords(text) {
 
     const difficultyMatch = body.match(/^-\s+\*\*Difficulty:\*\*\s*(.+)$/m);
     const topicMatch = body.match(/^-\s+\*\*Subtopic name:\*\*\s*(.+)$/m);
+    const domainMatch = body.match(/^-\s+\*\*Domain:\*\*\s*(.+)$/m);
+    const furtherIdx = body.search(/^####\s+Further learning\s*$/im);
+    const learnLinks = extractLearnLinks(furtherIdx >= 0 ? body.slice(furtherIdx) : '');
     let explanation = body.slice(answerMatch.index + answerMatch[0].length);
     explanation = explanation
       .replace(/^####\s+/gm, '')
@@ -523,14 +600,36 @@ function parseStudyAnswerRecords(text) {
 
     byId[id] = {
       answer: answerMatch[1].toUpperCase(),
-      domain: null,
+      domain: domainMatch ? resolveDomainId(domainMatch[1]) : null,
       topic: topicMatch ? topicMatch[1].trim() : '',
       difficulty: difficultyMatch ? difficultyMatch[1].trim() : '',
       explanation,
+      learnLinks: learnLinks.length ? learnLinks : extractLearnLinks(body),
     };
   });
 
   return byId;
+}
+
+/** Unique http(s) Markdown links `[title](url)` in document order. */
+function extractLearnLinks(markdown) {
+  const links = [];
+  const seen = new Set();
+  const linkRe = /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g;
+  let match;
+  while ((match = linkRe.exec(markdown))) {
+    const url = match[2];
+    if (seen.has(url)) continue;
+    try {
+      const parsed = new URL(url);
+      if (parsed.protocol !== 'https:' && parsed.protocol !== 'http:') continue;
+    } catch {
+      continue;
+    }
+    seen.add(url);
+    links.push({ title: match[1].trim(), url });
+  }
+  return links;
 }
 
 function shortenGlossaryMeaning(raw) {
@@ -620,7 +719,7 @@ function detectAcronymsInQuestion(question) {
   const found = [];
 
   terms.forEach((term) => {
-    const pattern = new RegExp(`(^|[^A-Za-z0-9])${escapeRegExp(term)}([^A-Za-z0-9]|$)`);
+    const pattern = new RegExp(`(^|[^A-Za-z0-9])${escapeRegExp(term)}s?([^A-Za-z0-9]|$)`);
     if (pattern.test(haystack)) {
       found.push({ term, meaning: state.glossary[term] });
     }
@@ -652,6 +751,65 @@ function renderAcronymStrip(question) {
   });
 }
 
+function setDetailsListOpen(open) {
+  const list = $('details-list');
+  if (!list) return;
+  list.classList.toggle('hidden', !open);
+  $('details-btn').setAttribute('aria-expanded', open ? 'true' : 'false');
+}
+
+function currentLearnLinks() {
+  const session = state.session;
+  if (!session || session.mode !== 'practice') return [];
+  const question = session.questions[state.index];
+  return (question && question.learnLinks) || [];
+}
+
+function openLearnLink(url) {
+  const win = window.open(url, '_blank', 'noopener,noreferrer');
+  if (win) win.opener = null;
+}
+
+function onDetailsClick(event) {
+  event.stopPropagation();
+  const links = currentLearnLinks();
+  if (!links.length) return;
+  if (links.length === 1) {
+    openLearnLink(links[0].url);
+    return;
+  }
+  setDetailsListOpen($('details-list').classList.contains('hidden'));
+}
+
+/** Practice-only learning links; never touches answers, timer, or score. */
+function renderDetailsLinks(question, mode) {
+  const wrap = $('details-wrap');
+  const list = $('details-list');
+  if (!wrap || !list) return;
+
+  const links = mode === 'practice' ? question.learnLinks || [] : [];
+  setDetailsListOpen(false);
+  list.replaceChildren();
+  wrap.classList.toggle('hidden', !links.length);
+  if (!links.length) return;
+
+  $('details-btn').title = links.length === 1
+    ? `Open in a new tab: ${links[0].title}`
+    : `${links.length} learning resources — opens in a new tab`;
+
+  links.forEach((link) => {
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = link.url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = link.title;
+    a.addEventListener('click', () => setDetailsListOpen(false));
+    li.appendChild(a);
+    list.appendChild(li);
+  });
+}
+
 function mergeBank(questions, answersById) {
   let ready = 0;
   let missingAnswers = 0;
@@ -666,13 +824,11 @@ function mergeBank(questions, answersById) {
     return {
       ...q,
       answer: ans.answer,
-      domain: (typeof window !== 'undefined' && window.PQC_DOMAIN_BY_ID && window.PQC_DOMAIN_BY_ID[q.id])
-        || ans.domain
-        || moduleDomainFor(q.id, q.mock)
-        || q.domain,
+      domain: q.domain || ans.domain || moduleDomainFor(q.id, q.mock) || null,
       topic: ans.topic || '',
       difficulty: ans.difficulty || q.difficulty,
       explanation: ans.explanation || '',
+      learnLinks: ans.learnLinks || extractLearnLinks(ans.explanation || ''),
     };
   });
 
@@ -1136,6 +1292,7 @@ function renderExam() {
   }
 
   renderAcronymStrip(question);
+  renderDetailsLinks(question, session.mode);
 
   const isFirst = state.index === 0;
   const isLast = state.index >= session.questions.length - 1;
@@ -1675,6 +1832,10 @@ function bindUi() {
     state.revealed = true;
     renderExam();
   });
+  $('details-btn').addEventListener('click', onDetailsClick);
+  document.addEventListener('click', (event) => {
+    if (!$('details-wrap').contains(event.target)) setDetailsListOpen(false);
+  });
   $('submit-btn').addEventListener('click', requestEndExam);
   $('cancel-end-btn').addEventListener('click', closeEndReview);
   $('confirm-end-btn').addEventListener('click', submitExam);
@@ -1699,6 +1860,7 @@ function bindUi() {
     if (event.key === 'Escape' && !$('end-review').classList.contains('hidden')) {
       closeEndReview();
     }
+    if (event.key === 'Escape') setDetailsListOpen(false);
   });
   $('abort-btn').addEventListener('click', () => {
     if (state.timerId) clearInterval(state.timerId);

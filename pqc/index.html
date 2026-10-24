@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PQC Practice Exam | Post-Quantum Cryptography Quiz</title>
-  <meta name="description" content="Practice post-quantum cryptography with timed mock exams, self-paced quizzes, and topic-based drills across PQC foundations, algorithms, standards, and migration.">
-  <link rel="canonical" href="https://ophiroren.github.io/pqc/" />
+  <title>PQC Practice</title>
   <meta
     http-equiv="Content-Security-Policy"
     content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; font-src 'none'; media-src 'none'; worker-src 'none';"
@@ -24,8 +22,6 @@
           <div>
             <p class="eyebrow">Post-Quantum Learning</p>
             <h1>PQC Practice</h1>
-            <p class="builder-credit">Practice post-quantum cryptography with mock exams and topic-based drills.</p>
-            <p class="builder-credit">Built by <a href="https://www.linkedin.com/in/ophiro/" target="_blank" rel="noopener noreferrer">Ophir Oren</a> · <a href="../">Portfolio</a></p>
           </div>
         </div>
         <div class="top-actions">
@@ -71,7 +67,7 @@
                 id="count-custom-input"
                 type="number"
                 min="1"
-                max="526"
+                max="9999"
                 step="1"
                 value="12"
                 inputmode="numeric"
@@ -97,16 +93,13 @@
               <button type="button" class="link" id="clear-domains">None</button>
             </span>
           </div>
-          <p id="mock-hint" class="status">Shuffle: an equal share from each checked domain, drawn at random from all 526 questions.</p>
+          <p id="mock-hint" class="status">Shuffle: an equal share from each checked domain, drawn at random from the loaded bank.</p>
           <div id="domain-list" class="domain-list"></div>
         </div>
       </div>
 
       <footer class="bottombar">
-        <div>
-          <p id="ready-status" class="status">Load question and answer files to begin</p>
-          <p class="hint">Free to use and share the link. Copying, redistribution, or credit removal requires permission, except as permitted by law. Terms in About.</p>
-        </div>
+        <p id="ready-status" class="status">Load question and answer files to begin</p>
         <button type="button" class="primary" id="start-btn" disabled>Start</button>
       </footer>
     </section>
@@ -156,30 +149,6 @@
               >LinkedIn profile</a>
             </div>
           </div>
-          <h2>Usage and sharing</h2>
-          <p>
-            PQC Practice is free to use on this website. You are welcome to share
-            the link so others can learn and practice.
-          </p>
-          <p>
-            Except as permitted by applicable law, copying, modifying, republishing,
-            redistributing, or hosting the app, its code, design, or question bank
-            requires prior permission from Ophir Oren. Normal browser loading and
-            caching needed to use the app are allowed. Do not remove author credit
-            or present this app as your own work. Contact Ophir Oren through the
-            LinkedIn profile above for permission.
-          </p>
-          <p>
-            All rights reserved to the extent protected by law. These terms apply
-            only to PQC Practice, not to the rest of this website. No open-source
-            license is granted, and third-party rights remain unaffected.
-          </p>
-          <p>
-            Questions, answers, and explanations may contain errors. Verify important
-            information against authoritative sources. No exclusive rights are claimed
-            over public-domain facts or material that is not protected by copyright.
-            This app is provided as is, without warranties, to the extent permitted by law.
-          </p>
         </article>
       </div>
 
@@ -208,7 +177,20 @@
       <div class="track"><div class="fill" id="exam-fill"></div></div>
 
       <article class="panel question-panel">
-        <p class="stem" id="q-stem"></p>
+        <div class="stem-row">
+          <p class="stem" id="q-stem"></p>
+          <div class="details-wrap hidden" id="details-wrap">
+            <button
+              type="button"
+              class="ghost details-btn"
+              id="details-btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Open learning resources for this question in a new tab"
+            >Additional details ↗</button>
+            <ul class="details-list hidden" id="details-list"></ul>
+          </div>
+        </div>
         <div class="choices" id="q-choices"></div>
         <p class="explanation hidden" id="q-explanation"></p>
         <div id="q-acronyms" class="acronyms hidden" aria-live="polite"></div>
@@ -320,7 +302,6 @@
   </div>
 
   <script src="bank-data.js"></script>
-  <script src="domain-assign.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

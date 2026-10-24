@@ -1,8 +1,12 @@
 # PQC Questions
 
-This English study bank contains **526 practice questions**, organized by eight learning domains and their subtopics. Q001–Q500 question texts and answer-option orders are preserved. Q501–Q506 were added for gaps in symmetric-cipher classification, Grover and hash bit strength, QKD confidentiality versus authentication, physical-layer security, and the X25519MLKEM768 TLS group. Q507–Q510 cover Shor's mechanism, BB84 detection, the QKD distance limit versus PQC, and crypto-agility after an interoperability failure. Q511 and Q512 identify ML-KEM as the general KEM and contrast Shor with Grover. Q513 and Q514 cover quantum advantage versus a cryptanalytically relevant quantum computer, and the aim of NIST's post-quantum standardization project. Q515–Q526 cover ML-DSA security categories, MAXDEPTH, stateful hash-signature limits, WOTS+, ML-KEM sizes and the NTT, CBOM versus SBOM, hybrid TLS shared secrets, handshake fragmentation, and the timing difference between recorded key establishment and signature forgery. There are no fixed mock-exam assignments in this edition.
+This English study bank contains **600 practice questions**, organized by eight learning domains and their subtopics. It preserves the 526 source question records and adds 74 questions, Q527–Q600. Existing question texts, option orders and permanent IDs are retained.
 
-Use `pqc-answers.md` for the corresponding correct answers, explanations and references. This is independent practice material, not an official or reconstructed SISA exam question bank.
+Q527–Q577 expand Bloch-sphere geometry, single- and multi-qubit gates, circuit identities, measurement, no-cloning and quantum error correction. Q578–Q579 expand Mosca-style timing analysis, Q580 addresses interpretation of QKD errors, and Q581–Q600 expand standards, sector applicability, cloud responsibilities and compliance evidence.
+
+Use `pqc-answers.md` for the corresponding correct answers, explanations and learning links. This is independent practice material, not an official or reconstructed examination bank. There are no fixed mock-exam assignments.
+
+**Revision scope — October 24, 2026:** Q001–Q526 are retained from the supplied files and were not comprehensively fact-audited again during this merge. The new questions are original practice scenarios and explanations based on the discussed topics; no copyright-clearance guarantee is implied. Time-sensitive original questions retain their stated historical snapshots.
 
 ## Domain Index
 
@@ -10,15 +14,15 @@ Each question has one primary domain and is counted once in this table. Domain s
 
 | Code | Study domain | Questions |
 |---|---|---:|
-| QF | [Quantum Computing Foundations](#quantum-computing-foundations) | 38 |
-| QR | [Quantum Threats & Risk](#quantum-threats--risk) | 40 |
-| QKD | [Quantum Key Distribution (QKD)](#quantum-key-distribution-qkd) | 57 |
+| QF | [Quantum Computing Foundations](#quantum-computing-foundations) | 89 |
+| QR | [Quantum Threats & Risk](#quantum-threats--risk) | 42 |
+| QKD | [Quantum Key Distribution (QKD)](#quantum-key-distribution-qkd) | 58 |
 | PQC | [PQC Algorithms & Mechanisms](#pqc-algorithms--mechanisms) | 56 |
-| SCR | [Standards, Compliance & Roadmaps](#standards-compliance--roadmaps) | 75 |
+| SCR | [Standards, Compliance & Roadmaps](#standards-compliance--roadmaps) | 95 |
 | MIG | [PQC Migration & Program Management](#pqc-migration--program-management) | 109 |
 | IPT | [Protocols, Implementation & Testing](#protocols-implementation--testing) | 93 |
 | CYB | [Cybersecurity Fundamentals](#cybersecurity-fundamentals) | 58 |
-| Total | All primary domains | 526 |
+| Total | All primary domains | 600 |
 
 ## Reading and Importing the Markdown
 
@@ -36,16 +40,18 @@ The eight domains are a custom study taxonomy. Hands-on is a cross-domain tag: a
 
 ## Quantum Computing Foundations
 
-Quantum states, qubits, gates, circuits, measurement, entanglement, quantum algorithms and simulation fundamentals. This domain contains 38 questions; the same ID and metadata appear in the question and answer files.
+Quantum states, qubits, gates, circuits, measurement, entanglement, quantum algorithms and simulation fundamentals. This domain contains 89 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
 | Qubits, States and Superposition | 6 |
-| Gates and Quantum Circuits | 7 |
-| Measurement, Probability and Sampling | 10 |
-| Entanglement and No-Cloning | 5 |
+| Bloch Sphere and State Geometry | 10 |
+| Gates and Quantum Circuits | 41 |
+| Measurement, Probability and Sampling | 11 |
+| Entanglement and No-Cloning | 7 |
 | Quantum Algorithms and Computational Models | 8 |
 | Simulation, Noise and Reproducibility | 2 |
+| Quantum Error Correction and Logical Qubits | 4 |
 
 ### Q008
 
@@ -136,6 +142,160 @@ Which statement about superposition is precise?
 - **B.** The storage of two classical bits that can be read together
 - **C.** A state that is a linear combination of basis states
 - **D.** Classical mixing only, with no significance to phase
+
+### Q527
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+In the standard Bloch-sphere representation, which pair of states occupies the north and south poles?
+
+- **A.** \(\vert+\rangle\) and \(\vert-\rangle\)
+- **B.** \(\vert0\rangle\) and \(\vert1\rangle\)
+- **C.** \(\vert+i\rangle\) and \(\vert-i\rangle\)
+- **D.** The maximally mixed state and the identity operator
+
+### Q528
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+A learner says that a qubit is in a superposition of the computational basis states only when its Bloch vector lies on the equator. Which correction is accurate?
+
+- **A.** Superposition is possible only at the poles
+- **B.** Every superposition must have real amplitudes
+- **C.** Points away from the equator represent classical bits
+- **D.** Pure states away from the poles can also be superpositions; the equator specifically gives equal computational-basis probabilities
+
+### Q529
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+Where are \(\vert+\rangle\) and \(\vert-\rangle\) located on the conventional Bloch sphere?
+
+- **A.** On the positive and negative x-axis, respectively
+- **B.** On the positive and negative z-axis, respectively
+- **C.** At the center and the north pole, respectively
+- **D.** At the same point because their computational-basis probabilities are equal
+
+### Q530
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+The state \(\vert+i\rangle=(\vert0\rangle+i\vert1\rangle)/\sqrt{2}\) points along which conventional Bloch-sphere direction?
+
+- **A.** Positive z
+- **B.** Negative x
+- **C.** Positive y
+- **D.** Negative z
+
+### Q531
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Consider the pure-state parameterization
+\[
+\vert\psi\rangle=\cos(\theta/2)\vert0\rangle+e^{i\phi}\sin(\theta/2)\vert1\rangle.
+\]
+What do \(\theta\) and \(\phi\) describe?
+
+- **A.** Two independently measurable classical bits stored in the qubit
+- **B.** The polar angle and the relative-phase-related azimuthal angle
+- **C.** The number of qubits and the circuit depth
+- **D.** The physical temperature and the error-correction rate
+
+### Q532
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** calculation
+
+For the parameterization in Q531, what is the probability of outcome 1 in a computational-basis measurement?
+
+- **A.** \(\sin^2(\theta/2)\)
+- **B.** \(\sin(\theta/2)\)
+- **C.** \(\phi/(2\pi)\)
+- **D.** \(\cos^2(\theta/2)\)
+
+### Q533
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Two normalized state vectors differ only by multiplication by \(e^{i\gamma}\). How are they represented on the Bloch sphere?
+
+- **A.** At opposite poles
+- **B.** At different longitudes separated by \(\gamma\)
+- **C.** With different Bloch-vector lengths
+- **D.** At the same point, because the difference is a global phase
+
+### Q534
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+What single-qubit state is represented by the center of the Bloch ball?
+
+- **A.** The pure state \(\vert0\rangle\)
+- **B.** The pure state \(\vert+\rangle\)
+- **C.** The maximally mixed state \(I/2\)
+- **D.** An invalid state with zero measurement probability
+
+### Q535
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+Two different two-qubit systems produce identical local Bloch vectors for each individual qubit. What can be concluded?
+
+- **A.** The local vectors alone need not reveal the systems' different joint correlations
+- **B.** The complete two-qubit states must be identical
+- **C.** Neither system can be entangled
+- **D.** The qubits must have identical physical implementations
+
+### Q536
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+What do antipodal points on the surface of the Bloch sphere represent?
+
+- **A.** Two vectors differing only by a global phase
+- **B.** Orthogonal pure single-qubit states
+- **C.** Two copies of the maximally mixed state
+- **D.** States that cannot be distinguished in any measurement basis
 
 ### Q012
 
@@ -241,6 +401,516 @@ A circuit starts in ∣0⟩ and applies H, then H. What is the result of a Z mea
 - **B.** A result that cannot be described classically
 - **C.** 0 and 1 with equal probability
 - **D.** 1 with certainty
+
+### Q537
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+Ignoring an overall global phase, what geometric transformation does the Pauli-X gate implement?
+
+- **A.** A 90-degree rotation around the z-axis
+- **B.** A projection onto the x-axis
+- **C.** A 180-degree rotation around the x-axis
+- **D.** A contraction of the Bloch vector toward the center
+
+### Q538
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Which pair correctly describes the action of the conventional Pauli-Y matrix?
+
+- **A.** \(Y\vert0\rangle=\vert0\rangle\), \(Y\vert1\rangle=-\vert1\rangle\)
+- **B.** \(Y\vert0\rangle=\vert+\rangle\), \(Y\vert1\rangle=\vert-\rangle\)
+- **C.** \(Y\vert0\rangle=\vert1\rangle\), \(Y\vert1\rangle=\vert0\rangle\), with no phase factors
+- **D.** \(Y\vert0\rangle=i\vert1\rangle\), \(Y\vert1\rangle=-i\vert0\rangle\)
+
+### Q539
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+What is the result of applying Z to \(\vert+\rangle\)?
+
+- **A.** \(\vert-\rangle\)
+- **B.** \(\vert0\rangle\)
+- **C.** \(\vert1\rangle\)
+- **D.** The maximally mixed state
+
+### Q540
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+A qubit is prepared in \(\vert1\rangle\), and Z is applied. Which statement is precise?
+
+- **A.** The qubit changes to \(\vert0\rangle\)
+- **B.** Its probability of outcome 1 changes to 50%
+- **C.** The vector becomes \(-\vert1\rangle\), representing the same physical state when considered on its own
+- **D.** The gate performs a measurement and records the value 1
+
+### Q541
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+Which state results from applying H to \(\vert1\rangle\)?
+
+- **A.** \(\vert+\rangle\)
+- **B.** \(\vert-\rangle\)
+- **C.** \(\vert+i\rangle\)
+- **D.** \(\vert0\rangle\)
+
+### Q542
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+A qubit is already in \(\vert+\rangle\). What does applying H produce?
+
+- **A.** Another equal-probability superposition in the computational basis
+- **B.** \(\vert1\rangle\)
+- **C.** A random classical bit
+- **D.** \(\vert0\rangle\)
+
+### Q543
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+An ideal circuit applies H twice to an arbitrary input state \(\vert\psi\rangle\), with no intervening operation. What is the output?
+
+- **A.** The original state \(\vert\psi\rangle\)
+- **B.** Always \(\vert0\rangle\)
+- **C.** Always \(\vert+\rangle\)
+- **D.** The original state only if it was a computational-basis state
+
+### Q544
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Which identity explains how Hadamard gates can convert a phase flip into a computational-basis bit flip?
+
+- **A.** \(HZH=Z\)
+- **B.** \(HZH=H\)
+- **C.** \(HZH=X\)
+- **D.** \(HZH=I\)
+
+### Q545
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+What is the result of applying S to \(\vert+\rangle\)?
+
+- **A.** \(\vert-\rangle\)
+- **B.** \(\vert+i\rangle\)
+- **C.** \(\vert1\rangle\)
+- **D.** \(\vert0\rangle\)
+
+### Q546
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+What relative phase does the standard T gate add to the \(\vert1\rangle\) component, leaving the \(\vert0\rangle\) component unchanged?
+
+- **A.** \(\pi\)
+- **B.** \(\pi/2\)
+- **C.** \(2\pi\)
+- **D.** \(\pi/4\)
+
+### Q547
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+Which standard gate is obtained by applying T twice?
+
+- **A.** S
+- **B.** H
+- **C.** X
+- **D.** \(T^\dagger\)
+
+### Q548
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+Which standard gate is obtained by applying S twice?
+
+- **A.** H
+- **B.** Z
+- **C.** X
+- **D.** I
+
+### Q549
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+A circuit applies S and must then undo that operation exactly. Which gate should follow it?
+
+- **A.** H
+- **B.** T
+- **C.** \(S^\dagger\)
+- **D.** Z
+
+### Q550
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+Which statement correctly describes \(T^\dagger\)?
+
+- **A.** It measures in the T basis
+- **B.** It is identical to T because every quantum gate is self-inverse
+- **C.** It resets the phase to zero for every input
+- **D.** It is the inverse of T and adds the opposite relative phase
+
+### Q551
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** hands_on, circuit_analysis
+
+How are the standard phase gate \(P(\lambda)\) and \(R_z(\lambda)\) related?
+
+- **A.** They differ only by an overall global phase
+- **B.** One performs a measurement while the other is unitary
+- **C.** They rotate about different Bloch-sphere axes
+- **D.** They are equivalent only when the input is \(\vert0\rangle\)
+
+### Q552
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Using \(R_x(\theta)=e^{-i\theta X/2}\), which expression is correct?
+
+- **A.** \(R_x(\pi)=I\)
+- **B.** \(R_x(\pi)=H\)
+- **C.** \(R_x(\pi)=-iX\)
+- **D.** \(R_x(\pi)=Z\)
+
+### Q553
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Using the conventional rotation definition, what is \(R_y(\pi/2)\vert0\rangle\)?
+
+- **A.** \(\vert1\rangle\)
+- **B.** \(\vert+\rangle\)
+- **C.** \(\vert-\rangle\)
+- **D.** \(\vert+i\rangle\)
+
+### Q554
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+A qubit undergoes an \(R_z\) rotation. Which statement about measurement probabilities is generally correct?
+
+- **A.** Probabilities remain unchanged in every possible measurement basis
+- **B.** The probability of outcome 1 always increases
+- **C.** The state becomes maximally mixed
+- **D.** Computational-basis probabilities remain unchanged, although probabilities in other bases can change
+
+### Q555
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+What distinguishes the SX gate from the X gate?
+
+- **A.** Applying SX twice gives X
+- **B.** SX acts on two qubits while X acts on one
+- **C.** SX is a measurement operation
+- **D.** Applying SX twice always gives H
+
+### Q556
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+What is the ideal mathematical action of the identity gate I on a qubit?
+
+- **A.** It prepares \(\vert0\rangle\), regardless of the input
+- **B.** It leaves the input state unchanged
+- **C.** It removes any entanglement with other qubits
+- **D.** It converts a pure state into the maximally mixed state
+
+### Q557
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+A CNOT control qubit is in superposition. How should the gate's conditional behavior be understood?
+
+- **A.** The gate first measures the control and stores a classical decision
+- **B.** The gate randomly chooses whether to flip the target
+- **C.** The gate acts coherently on the superposed branches according to linearity
+- **D.** CNOT is undefined unless the control is definitely 0 or 1
+
+### Q558
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Let the first qubit be the CNOT control. What happens when CNOT is applied to \(\vert+\rangle\vert+\rangle\)?
+
+- **A.** It always produces the Bell state \((\vert00\rangle+\vert11\rangle)/\sqrt{2}\)
+- **B.** It produces \(\vert00\rangle\)
+- **C.** It measures both qubits
+- **D.** The state remains \(\vert+\rangle\vert+\rangle\), without creating entanglement
+
+### Q559
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Two consecutive identical CNOT gates act on the same control and target, with nothing between them. What is their combined action?
+
+- **A.** Identity on the two-qubit state
+- **B.** SWAP
+- **C.** CZ
+- **D.** Measurement of the target
+
+### Q560
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+Using the ordered computational basis \(\vert00\rangle,\vert01\rangle,\vert10\rangle,\vert11\rangle\), which basis component receives a minus sign under CZ?
+
+- **A.** Only \(\vert00\rangle\)
+- **B.** Only \(\vert10\rangle\)
+- **C.** Only \(\vert11\rangle\)
+- **D.** Both \(\vert01\rangle\) and \(\vert10\rangle\)
+
+### Q561
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** hands_on, circuit_analysis
+
+CZ is applied to \(\vert+\rangle\vert+\rangle\). Which description is correct?
+
+- **A.** The output remains a product state because its computational-basis probabilities are unchanged
+- **B.** The output is entangled even though all four computational-basis outcomes still have probability 25%
+- **C.** Only the outcome 11 remains possible
+- **D.** The output is a classical mixture of four basis states
+
+### Q562
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Which chronological sequence implements CNOT with control A and target B?
+
+- **A.** H on A, then CZ on A and B, then H on A
+- **B.** Z on B, then SWAP, then Z on B
+- **C.** H on both qubits, followed by SWAP
+- **D.** H on B, then CZ on A and B, then H on B
+
+### Q563
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+Which statement correctly describes a standard SWAP implementation?
+
+- **A.** Three CNOT gates with alternating control directions can exchange the quantum states without requiring the physical devices to exchange positions
+- **B.** SWAP creates an independent copy of each input state
+- **C.** SWAP first measures both qubits and then prepares replacement states
+- **D.** A single CNOT exchanges arbitrary states
+
+### Q564
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+Use the order \(\vert c_1,c_2,t\rangle\) for a Toffoli gate's two controls and target. What is its action on \(\vert110\rangle\)?
+
+- **A.** \(\vert000\rangle\)
+- **B.** \(\vert111\rangle\)
+- **C.** \(\vert101\rangle\)
+- **D.** \(\vert011\rangle\)
+
+### Q565
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Can a Toffoli gate operate when its controls are in superposition?
+
+- **A.** No; both controls must first be measured
+- **B.** No; Toffoli is only a classical operation
+- **C.** Yes; its unitary action extends coherently to superpositions
+- **D.** Yes, but only by discarding the relative phases
+
+### Q566
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+Which qualification is needed when Toffoli is called a universal gate?
+
+- **A.** Toffoli alone can approximate every single-qubit rotation
+- **B.** Universality means that Toffoli can copy every unknown quantum state
+- **C.** Toffoli alone prepares arbitrary superpositions from computational-basis inputs
+- **D.** Its classical reversible universality does not mean that Toffoli alone is universal for quantum computation
+
+### Q567
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+Which finite gate set can approximate arbitrary quantum circuits to suitable accuracy?
+
+- **A.** H, T and CNOT
+- **B.** X and SWAP only
+- **C.** Z and CZ only
+- **D.** CNOT and Toffoli only, with computational-basis initialization
+
+### Q568
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+A controlled-U gate has one control and a target register. What is its standard action?
+
+- **A.** It applies U regardless of the control
+- **B.** It applies U on the control-1 branch and identity on the control-0 branch, coherently
+- **C.** It applies U to the control rather than to the target
+- **D.** It measures the target to decide whether U is needed
+
+### Q569
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+For an ideal unitary gate U, which operation reverses its action?
+
+- **A.** A computational-basis measurement
+- **B.** Applying U again in every case
+- **C.** Applying its conjugate transpose \(U^\dagger\)
+- **D.** Resetting the qubit
+
+### Q570
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Why should measurement and reset not be treated as ordinary reversible unitary gates?
+
+- **A.** They can operate only on classical registers
+- **B.** They always preserve the original state vector
+- **C.** Their inverses are always the same operation
+- **D.** They are generally non-unitary operations and do not provide a unitary inverse restoring an arbitrary unknown input
 
 ### Q005
 
@@ -392,6 +1062,21 @@ A circuit starts in ∣0⟩, applies H, and then measures in Z. What is expected
 - **C.** About half 0 and half 1
 - **D.** Always 0
 
+### Q571
+
+- **Domain:** QF
+- **Subtopic:** measurement-and-probability
+- **Subtopic name:** Measurement, Probability and Sampling
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+An ideal projective Z-basis measurement is performed on a qubit already in \(\vert0\rangle\). What happens?
+
+- **A.** The measurement must change it to \(\vert+\rangle\)
+- **B.** The result is 0 with certainty, and the state remains \(\vert0\rangle\)
+- **C.** The result is random because every measurement necessarily changes its input
+- **D.** The qubit becomes maximally mixed
+
 ### Q048
 
 - **Domain:** QF
@@ -467,6 +1152,36 @@ What does the No-cloning theorem prohibit?
 - **C.** Copying a file containing classical bits
 - **D.** Repeatedly preparing the same known state
 
+### Q572
+
+- **Domain:** QF
+- **Subtopic:** entanglement-and-no-cloning
+- **Subtopic name:** Entanglement and No-Cloning
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+A proposed copying circuit applies CNOT to an arbitrary input qubit and a blank target initialized to \(\vert0\rangle\). What happens for the input \(\vert+\rangle\)?
+
+- **A.** The circuit produces an entangled Bell state rather than two independent copies of \(\vert+\rangle\)
+- **B.** The circuit produces \(\vert+\rangle\vert+\rangle\)
+- **C.** The input is automatically measured and then copied
+- **D.** The circuit fails to be unitary
+
+### Q573
+
+- **Domain:** QF
+- **Subtopic:** entanglement-and-no-cloning
+- **Subtopic name:** Entanglement and No-Cloning
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Which task is consistent with the no-cloning theorem?
+
+- **A.** Building one perfect copier that works for every unknown pure state
+- **B.** Perfectly distinguishing every pair of nonorthogonal states from one copy
+- **C.** Copying an arbitrary unknown superposition using CNOT and a blank target
+- **D.** Copying a state promised to be one of the orthogonal computational-basis states
+
 ### Q147
 
 - **Domain:** QF
@@ -526,36 +1241,6 @@ What generic improvement does Grover provide for unstructured search?
 - **B.** Solving every problem in constant time
 - **C.** Factoring in classical polynomial time
 - **D.** A quadratic improvement in the number of search queries
-
-### Q278
-
-- **Domain:** QF
-- **Subtopic:** simulation-and-noise
-- **Subtopic name:** Simulation, Noise and Reproducibility
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-What is the difference between an ideal simulator and a run on noisy hardware?
-
-- **A.** Hardware always returns exactly the theoretical distribution
-- **B.** Every simulator proves that the hardware is resistant to attack
-- **C.** Noise changes the Born rule itself
-- **D.** On hardware, error effects and implementation limitations must be tested
-
-### Q300
-
-- **Domain:** QF
-- **Subtopic:** simulation-and-noise
-- **Subtopic name:** Simulation, Noise and Reproducibility
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-What should be documented to reproduce a quantum circuit experiment?
-
-- **A.** Only the name of the H gate
-- **B.** Only a single histogram image
-- **C.** Only the first measurement result
-- **D.** The circuit, backend, number of shots, versions, and noise assumptions
 
 ### Q501
 
@@ -617,16 +1302,106 @@ What does a claim of quantum advantage mean for cryptography?
 - **C.** Every symmetric cipher has been mathematically defeated
 - **D.** A global satellite QKD network is now in operation
 
+### Q278
+
+- **Domain:** QF
+- **Subtopic:** simulation-and-noise
+- **Subtopic name:** Simulation, Noise and Reproducibility
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+What is the difference between an ideal simulator and a run on noisy hardware?
+
+- **A.** Hardware always returns exactly the theoretical distribution
+- **B.** Every simulator proves that the hardware is resistant to attack
+- **C.** Noise changes the Born rule itself
+- **D.** On hardware, error effects and implementation limitations must be tested
+
+### Q300
+
+- **Domain:** QF
+- **Subtopic:** simulation-and-noise
+- **Subtopic name:** Simulation, Noise and Reproducibility
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+What should be documented to reproduce a quantum circuit experiment?
+
+- **A.** Only the name of the H gate
+- **B.** Only a single histogram image
+- **C.** Only the first measurement result
+- **D.** The circuit, backend, number of shots, versions, and noise assumptions
+
+### Q574
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+Why does encoding a logical qubit across multiple physical qubits not violate no-cloning?
+
+- **A.** The theorem stops applying when more than two qubits are used
+- **B.** Every physical qubit contains a complete independent copy of the logical input
+- **C.** The encoding distributes quantum information across a joint state instead of creating independent copies of the unknown state
+- **D.** The encoding first learns all amplitudes by measurement
+
+### Q575
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+What is the purpose of syndrome extraction in quantum error correction?
+
+- **A.** To obtain information about correctable errors without directly reading out the protected logical information
+- **B.** To reveal the complete unknown logical state after every gate
+- **C.** To replace quantum redundancy with ordinary backups of the state
+- **D.** To prove that the hardware has no remaining noise
+
+### Q576
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Which statement about quantum error correction is accurate?
+
+- **A.** Any code corrects any number of errors
+- **B.** Protection depends on the code, noise and implementation; uncorrectable errors can still occur
+- **C.** Error correction makes physical gate errors exactly zero
+- **D.** Once encoded, a logical qubit needs no further error monitoring
+
+### Q577
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+Why is there no single universal conversion ratio from physical qubits to logical qubits?
+
+- **A.** A logical qubit is always exactly one physical qubit
+- **B.** All codes use exactly the same number of data and syndrome qubits
+- **C.** The ratio is determined only by the algorithm's name
+- **D.** The required resources depend on the error-correcting code, hardware noise and target logical reliability
+
 ## Quantum Threats & Risk
 
-Quantum attack consequences, harvest-now-decrypt-later exposure, forgery, threat horizons and risk assessment. This domain contains 40 questions; the same ID and metadata appear in the question and answer files.
+Quantum attack consequences, harvest-now-decrypt-later exposure, forgery, threat horizons and risk assessment. This domain contains 42 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
 | Quantum Attack Capabilities and Cryptographic Impact | 7 |
 | Harvest Now, Decrypt Later | 14 |
 | Authenticity, Signatures and Future Forgery | 7 |
-| Risk Assessment, Timing and Mosca Models | 9 |
+| Risk Assessment, Timing and Mosca Models | 11 |
 | Exposure and Vulnerable Trust Dependencies | 3 |
 
 ### Q007
@@ -718,6 +1493,21 @@ What is a CRQC in the security context?
 - **B.** Any cloud quantum service capable of successfully running a small example of Shor's algorithm
 - **C.** A quantum computer with a capability relevant to breaking vulnerable cryptography
 - **D.** A classical simulator that precisely computes the state of a limited number of qubits
+
+### Q512
+
+- **Domain:** QR
+- **Subtopic:** quantum-attack-impact
+- **Subtopic name:** Quantum Attack Capabilities and Cryptographic Impact
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Which statement accurately compares the impact of Shor's algorithm and Grover's algorithm on legacy cryptography?
+
+- **A.** Shor's algorithm reduces AES-256 security to an effective 128-bit key strength
+- **B.** Grover's algorithm renders RSA-4096 completely obsolete
+- **C.** Shor's algorithm breaks elliptic-curve cryptography, while Grover's algorithm is why longer symmetric keys, such as AES-256 instead of AES-128, are the usual margin
+- **D.** Both algorithms completely neutralize symmetric block ciphers
 
 ### Q002
 
@@ -1019,6 +1809,21 @@ An organization has migrated its TLS key exchange to a PQ-capable profile, but i
 - **C.** The RSA token signature remains a separate classical dependency; PQ-capable TLS does not change the token algorithm.
 - **D.** The PQ TLS exchange converts the JWT’s RSA signature into a PQ signature while the token is in transit.
 
+### Q526
+
+- **Domain:** QR
+- **Subtopic:** authenticity-and-forgery
+- **Subtopic name:** Authenticity, Signatures and Future Forgery
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Why can vulnerable key establishment be urgent even when a cryptanalytically relevant quantum computer does not yet exist, while a new signature forgery still depends on that capability?
+
+- **A.** Signatures are immune to Shor's algorithm, so they never need migration
+- **B.** A recorded key-establishment transcript can be stored and attacked later; forging a signature requires the attack to succeed at the time of forgery, and long-lived signing keys can still be urgent
+- **C.** Harvest-now-decrypt-later applies only to AES, not to public-key establishment
+- **D.** Certificates cannot carry a post-quantum public key
+
 ### Q025
 
 - **Domain:** QR
@@ -1154,6 +1959,36 @@ X is 2, Y is 1, and Z is 15. What can be concluded from the model alone?
 - **C.** Preparation may begin only after X and Y have actually exceeded Z
 - **D.** The model guarantees that the threat will arrive exactly 15 years from now, so this can be treated as certain
 
+### Q578
+
+- **Domain:** QR
+- **Subtopic:** risk-assessment-and-timing
+- **Subtopic name:** Risk Assessment, Timing and Mosca Models
+- **Difficulty:** Applied
+- **Tags:** calculation
+
+In a Mosca-style planning exercise, information must remain confidential for 12 years, migration is expected to take 4 years, and a relevant quantum attack capability is assumed to be 10 years away. What does the model indicate?
+
+- **A.** There is no urgency because migration takes less than 10 years
+- **B.** Only the 12-year confidentiality period matters
+- **C.** The combined 16-year protection-and-migration period exceeds the assumed threat timeline
+- **D.** The calculation proves that a quantum computer will arrive in exactly 10 years
+
+### Q579
+
+- **Domain:** QR
+- **Subtopic:** risk-assessment-and-timing
+- **Subtopic name:** Risk Assessment, Timing and Mosca Models
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+A team's estimates satisfy \(X+Y=Z\) in Mosca's model. Which planning conclusion is most defensible?
+
+- **A.** Equality proves that the organization is safe
+- **B.** The estimates provide no timing margin, so uncertainty and contingency planning remain important
+- **C.** Equality means that migration is unnecessary
+- **D.** The model has established an exact CRQC arrival date
+
 ### Q016
 
 - **Domain:** QR
@@ -1199,45 +2034,15 @@ What is a better risk metric than counting all RSA certificates without context?
 - **C.** Counting all certificates as equally important without examining their use
 - **D.** The number of supplier statements about future support, without linking them to critical assets
 
-### Q512
-
-- **Domain:** QR
-- **Subtopic:** quantum-attack-impact
-- **Subtopic name:** Quantum Attack Capabilities and Cryptographic Impact
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-Which statement accurately compares the impact of Shor's algorithm and Grover's algorithm on legacy cryptography?
-
-- **A.** Shor's algorithm reduces AES-256 security to an effective 128-bit key strength
-- **B.** Grover's algorithm renders RSA-4096 completely obsolete
-- **C.** Shor's algorithm breaks elliptic-curve cryptography, while Grover's algorithm is why longer symmetric keys, such as AES-256 instead of AES-128, are the usual margin
-- **D.** Both algorithms completely neutralize symmetric block ciphers
-
-### Q526
-
-- **Domain:** QR
-- **Subtopic:** authenticity-and-forgery
-- **Subtopic name:** Authenticity, Signatures and Future Forgery
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-Why can vulnerable key establishment be urgent even when a cryptanalytically relevant quantum computer does not yet exist, while a new signature forgery still depends on that capability?
-
-- **A.** Signatures are immune to Shor's algorithm, so they never need migration
-- **B.** A recorded key-establishment transcript can be stored and attacked later; forging a signature requires the attack to succeed at the time of forgery, and long-lived signing keys can still be urgent
-- **C.** Harvest-now-decrypt-later applies only to AES, not to public-key establishment
-- **D.** Certificates cannot carry a post-quantum public key
-
 ## Quantum Key Distribution (QKD)
 
-QKD protocol operations, BB84, sifting, QBER, reconciliation, privacy amplification, authentication and deployment limitations. This domain contains 57 questions; the same ID and metadata appear in the question and answer files.
+QKD protocol operations, BB84, sifting, QBER, reconciliation, privacy amplification, authentication and deployment limitations. This domain contains 58 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
 | BB84 Preparation, Bases and Measurement | 5 |
 | Sifting and Key Rates | 7 |
-| QBER, Sampling and Eavesdropping | 13 |
+| QBER, Sampling and Eavesdropping | 14 |
 | Reconciliation and Privacy Amplification | 6 |
 | Authentication and Use of Generated Keys | 12 |
 | Deployment Limits, Trust and Security Assumptions | 14 |
@@ -1602,6 +2407,36 @@ There were 8 errors among 400 test bits and 8 among 80 in another experiment. Wh
 - **C.** The first has an error rate five times higher
 - **D.** The second has an error rate five times higher
 
+### Q508
+
+- **Domain:** QKD
+- **Subtopic:** qber-and-eavesdropping
+- **Subtopic name:** QBER, Sampling and Eavesdropping
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+During a security review of a QKD link using BB84, an auditor asks how an eavesdropper attempting to intercept photons is detected. What is the fundamental physical mechanism?
+
+- **A.** The eavesdropper's measurement causes phase decoherence in the fiber cladding and triggers a hardware thermal alarm
+- **B.** The eavesdropper must clone the photon, which generates observable acoustic vibrations in the optical switch
+- **C.** Measuring non-orthogonal polarization states alters the quantum state, introducing errors that appear in the sifted sample
+- **D.** The eavesdropper absorbs every photon, which immediately stops the stream and drops the signal-to-noise ratio to zero
+
+### Q580
+
+- **Domain:** QKD
+- **Subtopic:** qber-and-eavesdropping
+- **Subtopic name:** QBER, Sampling and Eavesdropping
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A QKD link shows an increased quantum bit error rate. Which response avoids overstating what this observation proves?
+
+- **A.** Investigate the result under the protocol's security and operational rules; noise and equipment problems can also contribute to errors
+- **B.** Announce that malicious interception has been conclusively identified
+- **C.** Assume that every retained bit is now public
+- **D.** Ignore the increase because only deliberate interception can affect security
+
 ### Q028
 
 - **Domain:** QKD
@@ -1857,6 +2692,21 @@ What is correct about combining QKD with symmetric encryption?
 - **C.** There must be a proper integration of key generation, authentication, and data encryption
 - **D.** The key source removes the need to protect endpoints
 
+### Q503
+
+- **Domain:** QKD
+- **Subtopic:** authentication-and-key-use
+- **Subtopic name:** Authentication and Use of Generated Keys
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+An auditor claims "QKD provides both confidentiality and authentication." The most accurate response is:
+
+- **A.** QKD provides authentication only, not confidentiality
+- **B.** QKD provides only message integrity in the channel
+- **C.** QKD gives confidentiality; authentication is external
+- **D.** The auditor is correct on both stated counts
+
 ### Q013
 
 - **Domain:** QKD
@@ -2037,21 +2887,6 @@ A supplier offers a QKD system for a physical link between two facilities. The o
 - **C.** Reject QKD for the link because it cannot be used in any key-establishment architecture.
 - **D.** Use the link test to establish that application connections across the enterprise are protected, since the facilities share the QKD-secured network.
 
-### Q503
-
-- **Domain:** QKD
-- **Subtopic:** authentication-and-key-use
-- **Subtopic name:** Authentication and Use of Generated Keys
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-An auditor claims "QKD provides both confidentiality and authentication." The most accurate response is:
-
-- **A.** QKD provides authentication only, not confidentiality
-- **B.** QKD provides only message integrity in the channel
-- **C.** QKD gives confidentiality; authentication is external
-- **D.** The auditor is correct on both stated counts
-
 ### Q504
 
 - **Domain:** QKD
@@ -2066,21 +2901,6 @@ What is the chief reason QKD has been described as "physical-layer cryptography"
 - **B.** Its security depends on AES-256 hardware modules
 - **C.** Its security depends on RSA-2048 key wrapping
 - **D.** Its security depends on TCP transport reliability
-
-### Q508
-
-- **Domain:** QKD
-- **Subtopic:** qber-and-eavesdropping
-- **Subtopic name:** QBER, Sampling and Eavesdropping
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-During a security review of a QKD link using BB84, an auditor asks how an eavesdropper attempting to intercept photons is detected. What is the fundamental physical mechanism?
-
-- **A.** The eavesdropper's measurement causes phase decoherence in the fiber cladding and triggers a hardware thermal alarm
-- **B.** The eavesdropper must clone the photon, which generates observable acoustic vibrations in the optical switch
-- **C.** Measuring non-orthogonal polarization states alters the quantum state, introducing errors that appear in the sifted sample
-- **D.** The eavesdropper absorbs every photon, which immediately stops the stream and drops the signal-to-noise ratio to zero
 
 ### Q509
 
@@ -2304,6 +3124,51 @@ Two devices run a post-quantum KEM and derive matching shared secrets. The syste
 - **C.** A KEM shared secret alone does not authenticate real-world identities; the surrounding protocol must provide authentication and any needed key confirmation.
 - **D.** Matching KEM secrets establish identity whenever the selected KEM is designed to resist quantum attacks, because only the intended peer can derive them securely.
 
+### Q519
+
+- **Domain:** PQC
+- **Subtopic:** kem-operations
+- **Subtopic name:** KEM Operations, Keys and Shared Secrets
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+What does the number-theoretic transform contribute in ML-KEM?
+
+- **A.** It harvests quantum randomness
+- **B.** It makes polynomial multiplication much faster than multiplying polynomials in the naive way
+- **C.** It shrinks an ML-KEM public key to 32 bytes
+- **D.** It stops a passive network recorder
+
+### Q520
+
+- **Domain:** PQC
+- **Subtopic:** kem-operations
+- **Subtopic name:** KEM Operations, Keys and Shared Secrets
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+How does ML-KEM encapsulation differ from elliptic-curve Diffie-Hellman?
+
+- **A.** They are the same interactive exchange under two names
+- **B.** Elliptic-curve Diffie-Hellman combines shares from both parties; ML-KEM encapsulates a fresh shared secret under the other party's public key
+- **C.** ML-KEM is only a signature, and elliptic-curve Diffie-Hellman is only a hash
+- **D.** ML-KEM requires both parties to send elliptic-curve shares and no ciphertext
+
+### Q521
+
+- **Domain:** PQC
+- **Subtopic:** kem-operations
+- **Subtopic name:** KEM Operations, Keys and Shared Secrets
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+How do ML-KEM-768 sizes compare with an X25519 public key?
+
+- **A.** The ML-KEM-768 encapsulation key is 32 bytes, the same as X25519
+- **B.** FIPS 203 specifies an 1184-byte encapsulation key and a 1088-byte ciphertext, far larger than a 32-byte X25519 public key
+- **C.** The two public keys are the same size, and ML-KEM has no ciphertext
+- **D.** ML-KEM-768 has no public key; only a ciphertext is sent
+
 ### Q021
 
 - **Domain:** PQC
@@ -2438,6 +3303,51 @@ Which pair consists of stateful hash-based signatures?
 - **B.** LMS and XMSS
 - **C.** RSA and ECDSA
 - **D.** ML-DSA and SLH-DSA
+
+### Q517
+
+- **Domain:** PQC
+- **Subtopic:** digital-signatures
+- **Subtopic name:** Post-Quantum Digital Signatures
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+What should happen when a stateful hash-based signature key, such as LMS or XMSS, has used every available index?
+
+- **A.** The index may return to zero and sign again with the same leaves
+- **B.** The key is exhausted and must not be reused; a new key pair is required for further signatures
+- **C.** The scheme automatically becomes stateless
+- **D.** The key drops to NIST category 1 and may continue
+
+### Q518
+
+- **Domain:** PQC
+- **Subtopic:** digital-signatures
+- **Subtopic name:** Post-Quantum Digital Signatures
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+What is the role of WOTS+ inside XMSS, LMS, and SLH-DSA?
+
+- **A.** It encrypts bulk files inside a memory enclave
+- **B.** It is a one-time signature; the hash tree authenticates those one-time keys
+- **C.** It is the number-theoretic transform used by ML-KEM
+- **D.** It offloads matrix arithmetic to a GPU
+
+### Q525
+
+- **Domain:** PQC
+- **Subtopic:** digital-signatures
+- **Subtopic name:** Post-Quantum Digital Signatures
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Where are stateful hash-based signatures such as LMS and XMSS a considered fit, despite the state-management risk?
+
+- **A.** As the default high-volume signature on ordinary TLS handshakes
+- **B.** For controlled software or firmware signing, where the number of signatures is limited and the index cannot be rolled back
+- **C.** As a replacement for ephemeral key establishment
+- **D.** Nowhere, because they have no resistance to Shor's algorithm
 
 ### Q022
 
@@ -2588,6 +3498,21 @@ Which problem family is used in ML-KEM?
 - **B.** Factoring an RSA modulus
 - **C.** The discrete logarithm problem on an elliptic curve
 - **D.** Module lattices and the Module Learning with Errors problem
+
+### Q511
+
+- **Domain:** PQC
+- **Subtopic:** families-and-parameters
+- **Subtopic name:** Algorithm Families and Parameter Sets
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+An organization must replace legacy asymmetric key establishment. Which NIST-standardized algorithm is the primary choice for general encryption and key encapsulation?
+
+- **A.** ML-DSA (from CRYSTALS-Dilithium)
+- **B.** ML-KEM (from CRYSTALS-Kyber)
+- **C.** FN-DSA (from Falcon)
+- **D.** XMSS or LMS
 
 ### Q001
 
@@ -2814,21 +3739,6 @@ What is wrong with the claim, “The ML-KEM secret is 256 bits long, so all para
 - **C.** The ML-KEM output is always the length of the parameter-set name
 - **D.** All ML-KEM parameter sets are actually signatures
 
-### Q511
-
-- **Domain:** PQC
-- **Subtopic:** families-and-parameters
-- **Subtopic name:** Algorithm Families and Parameter Sets
-- **Difficulty:** Foundational
-- **Tags:** conceptual
-
-An organization must replace legacy asymmetric key establishment. Which NIST-standardized algorithm is the primary choice for general encryption and key encapsulation?
-
-- **A.** ML-DSA (from CRYSTALS-Dilithium)
-- **B.** ML-KEM (from CRYSTALS-Kyber)
-- **C.** FN-DSA (from Falcon)
-- **D.** XMSS or LMS
-
 ### Q515
 
 - **Domain:** PQC
@@ -2859,108 +3769,18 @@ What is MAXDEPTH in NIST's post-quantum security estimates?
 - **C.** The RAM required to run ML-KEM on a laptop
 - **D.** The number of servers in a hybrid deployment
 
-### Q517
-
-- **Domain:** PQC
-- **Subtopic:** digital-signatures
-- **Subtopic name:** Post-Quantum Digital Signatures
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-What should happen when a stateful hash-based signature key, such as LMS or XMSS, has used every available index?
-
-- **A.** The index may return to zero and sign again with the same leaves
-- **B.** The key is exhausted and must not be reused; a new key pair is required for further signatures
-- **C.** The scheme automatically becomes stateless
-- **D.** The key drops to NIST category 1 and may continue
-
-### Q518
-
-- **Domain:** PQC
-- **Subtopic:** digital-signatures
-- **Subtopic name:** Post-Quantum Digital Signatures
-- **Difficulty:** Advanced
-- **Tags:** conceptual
-
-What is the role of WOTS+ inside XMSS, LMS, and SLH-DSA?
-
-- **A.** It encrypts bulk files inside a memory enclave
-- **B.** It is a one-time signature; the hash tree authenticates those one-time keys
-- **C.** It is the number-theoretic transform used by ML-KEM
-- **D.** It offloads matrix arithmetic to a GPU
-
-### Q519
-
-- **Domain:** PQC
-- **Subtopic:** kem-operations
-- **Subtopic name:** KEM Operations, Keys and Shared Secrets
-- **Difficulty:** Advanced
-- **Tags:** conceptual
-
-What does the number-theoretic transform contribute in ML-KEM?
-
-- **A.** It harvests quantum randomness
-- **B.** It makes polynomial multiplication much faster than multiplying polynomials in the naive way
-- **C.** It shrinks an ML-KEM public key to 32 bytes
-- **D.** It stops a passive network recorder
-
-### Q520
-
-- **Domain:** PQC
-- **Subtopic:** kem-operations
-- **Subtopic name:** KEM Operations, Keys and Shared Secrets
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-How does ML-KEM encapsulation differ from elliptic-curve Diffie-Hellman?
-
-- **A.** They are the same interactive exchange under two names
-- **B.** Elliptic-curve Diffie-Hellman combines shares from both parties; ML-KEM encapsulates a fresh shared secret under the other party's public key
-- **C.** ML-KEM is only a signature, and elliptic-curve Diffie-Hellman is only a hash
-- **D.** ML-KEM requires both parties to send elliptic-curve shares and no ciphertext
-
-### Q521
-
-- **Domain:** PQC
-- **Subtopic:** kem-operations
-- **Subtopic name:** KEM Operations, Keys and Shared Secrets
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-How do ML-KEM-768 sizes compare with an X25519 public key?
-
-- **A.** The ML-KEM-768 encapsulation key is 32 bytes, the same as X25519
-- **B.** FIPS 203 specifies an 1184-byte encapsulation key and a 1088-byte ciphertext, far larger than a 32-byte X25519 public key
-- **C.** The two public keys are the same size, and ML-KEM has no ciphertext
-- **D.** ML-KEM-768 has no public key; only a ciphertext is sent
-
-### Q525
-
-- **Domain:** PQC
-- **Subtopic:** digital-signatures
-- **Subtopic name:** Post-Quantum Digital Signatures
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-Where are stateful hash-based signatures such as LMS and XMSS a considered fit, despite the state-management risk?
-
-- **A.** As the default high-volume signature on ordinary TLS handshakes
-- **B.** For controlled software or firmware signing, where the number of signatures is limited and the index cannot be rolled back
-- **C.** As a replacement for ephemeral key establishment
-- **D.** Nowhere, because they have no resistance to Shor's algorithm
-
 ## Standards, Compliance & Roadmaps
 
-Standards and policy documents, regulation, compliance scope, frameworks, validation, publication status and roadmap dates. This domain contains 75 questions; the same ID and metadata appear in the question and answer files.
+Standards and policy documents, regulation, compliance scope, frameworks, validation, publication status and roadmap dates. This domain contains 95 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
-| Standards Bodies and Document Identification | 17 |
+| Standards Bodies and Document Identification | 23 |
 | Algorithm Standardization and Publication Status | 10 |
-| Validation, Certification and Assurance Scope | 7 |
-| Regulatory and Policy Applicability | 13 |
+| Validation, Certification and Assurance Scope | 10 |
+| Regulatory and Policy Applicability | 19 |
 | Roadmaps, Transition Milestones and Dates | 24 |
-| Risk Frameworks and Control Guidance | 4 |
+| Risk Frameworks and Control Guidance | 9 |
 
 ### Q023
 
@@ -3201,6 +4021,111 @@ A security architect is sorting two NIST publications: SP 800-207, published in 
 - **B.** SP 800-207 addresses Zero Trust Architecture; SP 800-61 Rev. 3 integrates incident response across CSF 2.0 risk management.
 - **C.** SP 800-207 covers incident response, while SP 800-61 Rev. 3 defines Zero Trust Architecture.
 - **D.** SP 800-207 defines PQC inventory requirements, while SP 800-61 Rev. 3 provides the transition schedule for quantum-vulnerable public-key algorithms.
+
+### Q514
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+What was the aim of NIST's post-quantum cryptography standardization project?
+
+- **A.** To create criminal offenses for attacks that use a quantum computer
+- **B.** To build a quantum computer for cryptographic agencies
+- **C.** To evaluate and standardize public-key algorithms intended to resist quantum attacks
+- **D.** To withdraw every symmetric algorithm from federal use by 2030
+
+### Q581
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** scenario, business_scenario
+
+A hospital wants information-security guidance adapted to the handling of health information, rather than a specification of a particular encryption algorithm. Which standard is the closest fit?
+
+- **A.** FIPS 203
+- **B.** NIST SP 800-208
+- **C.** ISO 27799
+- **D.** A TLS cipher-suite registry
+
+### Q582
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+A cloud customer and provider need guidance addressing cloud-specific security controls and their respective responsibilities. Which standard is directly relevant?
+
+- **A.** FIPS 204
+- **B.** ISO 27799
+- **C.** A quantum-gate specification
+- **D.** ISO/IEC 27017
+
+### Q583
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A telecommunications operator uses ETSI TR 104 016 to structure a quantum-safe migration program. What is the appropriate role of that document?
+
+- **A.** It automatically establishes the same legally binding completion date for every operator worldwide
+- **B.** It provides a migration framework that must be applied alongside the operator's applicable legal and regulatory requirements
+- **C.** It replaces the need to inventory cryptographic dependencies
+- **D.** It certifies the operator's cryptographic modules
+
+### Q590
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+Which algorithm group is specifically addressed by NIST SP 800-208?
+
+- **A.** LMS and XMSS, including their specified multi-tree variants
+- **B.** ML-KEM and ECDH
+- **C.** AES and ChaCha20
+- **D.** Every digital-signature algorithm selected by NIST
+
+### Q591
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A design document treats SP 800-208 and FIPS 205 as interchangeable because both concern hash-based signatures. What important distinction is missing?
+
+- **A.** FIPS 205 defines a KEM, whereas SP 800-208 defines encryption
+- **B.** SP 800-208 is a cloud-control framework
+- **C.** SP 800-208 addresses stateful hash-based schemes, whereas FIPS 205 specifies the stateless SLH-DSA scheme
+- **D.** Hash-based signatures never use private keys
+
+### Q592
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A financial-sector architect says that SP 800-208 is the general standard that every post-quantum signing deployment must use. Which response is most accurate?
+
+- **A.** Agree, because all post-quantum signatures are stateful hash-based schemes
+- **B.** Match the document to the selected signature scheme and operational requirements; SP 800-208 has a specific stateful hash-signature scope
+- **C.** Replace the signature requirement with ML-KEM
+- **D.** Select the document only by whether the organization operates in finance
 
 ### Q009
 
@@ -3457,6 +4382,51 @@ A supplier holds an ISO/IEC 27001:2022 certificate for its ISMS and presents it 
 - **C.** The ISO certificate proves every supplier endpoint uses the certified ML-KEM implementation.
 - **D.** ISO 27001 automatically establishes CAVP validation for ML-KEM and CMVP validation for the module within the certified ISMS scope.
 
+### Q597
+
+- **Domain:** SCR
+- **Subtopic:** validation-and-certification
+- **Subtopic name:** Validation, Certification and Assurance Scope
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A procurement questionnaire asks whether a supplier “complies with ISO/IEC 27017” but records no edition, assessment date or service scope. What is the most useful improvement?
+
+- **A.** Remove the question because standards never change
+- **B.** Assume that the supplier's answer covers every service and every later edition
+- **C.** Treat the answer as proof of PQC algorithm validation
+- **D.** Record the applicable edition, assessed service scope and supporting evidence rather than relying on an unqualified standard number
+
+### Q598
+
+- **Domain:** SCR
+- **Subtopic:** validation-and-certification
+- **Subtopic name:** Validation, Certification and Assurance Scope
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A hospital selects ISO 27799 as part of its security program. Which statement avoids overstating what that choice establishes?
+
+- **A.** It automatically proves that every deployed cryptographic implementation resists quantum attacks
+- **B.** It replaces all other legal and technical requirements
+- **C.** It provides health-information security guidance, while algorithm selection and implementation assurance require their own assessment
+- **D.** It mandates one identical cryptographic configuration for every healthcare system
+
+### Q599
+
+- **Domain:** SCR
+- **Subtopic:** validation-and-certification
+- **Subtopic name:** Validation, Certification and Assurance Scope
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A cloud supplier presents ISO/IEC 27017-related assurance as proof that its ML-KEM implementation has algorithm validation. What should the buyer request?
+
+- **A.** Evidence specific to the claimed algorithm implementation and validation scope, separately from cloud-control assurance
+- **B.** No further evidence, because all security assurance has the same scope
+- **C.** Only the supplier's corporate logo
+- **D.** A longer cloud-services contract instead of technical evidence
+
 ### Q177
 
 - **Domain:** SCR
@@ -3651,6 +4621,96 @@ A privacy officer says GDPR Article 32 requires ML-KEM for all personal data fro
 - **B.** GDPR requires encryption in every case and removes other controller duties once encryption is applied.
 - **C.** Article 32 calls for appropriate, risk-based security measures reflecting state of the art and context; it names neither ML-KEM nor a universal PQC date.
 - **D.** Article 32 names ML-KEM as mandatory for personal data from 2030 onward.
+
+### Q584
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A bank's migration plan treats DORA's application date as the date by which every cryptographic mechanism had to become post-quantum. What is the correct response?
+
+- **A.** Distinguish the regulation's application date and resilience obligations from a separately established PQC-specific deployment requirement
+- **B.** Accept the plan because every cybersecurity regulation has an implicit PQC deadline
+- **C.** Replace every symmetric cipher without reviewing its use
+- **D.** Treat DORA as an algorithm-validation certificate
+
+### Q585
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A health-research organization processes personal genomic information that may remain sensitive for decades. How should GDPR Article 32 inform its cryptographic planning?
+
+- **A.** It guarantees that any currently deployed algorithm remains suitable indefinitely
+- **B.** It names ML-KEM as the required algorithm for every processing activity
+- **C.** It makes data-protection lifetime irrelevant
+- **D.** It supports assessing appropriate security measures in light of risk and the state of the art, without itself prescribing a universal ML-KEM deployment date
+
+### Q586
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+An organization within the applicable NIS2 scope reviews Article 21(2)(h). Which interpretation is appropriate?
+
+- **A.** The provision is a certification scheme for individual PQC implementations
+- **B.** It specifies the exact ML-KEM parameter set for every covered entity
+- **C.** It concerns policies and procedures on cryptography and, where appropriate, encryption; specific obligations must be assessed in their applicable legal context
+- **D.** It exempts entities from cryptographic risk assessment until a CRQC is demonstrated
+
+### Q587
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Which activity is directly supported by PCI DSS v4.0.1 requirement 12.3.3?
+
+- **A.** Documenting and reviewing cryptographic cipher suites and protocols at least once every 12 months
+- **B.** Replacing every payment-system algorithm with ML-KEM on one universal date
+- **C.** Removing symmetric encryption from payment processing
+- **D.** Treating a product's marketing label as sufficient cryptographic evidence
+
+### Q588
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A payment processor argues that it need not track cryptographic obsolescence because it has not identified a universal PCI DSS PQC cutover date. Which response is best?
+
+- **A.** Agree; absence of a universal PQC date removes the need for cryptographic review
+- **B.** Continue the required cryptographic review and manage emerging weaknesses rather than equating the absence of one deadline with the absence of obligations
+- **C.** Stop maintaining the cryptographic inventory until a deadline appears
+- **D.** Assume that every algorithm currently accepted will remain acceptable permanently
+
+### Q596
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A multinational group prepares one PQC compliance checklist for hospitals, payment services and telecom subsidiaries in several countries. What should it do before declaring the checklist legally sufficient?
+
+- **A.** Assume that a technical standard overrides all local laws
+- **B.** Map each requirement to the relevant entity, jurisdiction, sector, document status and evidence obligation
+- **C.** Apply the earliest date mentioned anywhere to every subsidiary
+- **D.** Replace all jurisdictional analysis with a vendor certificate
 
 ### Q097
 
@@ -4072,20 +5132,80 @@ A program manager reports that a CSF Tier of Adaptive means the organization's c
 - **C.** The Tiers rank algorithms by key size and signature length.
 - **D.** Adaptive is a cryptographic security category assigned to the strongest ML-KEM parameter set.
 
-### Q514
+### Q589
 
 - **Domain:** SCR
-- **Subtopic:** standards-bodies-and-documents
-- **Subtopic name:** Standards Bodies and Document Identification
-- **Difficulty:** Foundational
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A SaaS customer is planning a cryptographic migration. Which contract discussion best reflects cloud-specific security responsibilities?
+
+- **A.** Assuming that the provider owns every security task because it hosts the infrastructure
+- **B.** Assuming that the customer can change all provider-managed cryptographic components
+- **C.** Replacing responsibility allocation with a general “quantum-safe” statement
+- **D.** Clarifying responsibility for managed encryption, customer-controlled keys, configuration changes, evidence and service-exit arrangements
+
+### Q593
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
 - **Tags:** conceptual
 
-What was the aim of NIST's post-quantum cryptography standardization project?
+How can a sector-specific Community Profile help an organization using NIST CSF 2.0?
 
-- **A.** To create criminal offenses for attacks that use a quantum computer
-- **B.** To build a quantum computer for cryptographic agencies
-- **C.** To evaluate and standardize public-key algorithms intended to resist quantum attacks
-- **D.** To withdraw every symmetric algorithm from federal use by 2030
+- **A.** It establishes a new NIST algorithm security category
+- **B.** It guarantees that every supplier is PQC-ready
+- **C.** It replaces the organization's need to consider its own risks
+- **D.** It can provide a sector-relevant baseline of outcomes from which the organization develops its own profile
+
+### Q594
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A PQC program uses a CSF Target Profile. Which supporting evidence best demonstrates movement toward its selected outcomes?
+
+- **A.** Traceable inventory improvements, completed remediation actions and test evidence mapped to those outcomes
+- **B.** The existence of the Target Profile alone
+- **C.** A supplier's unqualified use of the phrase “quantum-proof”
+- **D.** The number of algorithm names in a presentation
+
+### Q595
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A program schedules the six CSF 2.0 Functions as a one-time sequence, allowing governance to stop before protection and detection begin. What is the better interpretation?
+
+- **A.** Only Recover must operate continuously
+- **B.** Every organization must finish one Function permanently before starting the next
+- **C.** The Functions are related and should be addressed concurrently, with activities operating continuously or when needed
+- **D.** Govern applies only after an incident
+
+### Q600
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+Which row design is most useful in a sector-specific PQC compliance matrix?
+
+- **A.** Organization name, preferred algorithm and an unsupported universal deadline
+- **B.** Applicable source and version, legal or advisory status, affected systems, required outcome, responsible owner and verification evidence
+- **C.** A list of standards without applicability or ownership
+- **D.** A single “compliant/noncompliant” flag based only on whether ML-KEM appears in a product brochure
 
 ## PQC Migration & Program Management
 
@@ -4535,6 +5655,21 @@ A service team updates the desktop configuration to a new cryptographic profile.
 - **B.** Update the inventory entry and treat unreported mobile clients as using the new profile.
 - **C.** Declare completion based on the desktop configuration, which represents the supported service profile and can guide users toward updated clients.
 - **D.** Assume mobile agents inherit the desktop configuration unless users report connection failures.
+
+### Q522
+
+- **Domain:** MIG
+- **Subtopic:** discovery-inventory-and-cbom
+- **Subtopic name:** Discovery, Inventory and CBOM
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+How does a cryptographic bill of materials differ from a software bill of materials?
+
+- **A.** A cryptographic bill replaces the software bill and makes it obsolete
+- **B.** A cryptographic bill covers only firmware and ignores software components
+- **C.** A software bill lists components; a cryptographic bill records the algorithms, parameters, and cryptographic dependencies, which the software list does not provide by itself
+- **D.** A software bill stores private keys, and a cryptographic bill stores only the transport protocol
 
 ### Q019
 
@@ -5226,6 +6361,21 @@ An enterprise architect is comparing the migration types described in ETSI TR 10
 - **C.** Pure retains classical systems permanently; parallel disables PQC during failures.
 - **D.** Pure adds a new system beside legacy; parallel replaces the old approach; backwards-compatible removes support for older participants.
 
+### Q510
+
+- **Domain:** MIG
+- **Subtopic:** strategies-and-dependencies
+- **Subtopic name:** Migration Strategies, Dependencies and Crypto-Agility
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+A legacy application fails to interoperate after algorithm-agility wrappers are introduced, and transactions time out intermittently. Which governance approach addresses that failure without dropping the security requirements?
+
+- **A.** Use a modular cryptographic abstraction, centralized policy, automated algorithm negotiation, and fallback tests in a staging environment
+- **B.** Disable algorithm validation in the middleware so availability takes priority over confidentiality
+- **C.** Revert to hardcoded RSA until standards bodies declare quantum computers commercially mainstream
+- **D.** Replace symmetric encryption keys daily by manual administration instead of automated rotation
+
 ### Q050
 
 - **Domain:** MIG
@@ -5706,36 +6856,6 @@ A migration dashboard records ten thousand successful handshakes, all from one s
 - **C.** The subnet results establish that every service negotiates the same configuration.
 - **D.** The sample may be biased and does not establish enterprise-wide deployment coverage.
 
-### Q510
-
-- **Domain:** MIG
-- **Subtopic:** strategies-and-dependencies
-- **Subtopic name:** Migration Strategies, Dependencies and Crypto-Agility
-- **Difficulty:** Applied
-- **Tags:** scenario, business_scenario
-
-A legacy application fails to interoperate after algorithm-agility wrappers are introduced, and transactions time out intermittently. Which governance approach addresses that failure without dropping the security requirements?
-
-- **A.** Use a modular cryptographic abstraction, centralized policy, automated algorithm negotiation, and fallback tests in a staging environment
-- **B.** Disable algorithm validation in the middleware so availability takes priority over confidentiality
-- **C.** Revert to hardcoded RSA until standards bodies declare quantum computers commercially mainstream
-- **D.** Replace symmetric encryption keys daily by manual administration instead of automated rotation
-
-### Q522
-
-- **Domain:** MIG
-- **Subtopic:** discovery-inventory-and-cbom
-- **Subtopic name:** Discovery, Inventory and CBOM
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-How does a cryptographic bill of materials differ from a software bill of materials?
-
-- **A.** A cryptographic bill replaces the software bill and makes it obsolete
-- **B.** A cryptographic bill covers only firmware and ignores software components
-- **C.** A software bill lists components; a cryptographic bill records the algorithms, parameters, and cryptographic dependencies, which the software list does not provide by itself
-- **D.** A software bill stores private keys, and a cryptographic bill stores only the transport protocol
-
 ## Protocols, Implementation & Testing
 
 Protocol behavior, deployment configuration, cryptographic implementation, interoperability, diagnostic testing and performance. This domain contains 93 questions; the same ID and metadata appear in the question and answer files.
@@ -5975,6 +7095,51 @@ An organization has upgraded all web servers to TLS 1.3 and marks its external s
 - **B.** TLS 1.3 support does not establish PQ use; verify PQ-capable groups are configured and negotiated on relevant connections.
 - **C.** TLS 1.3 implies post-quantum key exchange, so the review need only confirm the negotiated record cipher.
 - **D.** A TLS version change cannot support PQ groups, so the organization should assess a different transport protocol.
+
+### Q505
+
+- **Domain:** IPT
+- **Subtopic:** tls
+- **Subtopic name:** TLS Negotiation and Channel Protection
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+Which is a typical IANA TLS supported-group code point for X25519 + ML-KEM-768 hybrid?
+
+- **A.** The code point 0x11EC (X25519MLKEM768)
+- **B.** The code point 0x0023 (legacy SECP)
+- **C.** The code point 0x002F (legacy SECP)
+- **D.** The code point 0xFFFF (private-use)
+
+### Q523
+
+- **Domain:** IPT
+- **Subtopic:** tls
+- **Subtopic name:** TLS Negotiation and Channel Protection
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+How does TLS 1.3 form the shared secret for the hybrid group X25519MLKEM768?
+
+- **A.** The client discards the X25519 secret whenever ML-KEM succeeds
+- **B.** The specified shared secret is the concatenation of the ML-KEM shared secret and the X25519 shared secret, and TLS then runs its key schedule
+- **C.** The two secrets are multiplied by a quantum logic gate
+- **D.** TLS alternates between the two secrets once a minute
+
+### Q524
+
+- **Domain:** IPT
+- **Subtopic:** tls
+- **Subtopic name:** TLS Negotiation and Channel Protection
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+What network effect can a large post-quantum handshake have on a typical Ethernet path?
+
+- **A.** An ML-KEM-768 encapsulation key alone is always larger than 1500 bytes
+- **B.** A post-quantum certificate chain, or a key share such as ML-KEM-1024 plus handshake overhead, can exceed a typical 1500-byte frame and be split across packets
+- **C.** Post-quantum handshakes remove TCP
+- **D.** Public keys are never carried in the handshake
 
 ### Q366
 
@@ -7101,51 +8266,6 @@ A migration board receives a benchmark report stating that a post-quantum handsh
 - **C.** Remove the system owner's name and use the report as assurance evidence.
 - **D.** Accept the supplier's statement that the result represents typical performance.
 
-### Q505
-
-- **Domain:** IPT
-- **Subtopic:** tls
-- **Subtopic name:** TLS Negotiation and Channel Protection
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-Which is a typical IANA TLS supported-group code point for X25519 + ML-KEM-768 hybrid?
-
-- **A.** The code point 0x11EC (X25519MLKEM768)
-- **B.** The code point 0x0023 (legacy SECP)
-- **C.** The code point 0x002F (legacy SECP)
-- **D.** The code point 0xFFFF (private-use)
-
-### Q523
-
-- **Domain:** IPT
-- **Subtopic:** tls
-- **Subtopic name:** TLS Negotiation and Channel Protection
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-How does TLS 1.3 form the shared secret for the hybrid group X25519MLKEM768?
-
-- **A.** The client discards the X25519 secret whenever ML-KEM succeeds
-- **B.** The specified shared secret is the concatenation of the ML-KEM shared secret and the X25519 shared secret, and TLS then runs its key schedule
-- **C.** The two secrets are multiplied by a quantum logic gate
-- **D.** TLS alternates between the two secrets once a minute
-
-### Q524
-
-- **Domain:** IPT
-- **Subtopic:** tls
-- **Subtopic name:** TLS Negotiation and Channel Protection
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-What network effect can a large post-quantum handshake have on a typical Ethernet path?
-
-- **A.** An ML-KEM-768 encapsulation key alone is always larger than 1500 bytes
-- **B.** A post-quantum certificate chain, or a key share such as ML-KEM-1024 plus handshake overhead, can exceed a typical 1500-byte frame and be split across packets
-- **C.** Post-quantum handshakes remove TCP
-- **D.** Public keys are never carried in the handshake
-
 ## Cybersecurity Fundamentals
 
 Supporting cryptographic concepts, keys and secrets, authorization, passwords, application security, incident response and resilience. This domain contains 58 questions; the same ID and metadata appear in the question and answer files.
@@ -7309,6 +8429,21 @@ A server's disks are fully encrypted at rest, but an attacker obtains privileged
 - **B.** At-rest encryption does not prevent privileged access to plaintext on a running host.
 - **C.** A post-quantum network channel prevents local access to mounted application data.
 - **D.** Disk encryption keeps the running application's plaintext isolated from privileged processes.
+
+### Q506
+
+- **Domain:** CYB
+- **Subtopic:** cryptography-basics
+- **Subtopic name:** Supporting Cryptography Concepts
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+AES, ChaCha20, and 3DES are all examples of which kind of cryptography?
+
+- **A.** Symmetric block or stream ciphers
+- **B.** Asymmetric public-key cryptosystems
+- **C.** Key encapsulation mechanism schemes
+- **D.** One-way cryptographic hash functions
 
 ### Q031
 
@@ -8014,19 +9149,4 @@ A threat model distinguishes a passive adversary that records encrypted traffic 
 - **B.** Treat credential theft as evidence that the cryptographic algorithm has failed.
 - **C.** Prioritize larger transport keys because both attackers observe network traffic, using one cryptographic control to address their shared exposure.
 - **D.** Use the passive-collection scenario as a sufficient model for both attackers.
-
-### Q506
-
-- **Domain:** CYB
-- **Subtopic:** cryptography-basics
-- **Subtopic name:** Supporting Cryptography Concepts
-- **Difficulty:** Foundational
-- **Tags:** conceptual
-
-AES, ChaCha20, and 3DES are all examples of which kind of cryptography?
-
-- **A.** Symmetric block or stream ciphers
-- **B.** Asymmetric public-key cryptosystems
-- **C.** Key encapsulation mechanism schemes
-- **D.** One-way cryptographic hash functions
 

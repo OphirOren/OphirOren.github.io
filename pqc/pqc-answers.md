@@ -1,12 +1,12 @@
 # PQC Answers
 
-This English guide contains the correct answers and explanations for all **526 questions** in `pqc-questions.md`, arranged in the same domain and subtopic order. Existing question IDs, correct-answer letters, answer text, explanations and exam-trap notes where present are retained; supporting references have been reviewed and enriched. Q501–Q526 add explanations for the questions introduced with this revision.
+This English guide contains **600 answer records**, corresponding to `pqc-questions.md`. Records are organized by primary domain and subtopic; join the files by permanent question ID rather than file position.
 
-This learning-reference revision was reviewed on October 9, 2026. Every one of the 526 answer records includes a Further learning section with at least one topic-relevant educational or primary-document link and a reading focus; references were checked against fetched page content, not only website reputation or the presence of a URL.
+This edition preserves the 526 source answer records and adds Q527–Q600, with correct-answer letters, the corresponding option text, explanations, metadata and topic-relevant Further learning links. The additions cover Bloch-sphere geometry, quantum gates and circuits, measurement, no-cloning, error correction, Mosca timing, QKD interpretation and sector-specific standards and compliance.
 
-The original question IDs, choices, correct answers and explanation wording are preserved. Two explicitly labeled clarifications distinguish an OpenSSH option name and the two parts of the ISO QKD standard. Scenario answers apply the linked guidance to the hypothetical facts; the external sources are not presented as accounts of those fictional companies.
+**Revision scope — October 24, 2026:** the original Q001–Q526 records and their existing source-date snapshots are retained; this file-generation step is not a new comprehensive factual audit of those records. The source edition described its learning-reference review as October 9, 2026. The new records are original practice material, not an official or reconstructed examination bank, and do not provide a legal opinion or a copyright-clearance guarantee.
 
-Time-sensitive standardization, policy and roadmap questions retain their October 8-9, 2026 reference snapshots and must be read against the date, version, jurisdiction and scope stated in the question. Historical drafts remain labeled as drafts; their test results are learning examples, not recommendations to deploy obsolete algorithm versions. Links to public ISO overviews explain scope but do not replace the full standards, and a few primary regulator pages are in German or French while this guide remains in English.
+Time-sensitive standards, policy and roadmap questions must be read with their stated date, edition, jurisdiction and scope. Original October 8–9, 2026 snapshots remain historical snapshots rather than claims of the latest status. Public ISO scope pages do not replace the full applicable standards. New sector scenarios distinguish legislation, control guidance, algorithm specifications and implementation assurance; their organizations are hypothetical.
 
 ## Domain Index
 
@@ -14,15 +14,15 @@ Each question has one primary domain and is counted once in this table. Domain s
 
 | Code | Study domain | Questions |
 |---|---|---:|
-| QF | [Quantum Computing Foundations](#quantum-computing-foundations) | 38 |
-| QR | [Quantum Threats & Risk](#quantum-threats--risk) | 40 |
-| QKD | [Quantum Key Distribution (QKD)](#quantum-key-distribution-qkd) | 57 |
+| QF | [Quantum Computing Foundations](#quantum-computing-foundations) | 89 |
+| QR | [Quantum Threats & Risk](#quantum-threats--risk) | 42 |
+| QKD | [Quantum Key Distribution (QKD)](#quantum-key-distribution-qkd) | 58 |
 | PQC | [PQC Algorithms & Mechanisms](#pqc-algorithms--mechanisms) | 56 |
-| SCR | [Standards, Compliance & Roadmaps](#standards-compliance--roadmaps) | 75 |
+| SCR | [Standards, Compliance & Roadmaps](#standards-compliance--roadmaps) | 95 |
 | MIG | [PQC Migration & Program Management](#pqc-migration--program-management) | 109 |
 | IPT | [Protocols, Implementation & Testing](#protocols-implementation--testing) | 93 |
 | CYB | [Cybersecurity Fundamentals](#cybersecurity-fundamentals) | 58 |
-| Total | All primary domains | 526 |
+| Total | All primary domains | 600 |
 
 ## Reading and Importing the Markdown
 
@@ -40,16 +40,18 @@ The eight domains are a custom study taxonomy. Hands-on is a cross-domain tag: a
 
 ## Quantum Computing Foundations
 
-Quantum states, qubits, gates, circuits, measurement, entanglement, quantum algorithms and simulation fundamentals. This domain contains 38 questions; the same ID and metadata appear in the question and answer files.
+Quantum states, qubits, gates, circuits, measurement, entanglement, quantum algorithms and simulation fundamentals. This domain contains 89 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
 | Qubits, States and Superposition | 6 |
-| Gates and Quantum Circuits | 7 |
-| Measurement, Probability and Sampling | 10 |
-| Entanglement and No-Cloning | 5 |
+| Bloch Sphere and State Geometry | 10 |
+| Gates and Quantum Circuits | 41 |
+| Measurement, Probability and Sampling | 11 |
+| Entanglement and No-Cloning | 7 |
 | Quantum Algorithms and Computational Models | 8 |
 | Simulation, Noise and Reproducibility | 2 |
+| Quantum Error Correction and Logical Qubits | 4 |
 
 ### Q008
 
@@ -158,6 +160,186 @@ Superposition includes amplitudes and phases; it is not a store of classical out
 #### Further learning
 
 - **Reading focus:** Work through state vectors, normalization and standard-basis measurement; square the magnitude of each relevant amplitude ([IBM Quantum: States and Measurement](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/single-systems/quantum-information)).
+
+### Q527
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+\(\vert0\rangle\) and \(\vert1\rangle\)
+
+**Explanation:** The conventional Bloch sphere places \(\vert0\rangle\) on the positive z-axis at the north pole and \(\vert1\rangle\) on the negative z-axis at the south pole. The x- and y-axis states are different superpositions, not the computational-basis poles. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish the z-axis basis states from the x- and y-axis superpositions. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q528
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+Pure states away from the poles can also be superpositions; the equator specifically gives equal computational-basis probabilities
+
+**Explanation:** Equal computational-basis probabilities characterize the equator, not superposition in general. A pure state with both computational-basis amplitudes nonzero is a superposition even when their magnitudes differ; such a state lies away from both poles and may lie off the equator. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Separate equal-amplitude superposition from superposition more generally. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q529
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+On the positive and negative x-axis, respectively
+
+**Explanation:** The conventional coordinates are positive x for \(\vert+\rangle\) and negative x for \(\vert-\rangle\). Both give equal Z-basis probabilities, but their relative phases differ and an X-basis measurement distinguishes them. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Equal measurement probabilities in one basis do not establish state identity. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+### Q530
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+Positive y
+
+**Explanation:** The state \((\vert0\rangle+i\vert1\rangle)/\sqrt{2}\) has polar angle \(\pi/2\) and azimuth \(\pi/2\), placing its Bloch vector on positive y. Its Z-basis probabilities remain equal. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Connect the relative phase to the azimuthal angle. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q531
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+The polar angle and the relative-phase-related azimuthal angle
+
+**Explanation:** The parameter \(\theta\) is the polar angle, while \(\phi\) is the azimuth associated with the phase of the \(\vert1\rangle\) amplitude relative to \(\vert0\rangle\). At a pole, one amplitude is zero and the azimuth does not specify a different physical state. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Relate spherical coordinates to amplitude magnitudes and relative phase. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q532
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** calculation
+
+**Correct answer:** A
+
+\(\sin^2(\theta/2)\)
+
+**Explanation:** The Born rule uses the squared magnitude of the amplitude, not the amplitude itself. Therefore \(P(1)=\lvert e^{i\phi}\sin(\theta/2)\rvert^2=\sin^2(\theta/2)\); the phase factor has unit magnitude. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Apply the squared-magnitude rule and distinguish amplitude from probability. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q533
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+At the same point, because the difference is a global phase
+
+**Explanation:** Multiplication of the entire vector by a unit-magnitude phase changes neither its physical state nor its Bloch point. Changing only one nonzero component's phase is different: that changes relative phase and can move the point. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish a common global phase from a relative phase. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+### Q534
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+The maximally mixed state \(I/2\)
+
+**Explanation:** The Bloch-ball representation writes a qubit density matrix as \(\rho=(I+r_xX+r_yY+r_zZ)/2\). At the center the Bloch vector is zero, giving \(\rho=I/2\), the maximally mixed state rather than a pure superposition. ([IBM Quantum Learning: Density matrices and reduced-state descriptions](https://quantum.cloud.ibm.com/learning/en/courses/general-formulation-of-quantum-information/density-matrices/introduction)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish the Bloch-ball interior from its pure-state surface. ([IBM Quantum Learning: Density matrices and reduced-state descriptions](https://quantum.cloud.ibm.com/learning/en/courses/general-formulation-of-quantum-information/density-matrices/introduction)).
+
+### Q535
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+The local vectors alone need not reveal the systems' different joint correlations
+
+**Explanation:** A local Bloch vector describes a reduced single-qubit state, not all correlations of a joint system. For example, the Bell state \((\vert00\rangle+\vert11\rangle)/\sqrt{2}\) and the equal classical mixture of \(\vert00\rangle\) and \(\vert11\rangle\) both have maximally mixed local states, while their joint states differ. ([IBM Quantum Learning: Density matrices and reduced-state descriptions](https://quantum.cloud.ibm.com/learning/en/courses/general-formulation-of-quantum-information/density-matrices/introduction); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Local state information alone does not reconstruct an entangled joint state. ([IBM Quantum Learning: Density matrices and reduced-state descriptions](https://quantum.cloud.ibm.com/learning/en/courses/general-formulation-of-quantum-information/density-matrices/introduction); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q536
+
+- **Domain:** QF
+- **Subtopic:** bloch-sphere
+- **Subtopic name:** Bloch Sphere and State Geometry
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+Orthogonal pure single-qubit states
+
+**Explanation:** Antipodal surface points correspond to orthogonal pure qubit states. Examples include the north and south poles, as well as positive and negative x; a suitable basis measurement can distinguish each such pair perfectly. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish antipodal states from vectors differing only by global phase. ([IBM Quantum: Single-qubit states and the Bloch sphere](https://quantum.cloud.ibm.com/docs/en/guides/composer); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
 
 ### Q012
 
@@ -284,6 +466,618 @@ Two consecutive H operations return the state to its initial state, so the resul
 #### Further learning
 
 - **Reading focus:** Track the specified X, H or CNOT operation in the stated qubit order before computing the measurement outcome ([IBM Quantum: Bits, Gates, and Circuits](https://quantum.cloud.ibm.com/learning/en/courses/utility-scale-quantum-computing/bits-gates-and-circuits)).
+
+### Q537
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+A 180-degree rotation around the x-axis
+
+**Explanation:** Pauli-X exchanges \(\vert0\rangle\) and \(\vert1\rangle\). Its action on Bloch vectors is a 180-degree x-axis rotation; with the standard rotation definition, \(R_x(\pi)=-iX\), so the matrices differ by a global phase. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Relate Pauli gates to rotations without confusing exact matrix equality with phase equivalence. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q538
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** D
+
+\(Y\vert0\rangle=i\vert1\rangle\), \(Y\vert1\rangle=-i\vert0\rangle\)
+
+**Explanation:** The conventional matrix is \(Y=\begin{pmatrix}0&-i\\i&0\end{pmatrix}\), which gives \(Y\vert0\rangle=i\vert1\rangle\) and \(Y\vert1\rangle=-i\vert0\rangle\). Ignoring these factors would incorrectly identify Y with X on arbitrary superpositions. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Retain the phase factors when applying Pauli-Y. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q539
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+\(\vert-\rangle\)
+
+**Explanation:** Z multiplies the \(\vert1\rangle\) amplitude by \(-1\), so it turns \((\vert0\rangle+\vert1\rangle)/\sqrt{2}\) into \((\vert0\rangle-\vert1\rangle)/\sqrt{2}=\vert-\rangle\). The computational-basis probabilities remain unchanged. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Understand a phase flip in both the computational and plus/minus bases. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q540
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** C
+
+The vector becomes \(-\vert1\rangle\), representing the same physical state when considered on its own
+
+**Explanation:** For an isolated \(\vert1\rangle\) input, the factor \(-1\) is global and does not change the physical state. The same Z operation on a superposition can change a meaningful relative phase, so it is not generally equivalent to doing nothing. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Do not confuse the global phase on one basis state with Z's action on all inputs. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q541
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+\(\vert-\rangle\)
+
+**Explanation:** The Hadamard maps \(\vert0\rangle\) to \(\vert+\rangle\) and \(\vert1\rangle\) to \(\vert-\rangle\). The minus sign in the second result matters for interference and for the inverse transformation. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Learn both computational-basis images of H, not just its action on zero. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q542
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** D
+
+\(\vert0\rangle\)
+
+**Explanation:** Hadamard interchanges the computational and plus/minus bases: \(H\vert+\rangle=\vert0\rangle\). It can therefore remove a computational-basis superposition rather than always create one. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Apply H to superposed inputs as well as basis inputs. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q543
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+The original state \(\vert\psi\rangle\)
+
+**Explanation:** The matrix identity \(H^2=I\) applies to every input state, not only \(\vert0\rangle\) or \(\vert1\rangle\). If the original input is a superposition, two consecutive ideal H gates restore that superposition, not a forced basis state. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Self-inverse means restoring the original input, whatever that input was. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q544
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** C
+
+\(HZH=X\)
+
+**Explanation:** Conjugating Z by H gives X: \(HZH=X\). Hadamard changes the basis in which a phase flip acts as a bit flip; it does not make the operation identity. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Use basis changes to connect bit-flip and phase-flip operations. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q545
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+\(\vert+i\rangle\)
+
+**Explanation:** The standard S matrix is \(\operatorname{diag}(1,i)\). Applied to \(\vert+\rangle\), it produces \((\vert0\rangle+i\vert1\rangle)/\sqrt{2}=\vert+i\rangle\), retaining equal computational-basis probabilities. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Track the relative phase added by S. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q546
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+\(\pi/4\)
+
+**Explanation:** The standard T matrix is \(\operatorname{diag}(1,e^{i\pi/4})\). It adds a relative phase of \(\pi/4\), corresponding to a 45-degree z-axis rotation of the Bloch vector; it does not change computational-basis populations. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Separate T's 45-degree phase shift from S's 90-degree shift. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q547
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+S
+
+**Explanation:** Composing T twice adds the two \(\pi/4\) phase shifts, giving \(T^2=\operatorname{diag}(1,i)=S\). It does not undo T. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Use phase addition to derive relationships between T, S and Z. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q548
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+Z
+
+**Explanation:** Applying S twice gives \(S^2=\operatorname{diag}(1,i^2)=\operatorname{diag}(1,-1)=Z\). S is therefore not self-inverse. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish S squared from S followed by its inverse. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q549
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** C
+
+\(S^\dagger\)
+
+**Explanation:** The conjugate transpose \(S^\dagger=\operatorname{diag}(1,-i)\) reverses S, giving \(S^\dagger S=I\). Applying S a second time instead gives Z. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish a gate's inverse from a second application of the gate. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q550
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+It is the inverse of T and adds the opposite relative phase
+
+**Explanation:** The T-dagger gate is \(\operatorname{diag}(1,e^{-i\pi/4})\). Its phase cancels T's phase, and \(T^\dagger T=I\); unitary gates need not be self-inverse. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Recognize the inverse phase and the meaning of the dagger notation. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q551
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+They differ only by an overall global phase
+
+**Explanation:** With conventional definitions, \(P(\lambda)=e^{i\lambda/2}R_z(\lambda)\). They therefore have the same standalone single-qubit physical action, up to global phase; this does not justify blindly substituting their controlled versions, where a branch-dependent phase can matter. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish phase-equivalent single-qubit gates from controlled-gate equivalence. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q552
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** C
+
+\(R_x(\pi)=-iX\)
+
+**Explanation:** Using \(R_x(\theta)=\cos(\theta/2)I-i\sin(\theta/2)X\), substitution of \(\theta=\pi\) gives \(R_x(\pi)=-iX\). The global factor explains identical Bloch-vector action without exact matrix equality. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Keep track of global factors when translating between rotations and Pauli gates. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q553
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+\(\vert+\rangle\)
+
+**Explanation:** The conventional \(R_y\) matrix gives \(R_y(\pi/2)\vert0\rangle=(\vert0\rangle+\vert1\rangle)/\sqrt{2}=\vert+\rangle\). This specifies one input-output relation, not equality of the full \(R_y(\pi/2)\) and H matrices. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish matching behavior on one input from equality of two gates. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q554
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** D
+
+Computational-basis probabilities remain unchanged, although probabilities in other bases can change
+
+**Explanation:** A z-axis rotation changes component phases rather than their magnitudes, so Z-basis probabilities stay fixed. A later basis change can convert the relative-phase change into different outcome probabilities, so the invariance does not extend to every basis. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Separate population changes from observable phase effects after a basis change. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+### Q555
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+Applying SX twice gives X
+
+**Explanation:** The SX gate is the square root of Pauli-X and satisfies \(SX\,SX=X\). Although both SX and H can create equal-amplitude superpositions from \(\vert0\rangle\), they are different gates with different phases. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Do not identify all equal-probability state preparations with H. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q556
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+It leaves the input state unchanged
+
+**Explanation:** Ideal identity leaves the input state unchanged, including any joint entanglement. It does not prepare zero or remove correlations; physical idle time can still be noisy, but that is distinct from the ideal mathematical operation. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Separate the ideal identity operator from reset and from real hardware idling. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q557
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+The gate acts coherently on the superposed branches according to linearity
+
+**Explanation:** CNOT is unitary and applies its basis-state rule coherently to superpositions by linearity. It does not measure the control to make a classical decision, and whether a particular input becomes entangled depends on both qubits. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Use linearity rather than an implicit measurement to analyze controlled gates. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q558
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** D
+
+The state remains \(\vert+\rangle\vert+\rangle\), without creating entanglement
+
+**Explanation:** Because \(X\vert+\rangle=\vert+\rangle\), the target is unchanged on both control branches. Thus the output remains \(\vert+\rangle\vert+\rangle\), showing that a superposed control does not by itself guarantee entanglement. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Check the target state before claiming that CNOT creates entanglement. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q559
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+Identity on the two-qubit state
+
+**Explanation:** The second identical CNOT reverses the first conditional flip, so \(\operatorname{CNOT}^2=I\). Linearity extends this statement from basis inputs to arbitrary two-qubit states. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish the self-inverse property of CNOT from the three-gate SWAP construction. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q560
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+Only \(\vert11\rangle\)
+
+**Explanation:** CZ has diagonal entries \((1,1,1,-1)\) in the specified basis. It changes the phase of the \(\vert11\rangle\) component without changing its measurement probability; on the isolated basis state alone that minus sign is global. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Track phase rather than treating CZ as a conditional bit flip. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q561
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+The output is entangled even though all four computational-basis outcomes still have probability 25%
+
+**Explanation:** The output is \((\vert00\rangle+\vert01\rangle+\vert10\rangle-\vert11\rangle)/2\). Its amplitude matrix has nonzero determinant, so it cannot factor into two single-qubit vectors, even though all four Z-basis probabilities remain 25%. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Unchanged computational-basis probabilities do not rule out an entangling phase change. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q562
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** D
+
+H on B, then CZ on A and B, then H on B
+
+**Explanation:** Applying H to the target before and after CZ conjugates the target's Z action into X because \(HZH=X\). The result is CNOT with the same control and the specified target. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Place the Hadamard basis changes on the target, not the control. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q563
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+Three CNOT gates with alternating control directions can exchange the quantum states without requiring the physical devices to exchange positions
+
+**Explanation:** The chronological sequence CNOT A-to-B, CNOT B-to-A, CNOT A-to-B maps \(\vert a,b\rangle\) to \(\vert b,a\rangle\), and linearity extends it to quantum states. The logical states are exchanged without a requirement to physically move the devices. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish state exchange, physical relocation and forbidden independent cloning. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q564
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+\(\vert111\rangle\)
+
+**Explanation:** With both controls equal to 1, Toffoli flips the target. The specified input therefore becomes \(\vert111\rangle\), with both controls unchanged. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** State the control/target order before applying the CCNOT rule. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q565
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+Yes; its unitary action extends coherently to superpositions
+
+**Explanation:** Toffoli's action is unitary, so its conditional bit-flip rule extends coherently to superposed inputs. Measuring the controls first would generally implement a different process and could destroy coherence. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Analyze Toffoli as a quantum operation, not as a measurement-based classical decision. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q566
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+Its classical reversible universality does not mean that Toffoli alone is universal for quantum computation
+
+**Explanation:** Classical reversible universality means that Toffoli can implement reversible classical computations with suitable auxiliary bits. Toffoli alone only permutes computational-basis states and cannot generate arbitrary quantum superpositions from basis initialization, so it is not by itself quantum-universal. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Qualify the type of universality claimed for a gate or gate set. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q567
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+H, T and CNOT
+
+**Explanation:** H and T support approximate single-qubit universality, and CNOT provides the needed entangling operation for general multi-qubit circuits. The statement is about approximation to suitable accuracy, not exact finite synthesis of every arbitrary real-angle rotation. ([IBM Qiskit: Solovay-Kitaev approximate gate synthesis](https://quantum.cloud.ibm.com/docs/api/qiskit/qiskit.transpiler.passes.SolovayKitaev); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish approximate universality from exact synthesis of arbitrary rotations. ([IBM Qiskit: Solovay-Kitaev approximate gate synthesis](https://quantum.cloud.ibm.com/docs/api/qiskit/qiskit.transpiler.passes.SolovayKitaev); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q568
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+It applies U on the control-1 branch and identity on the control-0 branch, coherently
+
+**Explanation:** A standard controlled-U is \(\vert0\rangle\langle0\vert\otimes I+\vert1\rangle\langle1\vert\otimes U\). The operation acts coherently on a superposed control rather than measuring it. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Identify the control branches and the target register explicitly. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q569
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+Applying its conjugate transpose \(U^\dagger\)
+
+**Explanation:** Unitarity gives \(U^\dagger U=I\), so the conjugate transpose reverses U. Applying U twice works only for self-inverse gates; measurement and reset are not general inverses. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Use the unitary inverse rather than assuming every gate squares to identity. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information); [IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+### Q570
+
+- **Domain:** QF
+- **Subtopic:** gates-and-circuits
+- **Subtopic name:** Gates and Quantum Circuits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+They are generally non-unitary operations and do not provide a unitary inverse restoring an arbitrary unknown input
+
+**Explanation:** Measurement and reset are generally non-unitary as standalone qubit operations. They do not provide a unitary inverse that recovers an arbitrary unknown input; any fuller treatment of measuring apparatus or environment is a different system description. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish reversible unitary gates from non-unitary operations. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
 
 ### Q005
 
@@ -465,6 +1259,24 @@ H prepares ∣+⟩, whose measurement in Z gives an equal distribution in expect
 
 - **Reading focus:** Review repeated shots and sampling fluctuations; a theoretical probability does not require exact equality of observed counts ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: States and Measurement](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/single-systems/quantum-information)).
 
+### Q571
+
+- **Domain:** QF
+- **Subtopic:** measurement-and-probability
+- **Subtopic name:** Measurement, Probability and Sampling
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** B
+
+The result is 0 with certainty, and the state remains \(\vert0\rangle\)
+
+**Explanation:** An ideal projective Z measurement of its eigenstate \(\vert0\rangle\) gives result 0 with certainty and leaves that state unchanged. Measurement can disturb other inputs, but it is incorrect to say that every measurement must change every input state. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
+#### Further learning
+
+- **Reading focus:** Qualify measurement disturbance by the input state and measurement basis. ([IBM Quantum: Circuit operations, phase and state visualizations](https://quantum.cloud.ibm.com/docs/en/guides/composer)).
+
 ### Q048
 
 - **Domain:** QF
@@ -555,6 +1367,42 @@ The prohibition applies to a perfect cloning machine for every unknown state, no
 
 - **Reading focus:** Read the no-cloning theorem and its assumptions; contrast cloning an arbitrary unknown state with preparing a known state again ([IBM Quantum: Limitations and No-Cloning](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
 
+### Q572
+
+- **Domain:** QF
+- **Subtopic:** entanglement-and-no-cloning
+- **Subtopic name:** Entanglement and No-Cloning
+- **Difficulty:** Applied
+- **Tags:** hands_on, circuit_analysis
+
+**Correct answer:** A
+
+The circuit produces an entangled Bell state rather than two independent copies of \(\vert+\rangle\)
+
+**Explanation:** CNOT maps \(\vert+\rangle\vert0\rangle\) to \((\vert00\rangle+\vert11\rangle)/\sqrt{2}\), not to the product \(\vert+\rangle\vert+\rangle\). The circuit copies computational-basis values but is not a universal copier for unknown quantum states. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Contrast Bell-state creation with independent cloning. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+### Q573
+
+- **Domain:** QF
+- **Subtopic:** entanglement-and-no-cloning
+- **Subtopic name:** Entanglement and No-Cloning
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+Copying a state promised to be one of the orthogonal computational-basis states
+
+**Explanation:** Orthogonal states from a known promised set can be copied; CNOT with a zero target copies computational-basis values. The no-cloning theorem instead rules out one perfect copying process that works on arbitrary unknown states, including nonorthogonal alternatives. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Separate copying orthogonal alternatives from universal unknown-state cloning. ([IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
 ### Q147
 
 - **Domain:** QF
@@ -626,42 +1474,6 @@ Grover reduces a search of order N to order √N in the query model; it is not a
 #### Further learning
 
 - **Reading focus:** Follow phase marking and amplitude amplification, then relate the iteration count to the square root of the search space ([IBM Quantum: Learning Grover's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/grovers); [IBM Quantum: Grover's Algorithm](https://quantum.cloud.ibm.com/docs/en/tutorials/grovers-algorithm)).
-
-### Q278
-
-- **Domain:** QF
-- **Subtopic:** simulation-and-noise
-- **Subtopic name:** Simulation, Noise and Reproducibility
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** D
-
-On hardware, error effects and implementation limitations must be tested ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression))
-
-Experimental behavior depends on implementation and measurement quality; the theoretical result is not a perfect prediction of real hardware ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
-
-#### Further learning
-
-- **Reading focus:** Compare ideal simulation with hardware noise and sampling; record circuit, backend, settings and shot count when reproducing an experiment ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
-
-### Q300
-
-- **Domain:** QF
-- **Subtopic:** simulation-and-noise
-- **Subtopic name:** Simulation, Noise and Reproducibility
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** D
-
-The circuit, backend, number of shots, versions, and noise assumptions ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression))
-
-Experimental results depend on preparation, execution, and sampling, so conditions beyond the final output must be described ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
-
-#### Further learning
-
-- **Reading focus:** Compare ideal simulation with hardware noise and sampling; record circuit, backend, settings and shot count when reproducing an experiment ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
 
 ### Q501
 
@@ -737,16 +1549,124 @@ Quantum advantage, sometimes called quantum supremacy, is a performance claim ab
 
 - **Reading focus:** Separate a laboratory advantage on a chosen task from a cryptanalytically relevant quantum computer that can attack public-key schemes ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm)).
 
+### Q278
+
+- **Domain:** QF
+- **Subtopic:** simulation-and-noise
+- **Subtopic name:** Simulation, Noise and Reproducibility
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+On hardware, error effects and implementation limitations must be tested ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression))
+
+Experimental behavior depends on implementation and measurement quality; the theoretical result is not a perfect prediction of real hardware ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
+
+#### Further learning
+
+- **Reading focus:** Compare ideal simulation with hardware noise and sampling; record circuit, backend, settings and shot count when reproducing an experiment ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
+
+### Q300
+
+- **Domain:** QF
+- **Subtopic:** simulation-and-noise
+- **Subtopic name:** Simulation, Noise and Reproducibility
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+The circuit, backend, number of shots, versions, and noise assumptions ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression))
+
+Experimental results depend on preparation, execution, and sampling, so conditions beyond the final output must be described ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
+
+#### Further learning
+
+- **Reading focus:** Compare ideal simulation with hardware noise and sampling; record circuit, backend, settings and shot count when reproducing an experiment ([IBM Quantum: Bell Circuits and Repeated Shots](https://quantum.cloud.ibm.com/learning/en/courses/use-a-qc-today/build-and-run-your-first-quantum-program); [IBM Quantum: Noise and Error Suppression](https://quantum.cloud.ibm.com/learning/en/courses/tools-for-quantum-advantage/error-suppression)).
+
+### Q574
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+The encoding distributes quantum information across a joint state instead of creating independent copies of the unknown state
+
+**Explanation:** A quantum error-correcting encoding distributes logical information into a joint code state rather than placing an independent full copy in each physical qubit. Such encoding is compatible with no-cloning, and local measurements need not reveal the unknown logical state. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+#### Further learning
+
+- **Reading focus:** Understand encoding as distributed quantum information rather than ordinary replication. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction); [IBM Quantum Learning: Global phase, no-cloning and distinguishability](https://quantum.cloud.ibm.com/learning/en/courses/basics-of-quantum-information/quantum-circuits/limitations-on-quantum-information)).
+
+### Q575
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+To obtain information about correctable errors without directly reading out the protected logical information
+
+**Explanation:** Syndrome checks extract information about errors through suitable measurements while preserving the protected logical information within the intended correctable-error model. The syndrome is not a readout of the unknown amplitudes of the logical qubit. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish error information from logical-state information. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction)).
+
+### Q576
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+Protection depends on the code, noise and implementation; uncorrectable errors can still occur
+
+**Explanation:** Codes protect against specified error patterns under implementation assumptions; sufficiently many errors or unsuitable noise can cause logical failure. Error correction does not make physical errors exactly zero or remove the need for repeated checks. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction)).
+
+#### Further learning
+
+- **Reading focus:** Identify the limits and assumptions of an error-correction claim. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction)).
+
+### Q577
+
+- **Domain:** QF
+- **Subtopic:** quantum-error-correction
+- **Subtopic name:** Quantum Error Correction and Logical Qubits
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+The required resources depend on the error-correcting code, hardware noise and target logical reliability
+
+**Explanation:** Different codes, physical error rates and target logical failure rates require different resources. Data qubits and syndrome-extraction resources may both contribute, so a physical-qubit count cannot be converted to logical capacity using one universal fixed ratio. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction)).
+
+#### Further learning
+
+- **Reading focus:** Compare code and reliability assumptions before comparing qubit counts. ([IBM Quantum Learning: Foundations of Quantum Error Correction](https://quantum.cloud.ibm.com/learning/en/courses/foundations-of-quantum-error-correction)).
+
 ## Quantum Threats & Risk
 
-Quantum attack consequences, harvest-now-decrypt-later exposure, forgery, threat horizons and risk assessment. This domain contains 40 questions; the same ID and metadata appear in the question and answer files.
+Quantum attack consequences, harvest-now-decrypt-later exposure, forgery, threat horizons and risk assessment. This domain contains 42 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
 | Quantum Attack Capabilities and Cryptographic Impact | 7 |
 | Harvest Now, Decrypt Later | 14 |
 | Authenticity, Signatures and Future Forgery | 7 |
-| Risk Assessment, Timing and Mosca Models | 9 |
+| Risk Assessment, Timing and Mosca Models | 11 |
 | Exposure and Vulnerable Trust Dependencies | 3 |
 
 ### Q007
@@ -856,6 +1776,24 @@ The term refers to a relevant cryptanalytic capability, not merely to the existe
 #### Further learning
 
 - **Reading focus:** Read the FAQs defining a cryptographically relevant quantum computer and discussing when one might exist; distinguish useful attack capability from a physical-qubit headline ([NIST NCCoE: PQC Migration FAQ](https://pages.nist.gov/nccoe-migration-post-quantum-cryptography/FAQ/)).
+
+### Q512
+
+- **Domain:** QR
+- **Subtopic:** quantum-attack-impact
+- **Subtopic name:** Quantum Attack Capabilities and Cryptographic Impact
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+Shor's algorithm breaks elliptic-curve cryptography, while Grover's algorithm is why longer symmetric keys, such as AES-256 instead of AES-128, are the usual margin ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm); [IBM Quantum: Learning Grover's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/grovers))
+
+Shor's algorithm targets factoring and discrete logarithms, so it threatens RSA and elliptic-curve schemes. It does not square-root an AES key ([IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm); [NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs)). Grover's algorithm gives a quadratic speedup for unstructured key search. That is why AES-128 has about 64 bits of effective security in the query model, and AES-256 is the usual way to keep a larger margin. Grover does not factor RSA, and neither algorithm makes every symmetric cipher useless ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Learning Grover's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/grovers)).
+
+#### Further learning
+
+- **Reading focus:** Assign Shor to factoring and discrete logarithms, and Grover to the square-root search bound on symmetric keys ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm)).
 
 ### Q002
 
@@ -1227,6 +2165,24 @@ Exam trap: A quantum-safe transport does not transform a separately signed token
 
 - **Reading focus:** Separate JWT signature validation from transport protection and review the future forgery risk of classical RSA signatures ([RFC 8725: JWT Best Current Practices](https://www.rfc-editor.org/rfc/rfc8725); [NIST IR 8547: Draft Transition Guidance](https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8547.ipd.pdf)).
 
+### Q526
+
+- **Domain:** QR
+- **Subtopic:** authenticity-and-forgery
+- **Subtopic name:** Authenticity, Signatures and Future Forgery
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+A recorded key-establishment transcript can be stored and attacked later; forging a signature requires the attack to succeed at the time of forgery, and long-lived signing keys can still be urgent ([NIST: PQC and Harvest Now, Decrypt Later](https://www.nist.gov/cybersecurity-and-privacy/what-post-quantum-cryptography); [NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs))
+
+Harvest-now-decrypt-later is about confidentiality of material protected by a vulnerable key establishment that can be recorded today. Forging a signature becomes possible when the attacker can break that signature scheme, which for RSA and elliptic-curve signatures means having the relevant quantum capability at forgery time ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs)). That timing difference does not make long-lived code-signing keys safe to ignore ([NIST: PQC and Harvest Now, Decrypt Later](https://www.nist.gov/cybersecurity-and-privacy/what-post-quantum-cryptography)).
+
+#### Further learning
+
+- **Reading focus:** Separate a stored key-establishment transcript from a signature that must be forged when it is produced, and still treat long-lived signing keys as a migration concern ([NIST: PQC and Harvest Now, Decrypt Later](https://www.nist.gov/cybersecurity-and-privacy/what-post-quantum-cryptography); [NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs)).
+
 ### Q025
 
 - **Domain:** QR
@@ -1389,6 +2345,42 @@ The inequality does not apply in this scenario, but the estimates are uncertain 
 
 - **Reading focus:** Find the X + Y > Z migration-risk model and the discussion of information lifetime, transition duration and uncertain attack timing ([NIST NCCoE: Migration and Mosca's Model](https://www.nccoe.nist.gov/sites/default/files/2022-07/pqc-migration-project-description-final.pdf)).
 
+### Q578
+
+- **Domain:** QR
+- **Subtopic:** risk-assessment-and-timing
+- **Subtopic name:** Risk Assessment, Timing and Mosca Models
+- **Difficulty:** Applied
+- **Tags:** calculation
+
+**Correct answer:** C
+
+The combined 16-year protection-and-migration period exceeds the assumed threat timeline
+
+**Explanation:** For the hypothetical inputs, \(X+Y=12+4=16\) years, exceeding the assumed \(Z=10\) years. The inequality is a planning warning under those assumptions, not evidence that a cryptanalytically relevant quantum computer will arrive on an exact date. ([NIST NCCoE: Migration to Post-Quantum Cryptography project description](https://www.nccoe.nist.gov/sites/default/files/2022-07/pqc-migration-project-description-final.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Apply the timeline inequality without treating the assumed horizon as a forecast. ([NIST NCCoE: Migration to Post-Quantum Cryptography project description](https://www.nccoe.nist.gov/sites/default/files/2022-07/pqc-migration-project-description-final.pdf)).
+
+### Q579
+
+- **Domain:** QR
+- **Subtopic:** risk-assessment-and-timing
+- **Subtopic name:** Risk Assessment, Timing and Mosca Models
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+The estimates provide no timing margin, so uncertainty and contingency planning remain important
+
+**Explanation:** At \(X+Y=Z\), there is no slack between the estimated combined protection-and-transition period and the assumed threat horizon. Because these are uncertain estimates, equality should not be read as proof of safety; contingency planning is a risk-management inference from the model. ([NIST NCCoE: Migration to Post-Quantum Cryptography project description](https://www.nccoe.nist.gov/sites/default/files/2022-07/pqc-migration-project-description-final.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Consider uncertainty and safety margin in addition to the strict inequality. ([NIST NCCoE: Migration to Post-Quantum Cryptography project description](https://www.nccoe.nist.gov/sites/default/files/2022-07/pqc-migration-project-description-final.pdf)).
+
 ### Q016
 
 - **Domain:** QR
@@ -1443,51 +2435,15 @@ Prioritization is based on business context, protection time, and dependencies, 
 
 - **Reading focus:** Read risk prioritization using business impact, data lifetime, critical systems and dependencies; an unweighted count of the same algorithm does not rank business exposure ([CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf); [UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines)).
 
-### Q512
-
-- **Domain:** QR
-- **Subtopic:** quantum-attack-impact
-- **Subtopic name:** Quantum Attack Capabilities and Cryptographic Impact
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** C
-
-Shor's algorithm breaks elliptic-curve cryptography, while Grover's algorithm is why longer symmetric keys, such as AES-256 instead of AES-128, are the usual margin ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm); [IBM Quantum: Learning Grover's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/grovers))
-
-Shor's algorithm targets factoring and discrete logarithms, so it threatens RSA and elliptic-curve schemes. It does not square-root an AES key ([IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm); [NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs)). Grover's algorithm gives a quadratic speedup for unstructured key search. That is why AES-128 has about 64 bits of effective security in the query model, and AES-256 is the usual way to keep a larger margin. Grover does not factor RSA, and neither algorithm makes every symmetric cipher useless ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Learning Grover's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/grovers)).
-
-#### Further learning
-
-- **Reading focus:** Assign Shor to factoring and discrete logarithms, and Grover to the square-root search bound on symmetric keys ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs); [IBM Quantum: Shor's Algorithm](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/shors-algorithm)).
-
-### Q526
-
-- **Domain:** QR
-- **Subtopic:** authenticity-and-forgery
-- **Subtopic name:** Authenticity, Signatures and Future Forgery
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-A recorded key-establishment transcript can be stored and attacked later; forging a signature requires the attack to succeed at the time of forgery, and long-lived signing keys can still be urgent ([NIST: PQC and Harvest Now, Decrypt Later](https://www.nist.gov/cybersecurity-and-privacy/what-post-quantum-cryptography); [NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs))
-
-Harvest-now-decrypt-later is about confidentiality of material protected by a vulnerable key establishment that can be recorded today. Forging a signature becomes possible when the attacker can break that signature scheme, which for RSA and elliptic-curve signatures means having the relevant quantum capability at forgery time ([NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs)). That timing difference does not make long-lived code-signing keys safe to ignore ([NIST: PQC and Harvest Now, Decrypt Later](https://www.nist.gov/cybersecurity-and-privacy/what-post-quantum-cryptography)).
-
-#### Further learning
-
-- **Reading focus:** Separate a stored key-establishment transcript from a signature that must be forged when it is produced, and still treat long-lived signing keys as a migration concern ([NIST: PQC and Harvest Now, Decrypt Later](https://www.nist.gov/cybersecurity-and-privacy/what-post-quantum-cryptography); [NIST: Technical PQC FAQ](https://csrc.nist.gov/Projects/post-quantum-cryptography/faqs)).
-
 ## Quantum Key Distribution (QKD)
 
-QKD protocol operations, BB84, sifting, QBER, reconciliation, privacy amplification, authentication and deployment limitations. This domain contains 57 questions; the same ID and metadata appear in the question and answer files.
+QKD protocol operations, BB84, sifting, QBER, reconciliation, privacy amplification, authentication and deployment limitations. This domain contains 58 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
 | BB84 Preparation, Bases and Measurement | 5 |
 | Sifting and Key Rates | 7 |
-| QBER, Sampling and Eavesdropping | 13 |
+| QBER, Sampling and Eavesdropping | 14 |
 | Reconciliation and Privacy Amplification | 6 |
 | Authentication and Use of Generated Keys | 12 |
 | Deployment Limits, Trust and Security Assumptions | 14 |
@@ -1924,6 +2880,42 @@ The rates are 2% and 10%, so percentages, not just error counts, should be compa
 
 - **Reading focus:** Read Section 4.7.2 on error estimation and IBM’s tested-bit example; use errors divided by tested retained bits and distinguish noise from proof of attack ([ETSI GS QKD 005: Security Proofs and Key Processing](https://www.etsi.org/deliver/etsi_gs/QKD/001_099/005/01.01.01_60/gs_QKD005v010101p.pdf); [IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
 
+### Q508
+
+- **Domain:** QKD
+- **Subtopic:** qber-and-eavesdropping
+- **Subtopic name:** QBER, Sampling and Eavesdropping
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+Measuring non-orthogonal polarization states alters the quantum state, introducing errors that appear in the sifted sample ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution))
+
+In BB84, Alice's states are non-orthogonal across the two bases, so an eavesdropper who measures and resends cannot copy the unknown state. The measurement disturbs some of the signals. After sifting, Alice and Bob see that disturbance as an elevated quantum bit error rate ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)). Detection is not a thermal alarm, an acoustic signature of cloning, or a requirement that every photon be absorbed.
+
+#### Further learning
+
+- **Reading focus:** Connect no-cloning and measurement disturbance with the errors Alice and Bob compare after sifting; the error rate is evidence under the model, not a hardware alarm by itself ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
+
+### Q580
+
+- **Domain:** QKD
+- **Subtopic:** qber-and-eavesdropping
+- **Subtopic name:** QBER, Sampling and Eavesdropping
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** A
+
+Investigate the result under the protocol's security and operational rules; noise and equipment problems can also contribute to errors
+
+**Explanation:** A higher QBER is not proof that a particular adversary intercepted the link; channel noise and equipment errors can also contribute. Evaluate the observation using the protocol's parameter-estimation, abort and security rules rather than accepting affected key material unconditionally. ([IBM Quantum Learning: Quantum Key Distribution](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
+
+#### Further learning
+
+- **Reading focus:** Separate statistical security testing from attribution of malicious activity. ([IBM Quantum Learning: Quantum Key Distribution](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
+
 ### Q028
 
 - **Domain:** QKD
@@ -2231,6 +3223,24 @@ Combining components does not eliminate the security requirements of each compon
 
 - **Reading focus:** Read the separate QKD limitations concerning authentication, physical equipment, trusted relays, implementation security and denial of service ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/)).
 
+### Q503
+
+- **Domain:** QKD
+- **Subtopic:** authentication-and-key-use
+- **Subtopic name:** Authentication and Use of Generated Keys
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+QKD gives confidentiality; authentication is external ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/); [IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution))
+
+QKD's product is shared secret keying material. Under the protocol assumptions, eavesdropping on the quantum channel is detectable, so the key can then protect confidentiality ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)). The quantum transmission does not prove who is at the other end. The classical channel has to be authenticated by a separate mechanism, such as a pre-shared key or signatures ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/)). The auditor is therefore right about a confidentiality role and wrong that QKD itself supplies authentication.
+
+#### Further learning
+
+- **Reading focus:** Separate the secret key QKD can establish from the external authentication the classical channel still requires ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/); [IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
+
 ### Q013
 
 - **Domain:** QKD
@@ -2449,24 +3459,6 @@ Exam trap: Assuming one key-distribution technology solves every enterprise cryp
 
 - **Reading focus:** Compare QKD’s key-distribution role and deployment limitations with the separate purpose of public digital signatures ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/); [NIST: Digital Signatures](https://csrc.nist.gov/projects/digital-signatures)).
 
-### Q503
-
-- **Domain:** QKD
-- **Subtopic:** authentication-and-key-use
-- **Subtopic name:** Authentication and Use of Generated Keys
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** C
-
-QKD gives confidentiality; authentication is external ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/); [IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution))
-
-QKD's product is shared secret keying material. Under the protocol assumptions, eavesdropping on the quantum channel is detectable, so the key can then protect confidentiality ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)). The quantum transmission does not prove who is at the other end. The classical channel has to be authenticated by a separate mechanism, such as a pre-shared key or signatures ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/)). The auditor is therefore right about a confidentiality role and wrong that QKD itself supplies authentication.
-
-#### Further learning
-
-- **Reading focus:** Separate the secret key QKD can establish from the external authentication the classical channel still requires ([NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/); [IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
-
 ### Q504
 
 - **Domain:** QKD
@@ -2484,24 +3476,6 @@ QKD is called physical-layer cryptography because the security argument comes fr
 #### Further learning
 
 - **Reading focus:** Contrast a physics-based key-distribution argument with computational assumptions such as factoring, and notice that the hardware channel is inside the trust boundary ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution); [NSA: QKD Limitations](https://www.nsa.gov/Cybersecurity/Quantum-Key-Distribution-QKD-and-Quantum-Cryptography-QC/)).
-
-### Q508
-
-- **Domain:** QKD
-- **Subtopic:** qber-and-eavesdropping
-- **Subtopic name:** QBER, Sampling and Eavesdropping
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** C
-
-Measuring non-orthogonal polarization states alters the quantum state, introducing errors that appear in the sifted sample ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution))
-
-In BB84, Alice's states are non-orthogonal across the two bases, so an eavesdropper who measures and resends cannot copy the unknown state. The measurement disturbs some of the signals. After sifting, Alice and Bob see that disturbance as an elevated quantum bit error rate ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)). Detection is not a thermal alarm, an acoustic signature of cloning, or a requirement that every photon be absorbed.
-
-#### Further learning
-
-- **Reading focus:** Connect no-cloning and measurement disturbance with the errors Alice and Bob compare after sifting; the error rate is evidence under the model, not a hardware alarm by itself ([IBM Quantum: BB84 and QKD](https://quantum.cloud.ibm.com/learning/en/modules/computer-science/quantum-key-distribution)).
 
 ### Q509
 
@@ -2770,6 +3744,60 @@ Exam trap: Successful key establishment is not the same as authenticated peer id
 
 - **Reading focus:** Read KEM secure-use/authentication conditions and public-key identity binding; a public key or matching secret alone does not establish the intended peer ([NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf); [RFC 5280: X.509 Certification Path Validation](https://www.rfc-editor.org/rfc/rfc5280)).
 
+### Q519
+
+- **Domain:** PQC
+- **Subtopic:** kem-operations
+- **Subtopic name:** KEM Operations, Keys and Shared Secrets
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+It makes polynomial multiplication much faster than multiplying polynomials in the naive way ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf))
+
+ML-KEM multiplies polynomials in a ring. The number-theoretic transform turns that product into a form that can be computed much more quickly than the direct product of coefficients ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). It does not shrink the public key to an elliptic-curve size, and it is not a source of quantum randomness.
+
+#### Further learning
+
+- **Reading focus:** Follow the number-theoretic transform in FIPS 203 as the fast polynomial-multiplication step ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)).
+
+### Q520
+
+- **Domain:** PQC
+- **Subtopic:** kem-operations
+- **Subtopic name:** KEM Operations, Keys and Shared Secrets
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+Elliptic-curve Diffie-Hellman combines shares from both parties; ML-KEM encapsulates a fresh shared secret under the other party's public key ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf))
+
+In ML-KEM, encapsulation uses the recipient's encapsulation key and returns a ciphertext and a shared secret. Decapsulation recovers that secret ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). Elliptic-curve Diffie-Hellman is an interactive agreement: each party contributes a share ([NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Contrast KEM encapsulation with an interactive Diffie-Hellman share exchange ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf)).
+
+### Q521
+
+- **Domain:** PQC
+- **Subtopic:** kem-operations
+- **Subtopic name:** KEM Operations, Keys and Shared Secrets
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+FIPS 203 specifies an 1184-byte encapsulation key and a 1088-byte ciphertext, far larger than a 32-byte X25519 public key ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [RFC 7748: Elliptic Curves for Security](https://www.rfc-editor.org/rfc/rfc7748))
+
+FIPS 203 lists those ML-KEM-768 lengths. ML-KEM-1024 uses a 1568-byte encapsulation key and a 1568-byte ciphertext ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). An X25519 public key is 32 bytes ([RFC 7748: Elliptic Curves for Security](https://www.rfc-editor.org/rfc/rfc7748)).
+
+#### Further learning
+
+- **Reading focus:** Compare the FIPS 203 length table with the 32-byte X25519 key ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [RFC 7748: Elliptic Curves for Security](https://www.rfc-editor.org/rfc/rfc7748)).
+
 ### Q021
 
 - **Domain:** PQC
@@ -2932,6 +3960,60 @@ LMS and XMSS are stateful signature schemes; they should be distinguished from S
 #### Further learning
 
 - **Reading focus:** Read the LMS/XMSS explanation and why state tracking and controlled private-key use are security requirements ([NIST: Stateful Hash-Based Signatures](https://csrc.nist.gov/projects/stateful-hash-based-signatures)).
+
+### Q517
+
+- **Domain:** PQC
+- **Subtopic:** digital-signatures
+- **Subtopic name:** Post-Quantum Digital Signatures
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+The key is exhausted and must not be reused; a new key pair is required for further signatures ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf))
+
+LMS and XMSS have a finite number of signature indexes. Reusing an index, including after a backup or clone restores an old state, can expose the private key ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). When the indexes are used up, the key is retired rather than wrapped back to zero.
+
+#### Further learning
+
+- **Reading focus:** Read the state and index rules in SP 800-208; exhaustion means a new key, not reuse ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
+
+### Q518
+
+- **Domain:** PQC
+- **Subtopic:** digital-signatures
+- **Subtopic name:** Post-Quantum Digital Signatures
+- **Difficulty:** Advanced
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+It is a one-time signature; the hash tree authenticates those one-time keys ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf); [NIST FIPS 205: SLH-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf))
+
+WOTS+ is a Winternitz one-time signature. XMSS and LMS use it at the leaves, and the Merkle tree authenticates the one-time public keys ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). SLH-DSA also uses WOTS+ inside its hypertree ([NIST FIPS 205: SLH-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Separate the one-time signature that signs a message, or a tree node, from the hash tree that authenticates it ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf); [NIST FIPS 205: SLH-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf)).
+
+### Q525
+
+- **Domain:** PQC
+- **Subtopic:** digital-signatures
+- **Subtopic name:** Post-Quantum Digital Signatures
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+For controlled software or firmware signing, where the number of signatures is limited and the index cannot be rolled back ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf))
+
+SP 800-208 specifies LMS and XMSS for applications that can protect signature state, such as signing software or firmware from a controlled build system ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). A high-volume TLS signer that might restore an old virtual-machine image is a poor fit for that state rule.
+
+#### Further learning
+
+- **Reading focus:** Read the SP 800-208 use cases and the requirement that each index is used once ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
 
 ### Q022
 
@@ -3112,6 +4194,24 @@ ML-KEM is based on lattice problems with errors, not on the same mathematical pr
 #### Further learning
 
 - **Reading focus:** Read the ML-KEM assumptions and parameter tables, then interpret strength through NIST security categories rather than names or shared-secret length ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST: Security Category Definitions](https://csrc.nist.gov/csrc/media/projects/post-quantum-cryptography/documents/call-for-proposals-final-dec-2016.pdf)).
+
+### Q511
+
+- **Domain:** PQC
+- **Subtopic:** families-and-parameters
+- **Subtopic name:** Algorithm Families and Parameter Sets
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+ML-KEM (from CRYSTALS-Kyber) ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf); [NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf))
+
+FIPS 203 standardizes ML-KEM, derived from CRYSTALS-Kyber, for key encapsulation. ML-DSA in FIPS 204 is a lattice signature, not a KEM ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)). XMSS and LMS are stateful hash-based signature schemes ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). FN-DSA, from Falcon, is a signature family, not the general-purpose KEM.
+
+#### Further learning
+
+- **Reading focus:** Separate the FIPS 203 KEM from the signature standards and from stateful hash-based signatures ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)).
 
 ### Q001
 
@@ -3384,24 +4484,6 @@ ML-KEM has three different security categories even though the shared secret is 
 
 - **Reading focus:** Read the ML-KEM assumptions and parameter tables, then interpret strength through NIST security categories rather than names or shared-secret length ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST: Security Category Definitions](https://csrc.nist.gov/csrc/media/projects/post-quantum-cryptography/documents/call-for-proposals-final-dec-2016.pdf)).
 
-### Q511
-
-- **Domain:** PQC
-- **Subtopic:** families-and-parameters
-- **Subtopic name:** Algorithm Families and Parameter Sets
-- **Difficulty:** Foundational
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-ML-KEM (from CRYSTALS-Kyber) ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf); [NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf))
-
-FIPS 203 standardizes ML-KEM, derived from CRYSTALS-Kyber, for key encapsulation. ML-DSA in FIPS 204 is a lattice signature, not a KEM ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)). XMSS and LMS are stateful hash-based signature schemes ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). FN-DSA, from Falcon, is a signature family, not the general-purpose KEM.
-
-#### Further learning
-
-- **Reading focus:** Separate the FIPS 203 KEM from the signature standards and from stateful hash-based signatures ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)).
-
 ### Q515
 
 - **Domain:** PQC
@@ -3438,126 +4520,18 @@ NIST's category estimates use a parameter, MAXDEPTH, that limits how deep a quan
 
 - **Reading focus:** Treat MAXDEPTH as part of the quantum attack-cost model in the NIST call for proposals ([NIST: Security Category Definitions](https://csrc.nist.gov/csrc/media/projects/post-quantum-cryptography/documents/call-for-proposals-final-dec-2016.pdf)).
 
-### Q517
-
-- **Domain:** PQC
-- **Subtopic:** digital-signatures
-- **Subtopic name:** Post-Quantum Digital Signatures
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-The key is exhausted and must not be reused; a new key pair is required for further signatures ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf))
-
-LMS and XMSS have a finite number of signature indexes. Reusing an index, including after a backup or clone restores an old state, can expose the private key ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). When the indexes are used up, the key is retired rather than wrapped back to zero.
-
-#### Further learning
-
-- **Reading focus:** Read the state and index rules in SP 800-208; exhaustion means a new key, not reuse ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
-
-### Q518
-
-- **Domain:** PQC
-- **Subtopic:** digital-signatures
-- **Subtopic name:** Post-Quantum Digital Signatures
-- **Difficulty:** Advanced
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-It is a one-time signature; the hash tree authenticates those one-time keys ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf); [NIST FIPS 205: SLH-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf))
-
-WOTS+ is a Winternitz one-time signature. XMSS and LMS use it at the leaves, and the Merkle tree authenticates the one-time public keys ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). SLH-DSA also uses WOTS+ inside its hypertree ([NIST FIPS 205: SLH-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf)).
-
-#### Further learning
-
-- **Reading focus:** Separate the one-time signature that signs a message, or a tree node, from the hash tree that authenticates it ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf); [NIST FIPS 205: SLH-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.205.pdf)).
-
-### Q519
-
-- **Domain:** PQC
-- **Subtopic:** kem-operations
-- **Subtopic name:** KEM Operations, Keys and Shared Secrets
-- **Difficulty:** Advanced
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-It makes polynomial multiplication much faster than multiplying polynomials in the naive way ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf))
-
-ML-KEM multiplies polynomials in a ring. The number-theoretic transform turns that product into a form that can be computed much more quickly than the direct product of coefficients ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). It does not shrink the public key to an elliptic-curve size, and it is not a source of quantum randomness.
-
-#### Further learning
-
-- **Reading focus:** Follow the number-theoretic transform in FIPS 203 as the fast polynomial-multiplication step ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)).
-
-### Q520
-
-- **Domain:** PQC
-- **Subtopic:** kem-operations
-- **Subtopic name:** KEM Operations, Keys and Shared Secrets
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-Elliptic-curve Diffie-Hellman combines shares from both parties; ML-KEM encapsulates a fresh shared secret under the other party's public key ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf))
-
-In ML-KEM, encapsulation uses the recipient's encapsulation key and returns a ciphertext and a shared secret. Decapsulation recovers that secret ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). Elliptic-curve Diffie-Hellman is an interactive agreement: each party contributes a share ([NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf)).
-
-#### Further learning
-
-- **Reading focus:** Contrast KEM encapsulation with an interactive Diffie-Hellman share exchange ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST SP 800-227: Recommendations for KEMs](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-227.pdf)).
-
-### Q521
-
-- **Domain:** PQC
-- **Subtopic:** kem-operations
-- **Subtopic name:** KEM Operations, Keys and Shared Secrets
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-FIPS 203 specifies an 1184-byte encapsulation key and a 1088-byte ciphertext, far larger than a 32-byte X25519 public key ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [RFC 7748: Elliptic Curves for Security](https://www.rfc-editor.org/rfc/rfc7748))
-
-FIPS 203 lists those ML-KEM-768 lengths. ML-KEM-1024 uses a 1568-byte encapsulation key and a 1568-byte ciphertext ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). An X25519 public key is 32 bytes ([RFC 7748: Elliptic Curves for Security](https://www.rfc-editor.org/rfc/rfc7748)).
-
-#### Further learning
-
-- **Reading focus:** Compare the FIPS 203 length table with the 32-byte X25519 key ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [RFC 7748: Elliptic Curves for Security](https://www.rfc-editor.org/rfc/rfc7748)).
-
-### Q525
-
-- **Domain:** PQC
-- **Subtopic:** digital-signatures
-- **Subtopic name:** Post-Quantum Digital Signatures
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-For controlled software or firmware signing, where the number of signatures is limited and the index cannot be rolled back ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf))
-
-SP 800-208 specifies LMS and XMSS for applications that can protect signature state, such as signing software or firmware from a controlled build system ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)). A high-volume TLS signer that might restore an old virtual-machine image is a poor fit for that state rule.
-
-#### Further learning
-
-- **Reading focus:** Read the SP 800-208 use cases and the requirement that each index is used once ([NIST SP 800-208: Stateful Hash-Based Signatures](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
-
 ## Standards, Compliance & Roadmaps
 
-Standards and policy documents, regulation, compliance scope, frameworks, validation, publication status and roadmap dates. This domain contains 75 questions; the same ID and metadata appear in the question and answer files.
+Standards and policy documents, regulation, compliance scope, frameworks, validation, publication status and roadmap dates. This domain contains 95 questions; the same ID and metadata appear in the question and answer files.
 
 | Subtopic | Questions |
 |---|---:|
-| Standards Bodies and Document Identification | 17 |
+| Standards Bodies and Document Identification | 23 |
 | Algorithm Standardization and Publication Status | 10 |
-| Validation, Certification and Assurance Scope | 7 |
-| Regulatory and Policy Applicability | 13 |
+| Validation, Certification and Assurance Scope | 10 |
+| Regulatory and Policy Applicability | 19 |
 | Roadmaps, Transition Milestones and Dates | 24 |
-| Risk Frameworks and Control Guidance | 4 |
+| Risk Frameworks and Control Guidance | 9 |
 
 ### Q023
 
@@ -3861,6 +4835,132 @@ Exam trap: Reversing the purposes of the Zero Trust and incident-response public
 #### Further learning
 
 - **Reading focus:** Read the official publication abstracts and dates; distinguish resource-focused zero-trust architecture from CSF-aligned incident-response guidance ([NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final); [NIST SP 800-61 Revision 3: Incident Response](https://csrc.nist.gov/pubs/sp/800/61/r3/final)).
+
+### Q514
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+To evaluate and standardize public-key algorithms intended to resist quantum attacks ([NIST: Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography); [NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf))
+
+NIST's project collected public-key submissions, subjected them to public analysis, and standardized algorithms for key encapsulation and signatures. FIPS 203, 204, and 205 are results of that work ([NIST: Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography); [NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). The project did not build a quantum computer, and it did not withdraw symmetric algorithms such as AES.
+
+#### Further learning
+
+- **Reading focus:** Read the project scope as public-key standardization, then connect it to FIPS 203, 204, and 205 rather than to a ban on symmetric cryptography ([NIST: Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography); [NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)).
+
+### Q581
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** C
+
+ISO 27799
+
+**Explanation:** ISO 27799 adapts information-security control guidance to health information. It is not an encryption-algorithm specification; FIPS 203 addresses ML-KEM, while SP 800-208 addresses particular stateful signature schemes. ([ISO: Health informatics and health-information security standards](https://www.iso.org/news/thought-leadership/health-informatics)).
+
+#### Further learning
+
+- **Reading focus:** Match healthcare security guidance to its sector and distinguish it from an algorithm standard. ([ISO: Health informatics and health-information security standards](https://www.iso.org/news/thought-leadership/health-informatics)).
+
+### Q582
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+ISO/IEC 27017
+
+**Explanation:** ISO/IEC 27017 provides cloud-specific security control guidance for cloud service providers and customers. The public scope description is useful for identifying the document, but it does not substitute for the full applicable standard or establish PQC algorithm validation. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish cloud-control responsibilities from algorithm specifications. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html)).
+
+### Q583
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** B
+
+It provides a migration framework that must be applied alongside the operator's applicable legal and regulatory requirements
+
+**Explanation:** ETSI TR 104 016 describes a repeatable framework for prioritizing and executing enterprise quantum-safe migrations. Its status as a technical report does not itself create a worldwide statutory deadline or certify an operator's cryptographic modules. ([ETSI TR 104 016 V1.1.1: Quantum-safe migration framework](https://www.etsi.org/deliver/etsi_tr/104000_104099/104016/01.01.01_60/tr_104016v010101p.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Separate technical migration guidance from independently applicable legal obligations. ([ETSI TR 104 016 V1.1.1: Quantum-safe migration framework](https://www.etsi.org/deliver/etsi_tr/104000_104099/104016/01.01.01_60/tr_104016v010101p.pdf)).
+
+### Q590
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+LMS and XMSS, including their specified multi-tree variants
+
+**Explanation:** SP 800-208 specifies LMS and XMSS and their multi-tree variants HSS and XMSSMT. These are stateful hash-based digital signatures, not KEMs, symmetric ciphers or the complete set of all NIST post-quantum signature algorithms. ([NIST SP 800-208: Stateful Hash-Based Signature Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Match the publication number to its specific algorithm and state-management scope. ([NIST SP 800-208: Stateful Hash-Based Signature Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
+
+### Q591
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** C
+
+SP 800-208 addresses stateful hash-based schemes, whereas FIPS 205 specifies the stateless SLH-DSA scheme
+
+**Explanation:** SP 800-208 covers stateful hash-based signatures, while FIPS 205 specifies stateless SLH-DSA. Their common hash-based foundation does not make operational state requirements or implementation choices interchangeable. ([NIST SP 800-208: Stateful Hash-Based Signature Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf); [NIST FIPS 205: Stateless Hash-Based Digital Signature Standard](https://csrc.nist.gov/pubs/fips/205/final)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish hash-based family membership from stateful versus stateless operation. ([NIST SP 800-208: Stateful Hash-Based Signature Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf); [NIST FIPS 205: Stateless Hash-Based Digital Signature Standard](https://csrc.nist.gov/pubs/fips/205/final)).
+
+### Q592
+
+- **Domain:** SCR
+- **Subtopic:** standards-bodies-and-documents
+- **Subtopic name:** Standards Bodies and Document Identification
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** B
+
+Match the document to the selected signature scheme and operational requirements; SP 800-208 has a specific stateful hash-signature scope
+
+**Explanation:** SP 800-208 is scoped to particular stateful hash-based signature schemes and carefully controlled state management. Applicability depends on the selected scheme and operational environment, not simply on whether an organization is a bank; it is not the mandatory umbrella for every PQC signature choice. ([NIST SP 800-208: Stateful Hash-Based Signature Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Choose documents by cryptographic function, scheme and operational scope, not sector alone. ([NIST SP 800-208: Stateful Hash-Based Signature Schemes](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-208.pdf)).
 
 ### Q009
 
@@ -4179,6 +5279,60 @@ Exam trap: Treating organizational ISMS certification as cryptographic implement
 
 - **Reading focus:** Contrast organizational ISMS scope with the CMVP explanation of module and algorithm evidence; one certification does not substitute for another ([ISO/IEC 27001:2022: ISMS Requirements](https://www.iso.org/standard/27001); [NIST CMVP: Understanding Module Validation](https://csrc.nist.gov/projects/cryptographic-module-validation-program/validated-modules)).
 
+### Q597
+
+- **Domain:** SCR
+- **Subtopic:** validation-and-certification
+- **Subtopic name:** Validation, Certification and Assurance Scope
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** D
+
+Record the applicable edition, assessed service scope and supporting evidence rather than relying on an unqualified standard number
+
+**Explanation:** ISO/IEC 27017's guidance has a defined cloud-service scope and standards have editions and revision cycles. A procurement claim should therefore identify the edition, assessed service and supporting evidence instead of implying automatic coverage of every service or later revision. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html)).
+
+#### Further learning
+
+- **Reading focus:** Scope assurance claims by edition, service and assessment evidence. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html)).
+
+### Q598
+
+- **Domain:** SCR
+- **Subtopic:** validation-and-certification
+- **Subtopic name:** Validation, Certification and Assurance Scope
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** C
+
+It provides health-information security guidance, while algorithm selection and implementation assurance require their own assessment
+
+**Explanation:** ISO 27799 provides health-information security guidance and is technology-neutral rather than proof of every cryptographic component's quantum resistance. Algorithm selection, implementation assurance and applicable legal duties require their own assessment. ([ISO: Health informatics and health-information security standards](https://www.iso.org/news/thought-leadership/health-informatics)).
+
+#### Further learning
+
+- **Reading focus:** Separate organizational security guidance from cryptographic implementation assurance. ([ISO: Health informatics and health-information security standards](https://www.iso.org/news/thought-leadership/health-informatics)).
+
+### Q599
+
+- **Domain:** SCR
+- **Subtopic:** validation-and-certification
+- **Subtopic name:** Validation, Certification and Assurance Scope
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** A
+
+Evidence specific to the claimed algorithm implementation and validation scope, separately from cloud-control assurance
+
+**Explanation:** ISO/IEC 27017 addresses cloud controls, whereas algorithm validation tests a specified cryptographic implementation within a defined scope. Request evidence for the actual ML-KEM validation claim rather than treating cloud-control assurance as a substitute. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html); [NIST: Cryptographic Algorithm Validation Program](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program)).
+
+#### Further learning
+
+- **Reading focus:** Match each assurance artifact to the claim and implementation it actually covers. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html); [NIST: Cryptographic Algorithm Validation Program](https://csrc.nist.gov/projects/cryptographic-algorithm-validation-program)).
+
 ### Q177
 
 - **Domain:** SCR
@@ -4434,6 +5588,114 @@ Exam trap: Converting a technology-neutral, risk-based duty into a named algorit
 #### Further learning
 
 - **Reading focus:** Read Article 32 on risk-appropriate security and Article 99 on application; distinguish general security obligations from a named PQC algorithm mandate ([EU Regulation 2016/679: GDPR](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng)).
+
+### Q584
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** A
+
+Distinguish the regulation's application date and resilience obligations from a separately established PQC-specific deployment requirement
+
+**Explanation:** DORA addresses digital operational resilience in the financial sector, and Article 64 sets its application date at 17 January 2025. That application date is not a statement that every cryptographic mechanism had to be post-quantum by then; assess any PQC-specific obligation from its actual source and scope. ([EUR-Lex: DORA, Regulation (EU) 2022/2554, Articles 1, 2 and 64](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng)).
+
+#### Further learning
+
+- **Reading focus:** Separate a regulation's application date from a named cryptographic deployment deadline. ([EUR-Lex: DORA, Regulation (EU) 2022/2554, Articles 1, 2 and 64](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng)).
+
+### Q585
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** D
+
+It supports assessing appropriate security measures in light of risk and the state of the art, without itself prescribing a universal ML-KEM deployment date
+
+**Explanation:** GDPR Article 32 requires appropriate security in light of risks, context and the state of the art. In this hypothetical long-lived-data setting, that supports reviewing cryptographic protection over time; Article 32 itself does not prescribe ML-KEM or one universal deployment date. ([EUR-Lex: GDPR, Regulation (EU) 2016/679, Article 32](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng)).
+
+#### Further learning
+
+- **Reading focus:** Apply a technology-neutral security duty without inventing a named-algorithm deadline. ([EUR-Lex: GDPR, Regulation (EU) 2016/679, Article 32](https://eur-lex.europa.eu/eli/reg/2016/679/oj/eng)).
+
+### Q586
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+It concerns policies and procedures on cryptography and, where appropriate, encryption; specific obligations must be assessed in their applicable legal context
+
+**Explanation:** NIS2 Article 21(2)(h) addresses policies and procedures concerning cryptography and, where appropriate, encryption as part of proportionate cybersecurity risk management. Its application must be read with the relevant legal context, including applicable national measures; it is not an ML-KEM parameter-set specification. ([EUR-Lex: NIS2, Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish a cryptography-policy obligation from algorithm certification or parameter selection. ([EUR-Lex: NIS2, Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng)).
+
+### Q587
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+Documenting and reviewing cryptographic cipher suites and protocols at least once every 12 months
+
+**Explanation:** PCI DSS v4.0.1 requirement 12.3.3 calls for documented cipher suites and protocols, review at least once every 12 months, and attention to their continued viability. It does not establish the distractors' universal ML-KEM replacement date. ([PCI SSC: PCI DSS v4.0.1, requirement 12.3.3](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0_1.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Check the requirement and version rather than inferring a PQC deadline from its existence. ([PCI SSC: PCI DSS v4.0.1, requirement 12.3.3](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0_1.pdf)).
+
+### Q588
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** B
+
+Continue the required cryptographic review and manage emerging weaknesses rather than equating the absence of one deadline with the absence of obligations
+
+**Explanation:** Requirement 12.3.3 includes inventory, continued-viability monitoring and response planning for anticipated cryptographic vulnerabilities. Not identifying a universal PQC date therefore does not justify stopping cryptographic review or treating existing algorithms as permanently suitable. ([PCI SSC: PCI DSS v4.0.1, requirement 12.3.3](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0_1.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Separate absence of one asserted deadline from ongoing review and risk-management duties. ([PCI SSC: PCI DSS v4.0.1, requirement 12.3.3](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0_1.pdf)).
+
+### Q596
+
+- **Domain:** SCR
+- **Subtopic:** regulatory-and-policy-scope
+- **Subtopic name:** Regulatory and Policy Applicability
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** B
+
+Map each requirement to the relevant entity, jurisdiction, sector, document status and evidence obligation
+
+**Explanation:** A defensible matrix distinguishes legal sources from standards and guidance, and determines which obligations apply to each entity and system. This is a practical application of context-sensitive risk management, not a claim that one technical standard overrides sectoral or national law. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf); [EUR-Lex: NIS2, Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng); [EUR-Lex: DORA, Regulation (EU) 2022/2554, Articles 1, 2 and 64](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng)).
+
+#### Further learning
+
+- **Reading focus:** Record applicability and authority before declaring a cross-jurisdiction checklist legally sufficient. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf); [EUR-Lex: NIS2, Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng); [EUR-Lex: DORA, Regulation (EU) 2022/2554, Articles 1, 2 and 64](https://eur-lex.europa.eu/eli/reg/2022/2554/oj/eng)).
 
 ### Q097
 
@@ -4993,23 +6255,95 @@ Exam trap: Confusing CSF organizational maturity Tiers with NIST algorithm secur
 
 - **Reading focus:** Read Section 3.2 and Appendix B on the four Tiers; risk-governance rigor is not a cryptographic security category ([NIST Cybersecurity Framework 2.0](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
 
-### Q514
+### Q589
 
 - **Domain:** SCR
-- **Subtopic:** standards-bodies-and-documents
-- **Subtopic name:** Standards Bodies and Document Identification
-- **Difficulty:** Foundational
-- **Tags:** conceptual
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
 
-**Correct answer:** C
+**Correct answer:** D
 
-To evaluate and standardize public-key algorithms intended to resist quantum attacks ([NIST: Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography); [NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf))
+Clarifying responsibility for managed encryption, customer-controlled keys, configuration changes, evidence and service-exit arrangements
 
-NIST's project collected public-key submissions, subjected them to public analysis, and standardized algorithms for key encapsulation and signatures. FIPS 203, 204, and 205 are results of that work ([NIST: Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography); [NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)). The project did not build a quantum computer, and it did not withdraw symmetric algorithms such as AES.
+**Explanation:** Cloud services distribute control and responsibilities between providers and customers. The proposed contract discussion applies that principle to a hypothetical migration by clarifying who controls keys and configurations, supplies evidence and supports an orderly service exit; it does not assume either party controls everything. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html)).
 
 #### Further learning
 
-- **Reading focus:** Read the project scope as public-key standardization, then connect it to FIPS 203, 204, and 205 rather than to a ban on symmetric cryptography ([NIST: Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography); [NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf)).
+- **Reading focus:** Turn cloud shared responsibilities into explicit migration ownership and evidence requests. ([ISO: ISO/IEC 27017 cloud-security guidance and responsibilities](https://www.iso.org/news/2015/12/Ref2032.html)).
+
+### Q593
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** D
+
+It can provide a sector-relevant baseline of outcomes from which the organization develops its own profile
+
+**Explanation:** A CSF Community Profile is a shared baseline of outcomes for a sector, technology, threat or other common interest. An organization can use it to develop its own Target Profile, but must still tailor its approach to its own requirements and risks. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish a shared baseline from an organization's own Current and Target Profiles. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
+
+### Q594
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** A
+
+Traceable inventory improvements, completed remediation actions and test evidence mapped to those outcomes
+
+**Explanation:** CSF Profiles support identifying gaps, prioritizing an action plan and tracking improvements toward selected outcomes. In this hypothetical PQC program, inventory changes, remediation records and mapped tests supply evidence of progress; the existence of a profile alone does not show that outcomes were achieved. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Connect selected outcomes to implemented actions and verification evidence. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
+
+### Q595
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** C
+
+The Functions are related and should be addressed concurrently, with activities operating continuously or when needed
+
+**Explanation:** CSF 2.0 states that the Functions should be addressed concurrently. Govern, Identify, Protect and Detect activities operate continuously, while Respond and Recover should be ready at all times and occur as needed; the Functions are not one-time stages that can be permanently closed. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
+
+#### Further learning
+
+- **Reading focus:** Avoid interpreting the framework as a sequential project checklist. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf)).
+
+### Q600
+
+- **Domain:** SCR
+- **Subtopic:** frameworks-and-controls
+- **Subtopic name:** Risk Frameworks and Control Guidance
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** B
+
+Applicable source and version, legal or advisory status, affected systems, required outcome, responsible owner and verification evidence
+
+**Explanation:** A useful matrix makes the source, applicability, authority, owner and evidence traceable for each required outcome. This is a practical synthesis of risk-framework and scoped-source principles, not a requirement that every organization use one specific table layout; a product's algorithm name alone cannot establish organization-wide compliance. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf); [EUR-Lex: NIS2, Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng)).
+
+#### Further learning
+
+- **Reading focus:** Distinguish implementation features from documented, applicable compliance evidence. ([NIST CSF 2.0: Functions, Organizational Profiles and Community Profiles](https://nvlpubs.nist.gov/nistpubs/CSWP/NIST.CSWP.29.pdf); [EUR-Lex: NIS2, Directive (EU) 2022/2555, Article 21](https://eur-lex.europa.eu/eli/dir/2022/2555/oj/eng)).
 
 ## PQC Migration & Program Management
 
@@ -5564,6 +6898,24 @@ Exam trap: Confusing a server-side or desktop update with coverage of every clie
 #### Further learning
 
 - **Reading focus:** Study cryptographic discovery and dependency records; distinguish missing evidence, available capabilities and actual deployed use ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines)).
+
+### Q522
+
+- **Domain:** MIG
+- **Subtopic:** discovery-inventory-and-cbom
+- **Subtopic name:** Discovery, Inventory and CBOM
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** C
+
+A software bill lists components; a cryptographic bill records the algorithms, parameters, and cryptographic dependencies, which the software list does not provide by itself ([CycloneDX: CBOM](https://cyclonedx.org/capabilities/cbom/))
+
+A software bill of materials identifies components and versions. A cryptographic bill of materials describes the cryptographic assets and dependencies associated with that estate ([CycloneDX: CBOM](https://cyclonedx.org/capabilities/cbom/)). It does not replace the software inventory, and it is not a store of private keys.
+
+#### Further learning
+
+- **Reading focus:** Use a CBOM to see algorithms and dependencies, and keep that separate from a component list that does not name the cryptography ([CycloneDX: CBOM](https://cyclonedx.org/capabilities/cbom/)).
 
 ### Q019
 
@@ -6431,6 +7783,24 @@ Exam trap: Swapping the meanings of parallel and backwards-compatible migration 
 
 - **Reading focus:** Read the report title/status and Section 6.4 migration approaches; pure, parallel and backwards-compatible strategies have different dependency and residual-risk implications ([ETSI TR 104 016: Migration Framework](https://www.etsi.org/deliver/etsi_tr/104000_104099/104016/01.01.01_60/tr_104016v010101p.pdf)).
 
+### Q510
+
+- **Domain:** MIG
+- **Subtopic:** strategies-and-dependencies
+- **Subtopic name:** Migration Strategies, Dependencies and Crypto-Agility
+- **Difficulty:** Applied
+- **Tags:** scenario, business_scenario
+
+**Correct answer:** A
+
+Use a modular cryptographic abstraction, centralized policy, automated algorithm negotiation, and fallback tests in a staging environment ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines); [CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf))
+
+Interoperability failures are a reason to test negotiation and fallback before production, not a reason to turn validation off or return to hardcoded RSA ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines)). A defined cryptographic interface and a checked policy let the organization change algorithms without scattering one-off code ([CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf)). Manual daily replacement of symmetric keys does not fix a broken negotiation path.
+
+#### Further learning
+
+- **Reading focus:** Treat crypto-agility as a controlled interface, policy, and test practice; availability workarounds that disable validation are not a migration strategy ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines); [CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf)).
+
 ### Q050
 
 - **Domain:** MIG
@@ -7037,42 +8407,6 @@ Exam trap: A large sample from one location is not proof of enterprise-wide adop
 
 - **Reading focus:** Review actual-use verification and representative interoperability testing; successful samples do not establish fleet coverage or rejection of forbidden fallback ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines); [NIST SP 1800-38C: Interoperability and Performance Experiments (December 2023 Preliminary Draft)](https://www.nccoe.nist.gov/sites/default/files/2023-12/pqc-migration-nist-sp-1800-38c-preliminary-draft.pdf)).
 
-### Q510
-
-- **Domain:** MIG
-- **Subtopic:** strategies-and-dependencies
-- **Subtopic name:** Migration Strategies, Dependencies and Crypto-Agility
-- **Difficulty:** Applied
-- **Tags:** scenario, business_scenario
-
-**Correct answer:** A
-
-Use a modular cryptographic abstraction, centralized policy, automated algorithm negotiation, and fallback tests in a staging environment ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines); [CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf))
-
-Interoperability failures are a reason to test negotiation and fallback before production, not a reason to turn validation off or return to hardcoded RSA ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines)). A defined cryptographic interface and a checked policy let the organization change algorithms without scattering one-off code ([CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf)). Manual daily replacement of symmetric keys does not fix a broken negotiation path.
-
-#### Further learning
-
-- **Reading focus:** Treat crypto-agility as a controlled interface, policy, and test practice; availability workarounds that disable validation are not a migration strategy ([UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines); [CISA, NSA, and NIST: Quantum Readiness](https://www.nccoe.nist.gov/sites/default/files/2023-08/quantum-readiness-fact-sheet.pdf)).
-
-### Q522
-
-- **Domain:** MIG
-- **Subtopic:** discovery-inventory-and-cbom
-- **Subtopic name:** Discovery, Inventory and CBOM
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** C
-
-A software bill lists components; a cryptographic bill records the algorithms, parameters, and cryptographic dependencies, which the software list does not provide by itself ([CycloneDX: CBOM](https://cyclonedx.org/capabilities/cbom/))
-
-A software bill of materials identifies components and versions. A cryptographic bill of materials describes the cryptographic assets and dependencies associated with that estate ([CycloneDX: CBOM](https://cyclonedx.org/capabilities/cbom/)). It does not replace the software inventory, and it is not a store of private keys.
-
-#### Further learning
-
-- **Reading focus:** Use a CBOM to see algorithms and dependencies, and keep that separate from a component list that does not name the cryptography ([CycloneDX: CBOM](https://cyclonedx.org/capabilities/cbom/)).
-
 ## Protocols, Implementation & Testing
 
 Protocol behavior, deployment configuration, cryptographic implementation, interoperability, diagnostic testing and performance. This domain contains 93 questions; the same ID and metadata appear in the question and answer files.
@@ -7385,6 +8719,60 @@ Exam trap: Do not use protocol version as a proxy for negotiated cryptographic a
 #### Further learning
 
 - **Reading focus:** Compare negotiated key establishment with certificate authentication and the quantum-vulnerable algorithm families; neither a protocol version nor a cipher name establishes complete PQC protection ([RFC 8446: TLS 1.3](https://www.rfc-editor.org/rfc/rfc8446); [NIST IR 8547: Draft Transition Guidance](https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8547.ipd.pdf)).
+
+### Q505
+
+- **Domain:** IPT
+- **Subtopic:** tls
+- **Subtopic name:** TLS Negotiation and Channel Protection
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+The code point 0x11EC (X25519MLKEM768) ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024); [IANA: TLS Supported Groups](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8))
+
+IANA registers X25519MLKEM768 as TLS Supported Group 4588, which is 0x11EC. It combines X25519 with ML-KEM-768 and is marked recommended ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024); [IANA: TLS Supported Groups](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8)). 0x0023 and 0x002F are not that hybrid group, and 0xFFFF is not the registered value.
+
+#### Further learning
+
+- **Reading focus:** Read the IANA Supported Groups entry for value 4588 and the RFC 10024 registration, and keep cipher-suite numbers separate from group code points ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024); [IANA: TLS Supported Groups](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8)).
+
+### Q523
+
+- **Domain:** IPT
+- **Subtopic:** tls
+- **Subtopic name:** TLS Negotiation and Channel Protection
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+The specified shared secret is the concatenation of the ML-KEM shared secret and the X25519 shared secret, and TLS then runs its key schedule ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024))
+
+RFC 10024 defines the X25519MLKEM768 shared secret as that concatenation. TLS 1.3 uses the result in its existing key schedule ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024)). This is a specified construction. It is not permission to concatenate two secrets in an application that has no analyzed combiner.
+
+#### Further learning
+
+- **Reading focus:** Read the RFC 10024 shared-secret construction, then keep it separate from an ad-hoc concatenation that has no specified key schedule ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024)).
+
+### Q524
+
+- **Domain:** IPT
+- **Subtopic:** tls
+- **Subtopic name:** TLS Negotiation and Channel Protection
+- **Difficulty:** Applied
+- **Tags:** conceptual
+
+**Correct answer:** B
+
+A post-quantum certificate chain, or a key share such as ML-KEM-1024 plus handshake overhead, can exceed a typical 1500-byte frame and be split across packets ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf))
+
+An ML-KEM-768 encapsulation key is 1184 bytes, so that key alone can fit in a 1500-byte Ethernet frame. An ML-KEM-1024 encapsulation key or ciphertext is 1568 bytes, and ML-DSA or SLH-DSA certificate material is larger still ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)). Those messages can be segmented, which adds failure modes on paths that mishandle fragmentation.
+
+#### Further learning
+
+- **Reading focus:** Compare the FIPS 203 and FIPS 204 lengths with a 1500-byte frame, and do not treat every ML-KEM-768 key share as larger than that frame by itself ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)).
 
 ### Q366
 
@@ -8830,60 +10218,6 @@ Exam trap: A benchmark result without tested version and configuration may not a
 
 - **Reading focus:** Use the report’s documented test configurations, baselines, latency and interoperability experiments to design a comparable measurement; perform the question’s arithmetic on its own stated values ([NIST SP 1800-38C: Interoperability and Performance Experiments (December 2023 Preliminary Draft)](https://www.nccoe.nist.gov/sites/default/files/2023-12/pqc-migration-nist-sp-1800-38c-preliminary-draft.pdf); [UK NCSC: PQC Migration Timelines](https://www.ncsc.gov.uk/guidance/pqc-migration-timelines)).
 
-### Q505
-
-- **Domain:** IPT
-- **Subtopic:** tls
-- **Subtopic name:** TLS Negotiation and Channel Protection
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** A
-
-The code point 0x11EC (X25519MLKEM768) ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024); [IANA: TLS Supported Groups](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8))
-
-IANA registers X25519MLKEM768 as TLS Supported Group 4588, which is 0x11EC. It combines X25519 with ML-KEM-768 and is marked recommended ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024); [IANA: TLS Supported Groups](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8)). 0x0023 and 0x002F are not that hybrid group, and 0xFFFF is not the registered value.
-
-#### Further learning
-
-- **Reading focus:** Read the IANA Supported Groups entry for value 4588 and the RFC 10024 registration, and keep cipher-suite numbers separate from group code points ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024); [IANA: TLS Supported Groups](https://www.iana.org/assignments/tls-parameters/tls-parameters.xhtml#tls-parameters-8)).
-
-### Q523
-
-- **Domain:** IPT
-- **Subtopic:** tls
-- **Subtopic name:** TLS Negotiation and Channel Protection
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-The specified shared secret is the concatenation of the ML-KEM shared secret and the X25519 shared secret, and TLS then runs its key schedule ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024))
-
-RFC 10024 defines the X25519MLKEM768 shared secret as that concatenation. TLS 1.3 uses the result in its existing key schedule ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024)). This is a specified construction. It is not permission to concatenate two secrets in an application that has no analyzed combiner.
-
-#### Further learning
-
-- **Reading focus:** Read the RFC 10024 shared-secret construction, then keep it separate from an ad-hoc concatenation that has no specified key schedule ([RFC 10024: PQ/T Hybrid Key Agreement for TLS 1.3](https://www.rfc-editor.org/rfc/rfc10024)).
-
-### Q524
-
-- **Domain:** IPT
-- **Subtopic:** tls
-- **Subtopic name:** TLS Negotiation and Channel Protection
-- **Difficulty:** Applied
-- **Tags:** conceptual
-
-**Correct answer:** B
-
-A post-quantum certificate chain, or a key share such as ML-KEM-1024 plus handshake overhead, can exceed a typical 1500-byte frame and be split across packets ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf))
-
-An ML-KEM-768 encapsulation key is 1184 bytes, so that key alone can fit in a 1500-byte Ethernet frame. An ML-KEM-1024 encapsulation key or ciphertext is 1568 bytes, and ML-DSA or SLH-DSA certificate material is larger still ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)). Those messages can be segmented, which adds failure modes on paths that mishandle fragmentation.
-
-#### Further learning
-
-- **Reading focus:** Compare the FIPS 203 and FIPS 204 lengths with a 1500-byte frame, and do not treat every ML-KEM-768 key share as larger than that frame by itself ([NIST FIPS 203: ML-KEM](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.203.pdf); [NIST FIPS 204: ML-DSA](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.204.pdf)).
-
 ## Cybersecurity Fundamentals
 
 Supporting cryptographic concepts, keys and secrets, authorization, passwords, application security, incident response and resilience. This domain contains 58 questions; the same ID and metadata appear in the question and answer files.
@@ -9081,6 +10415,24 @@ Exam trap: Do not treat full-disk encryption as protection from a compromised ru
 #### Further learning
 
 - **Reading focus:** Use Where to Perform Encryption and Secure Random Number Generation to connect the actual threat to the required control ([OWASP: Cryptographic Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cryptographic_Storage_Cheat_Sheet.html)).
+
+### Q506
+
+- **Domain:** CYB
+- **Subtopic:** cryptography-basics
+- **Subtopic name:** Supporting Cryptography Concepts
+- **Difficulty:** Foundational
+- **Tags:** conceptual
+
+**Correct answer:** A
+
+Symmetric block or stream ciphers ([NIST FIPS 197: AES](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf); [RFC 8439: ChaCha20 and Poly1305](https://www.rfc-editor.org/rfc/rfc8439); [NIST SP 800-67 Rev. 2: Triple DES](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-67r2.pdf))
+
+AES and 3DES are symmetric block ciphers, and ChaCha20 is a symmetric stream cipher. All three encrypt and decrypt with a shared secret key ([NIST FIPS 197: AES](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf); [RFC 8439: ChaCha20 and Poly1305](https://www.rfc-editor.org/rfc/rfc8439); [NIST SP 800-67 Rev. 2: Triple DES](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-67r2.pdf)). They are not public-key cryptosystems, not key-encapsulation mechanisms, and not hash functions. 3DES is a legacy algorithm; the question asks only which kind of cryptography these three names belong to.
+
+#### Further learning
+
+- **Reading focus:** Separate symmetric block and stream ciphers from public-key mechanisms, KEMs, and hash functions ([NIST FIPS 197: AES](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf); [RFC 8439: ChaCha20 and Poly1305](https://www.rfc-editor.org/rfc/rfc8439)).
 
 ### Q031
 
@@ -10005,24 +11357,6 @@ Exam trap: Do not assume a transport upgrade addresses an attacker using valid s
 #### Further learning
 
 - **Reading focus:** Map each data flow, trust boundary and attacker action; transport confidentiality, backend protection and authorization solve different problems ([OWASP: Threat Modeling Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html); [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final)).
-
-### Q506
-
-- **Domain:** CYB
-- **Subtopic:** cryptography-basics
-- **Subtopic name:** Supporting Cryptography Concepts
-- **Difficulty:** Foundational
-- **Tags:** conceptual
-
-**Correct answer:** A
-
-Symmetric block or stream ciphers ([NIST FIPS 197: AES](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf); [RFC 8439: ChaCha20 and Poly1305](https://www.rfc-editor.org/rfc/rfc8439); [NIST SP 800-67 Rev. 2: Triple DES](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-67r2.pdf))
-
-AES and 3DES are symmetric block ciphers, and ChaCha20 is a symmetric stream cipher. All three encrypt and decrypt with a shared secret key ([NIST FIPS 197: AES](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf); [RFC 8439: ChaCha20 and Poly1305](https://www.rfc-editor.org/rfc/rfc8439); [NIST SP 800-67 Rev. 2: Triple DES](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-67r2.pdf)). They are not public-key cryptosystems, not key-encapsulation mechanisms, and not hash functions. 3DES is a legacy algorithm; the question asks only which kind of cryptography these three names belong to.
-
-#### Further learning
-
-- **Reading focus:** Separate symmetric block and stream ciphers from public-key mechanisms, KEMs, and hash functions ([NIST FIPS 197: AES](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf); [RFC 8439: ChaCha20 and Poly1305](https://www.rfc-editor.org/rfc/rfc8439)).
 
 ## Reference and Revision Material
 

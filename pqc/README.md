@@ -9,9 +9,8 @@ No Node.js. No npm. Uses built-in Windows PowerShell for a tiny local server.
 
 ## Files
 
-- `pqc-questions.md` — 526 practice questions (Q001–Q526)
-- `domain-assign.js` — learning-domain assignment for every question
-- `pqc-answers.md` — answer keys + explanations + glossaries
+- `pqc-questions.md` — practice questions, each with its learning domain (`**Domain:**`)
+- `pqc-answers.md` — answer keys + explanations + learning links + glossaries
 - `bank-data.js` — embedded copy of those banks (for `file://` / offline)
 - `build-bank.ps1` — regenerates `bank-data.js` from the Markdown files
 - `index.html` / `app.js` / `styles.css` — the dashboard
@@ -23,7 +22,18 @@ No Node.js. No npm. Uses built-in Windows PowerShell for a tiny local server.
 
 **As a normal web page:** open `index.html` directly, or publish this folder on GitHub Pages. The page is static HTML, CSS, and JavaScript. When the Markdown files cannot be fetched (`file://`, or if fetch fails), the app uses the embedded bank in `bank-data.js`. A `.nojekyll` file is included so GitHub Pages serves the Markdown banks as plain files.
 
-## Refresh the bank after editing Markdown
+## Add or edit questions
+
+On a website (or local server), you usually only need to replace:
+
+- `pqc-questions.md`
+- `pqc-answers.md`
+
+Keep the same record format (`### Qnnn`, `**Domain:** QF|QR|QKD|PQC|SCR|MIG|IPT|CYB`, A–D options, and matching answers). The app counts questions and assigns domains from those files on every load — no hard-coded totals to edit.
+
+## Refresh the offline embed (optional)
+
+Only needed for `file://` / offline fallback via `bank-data.js`:
 
 ```powershell
 powershell -NoProfile -ExecutionPolicy Bypass -File .\build-bank.ps1
@@ -39,8 +49,10 @@ Then reopen the page. On http(s) (local server or GitHub Pages), the app prefers
 4. Check the domains to include (all eight start checked)
 5. Start
 
+In Practice mode, an **Additional details** button next to each question opens the related learning resources (from the answers file) in a new tab. Exam mode does not show it.
+
 The eight learning domains are Quantum Computing Foundations, Quantum Threats & Risk, Quantum Key Distribution, PQC Algorithms & Mechanisms, Standards Compliance & Roadmaps, PQC Migration & Program Management, Protocols Implementation & Testing, and Cybersecurity Fundamentals.
 
-Every exam is a shuffle. It gives every checked domain an equal share, then picks those questions at random from all 526 (Q001–Q526). Each question's domain is assigned in `domain-assign.js`. If no domain is checked, Start stays disabled.
+Every exam is a shuffle. It gives every checked domain an equal share, then picks those questions at random from the whole loaded bank. Each question's domain comes from its `**Domain:**` field in the Markdown. If no domain is checked, Start stays disabled.
 
 Question banks are loaded only from app files in this folder (`pqc-*.md` and/or `bank-data.js`). There is no in-app file upload.

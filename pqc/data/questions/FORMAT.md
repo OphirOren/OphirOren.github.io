@@ -6,6 +6,9 @@ Primary bank for this app:
 - `pqc-answers.md`
 - `bank-data.js` — generated embed for `file://` (run `build-bank.ps1` after Markdown edits)
 
+On http(s), editing the two Markdown files is enough. The app reads question count and
+`**Domain:**` codes (QF, QR, QKD, PQC, SCR, MIG, IPT, CYB) on every load.
+
 ## Questions (`pqc-questions.md`)
 
 Each `## ` section ends at the next `## ` heading. Two section types are recognized:
