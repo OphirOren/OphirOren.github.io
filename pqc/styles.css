@@ -676,9 +676,23 @@ button.link {
 }
 
 .details-btn {
-  font-size: 0.8rem;
-  padding: 0.3rem 0.6rem;
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 0.45rem 0.75rem;
   white-space: nowrap;
+}
+
+.details-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: #062028;
+}
+
+.details-btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .details-list {
