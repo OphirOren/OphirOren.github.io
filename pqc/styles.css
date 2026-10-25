@@ -1307,22 +1307,106 @@ button.link {
 }
 
 @media (max-width: 860px) {
-  html, body { overflow: auto; }
-  .app { height: auto; min-height: 100%; }
-  .screen { height: auto; }
+  html, body { height: auto; min-height: 100%; overflow-x: hidden; overflow-y: auto; }
+  .app { height: auto; min-height: 100vh; min-height: 100dvh; padding: max(0.65rem, env(safe-area-inset-top)) 0.75rem max(0.65rem, env(safe-area-inset-bottom)); }
+  .screen { display: flex; flex-direction: column; gap: 0.7rem; height: auto; min-height: 0; }
+  .topbar { align-items: flex-start; flex-wrap: wrap; }
+  .meta { max-width: 100%; }
   .setup-grid,
   .results-grid,
   .about-grid,
   .score-hero {
     grid-template-columns: 1fr;
   }
-  .nav-main,
+  .setup-grid,
+  .results-grid,
+  .about-grid {
+    min-height: auto;
+    overflow: visible;
+  }
+  .config,
+  .domains-panel,
+  .about-card,
+  .results-grid > .panel {
+    min-height: auto;
+    overflow: visible;
+  }
+  .domain-list,
+  .score-grid,
+  .missed-list,
+  .choices {
+    min-height: auto;
+    overflow: visible;
+  }
+  .question-panel {
+    display: flex;
+    flex-direction: column;
+    overflow: visible;
+  }
+  .nav-main {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .nav-main:has(#check-btn:not(.hidden)) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .nav-main button {
+    min-width: 0;
+    min-height: 44px;
+    padding: 0.6rem 0.35rem;
+    font-size: 0.85rem;
+    white-space: normal;
+  }
+  .qmap {
+    flex-wrap: nowrap;
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.1rem;
+    scrollbar-width: thin;
+  }
+  .qmap button {
+    flex: 0 0 2.75rem;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    height: 2.75rem;
+  }
+  .exam-bottom {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .exam-bottom .actions {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .screen button,
+  .screen .website-btn {
+    min-height: 44px;
+  }
+  .panel-head {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+  .end-review {
+    padding: max(0.65rem, env(safe-area-inset-top)) 0.65rem max(0.65rem, env(safe-area-inset-bottom));
+  }
+  .end-review-card {
+    max-height: 80vh;
+    max-height: 80dvh;
   }
   .domain-list {
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
   }
   .field.inline { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .app { padding-left: 0.6rem; padding-right: 0.6rem; }
+  .brand { gap: 0.55rem; }
+  .logo { width: 46px; height: 46px; }
+  .logo-sm { width: 40px; height: 40px; }
+  .topbar h1 { font-size: 1.2rem; }
+  .score-big { font-size: 2.6rem; }
+  .review-filters { gap: 0.35rem; }
+  .review-filters button { padding: 0.45rem 0.55rem; font-size: 0.75rem; }
 }

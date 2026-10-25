@@ -100,27 +100,83 @@
 
 /* --- התאמה למובייל (טלפונים) --- */
 @media (max-width: 768px) {
-    /* סידור המפות אחת מתחת לשנייה במקום גריד של 2x2 */
-    .grid-container {
-        grid-template-columns: 1fr !important;
-        grid-template-rows: repeat(4, 1fr) !important;
-        overflow-y: auto; /* מאפשר גלילה למטה לראות את כל המפות */
+    html, body {
+        height: auto;
+        min-height: 100%;
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 
-    /* הסתרת הלוגו המרכזי במובייל כדי שלא יחסום את כל המסך הקטן */
+    .grid-container {
+        grid-template-columns: 1fr !important;
+        grid-template-rows: none !important;
+        grid-auto-rows: minmax(50svh, auto);
+        height: auto;
+        min-height: 100vh;
+        min-height: 100svh;
+        width: 100%;
+        overflow: visible;
+    }
+
     #central-logo {
         display: none !important;
     }
 
-    /* התאמת גובה הריבועים שיהיה נוח לצפייה בנייד */
     .grid-item {
-        height: 50vh; 
+        height: 50svh;
+        min-height: 22rem;
         border-bottom: 2px solid #333;
     }
 
-    /* הסתרת כפתורים פחות קריטיים במובייל כדי לחסוך מקום בשורה */
-    .btn-tool:not(:last-child) {
-        display: none;
+    .control-bar {
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 6px;
+    }
+
+    select {
+        flex: 1 1 100%;
+        max-width: none;
+        min-height: 44px;
+        font-size: 14px;
+    }
+
+    .control-bar .btn-tool {
+        display: inline-flex;
+        flex: 1 1 calc(25% - 5px);
+        justify-content: center;
+        align-items: center;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 4px;
+        font-size: 0.7rem;
+    }
+
+    .footer-credit {
+        position: static;
+        padding: 8px;
+        text-align: center;
+    }
+
+    #max-overlay .max-header {
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 8px;
+    }
+
+    #max-overlay .max-header > div:last-child {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    #max-overlay select {
+        flex: 1 1 100%;
+        max-width: none;
+    }
+
+    #max-overlay button {
+        min-height: 44px;
     }
 }
 
