@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>5 Whys</title>
+    <meta
+      name="description"
+      content="A root cause analysis tool — ask Why five times to discover the true source of any problem."
+    />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="color-scheme" content="dark" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-PS50UXy6U1fK0D5YiyU8eOq8dDeHl8LHis3oGd2pAeY='; style-src 'sha256-zZBcxMYagaFhO/up1F68Uk60LjtvrylEiy0J9XoaUpo=' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' file:; object-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'none'; frame-src 'none'" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap"
+    />
+    <style>
+      :root {
+        --background: hsl(235, 25%, 10%);
+        --foreground: hsl(210, 40%, 98%);
+        --card: hsl(235, 22%, 14%);
+        --primary: hsl(265, 70%, 70%);
+        --primary-foreground: hsl(235, 25%, 10%);
+        --secondary: hsl(235, 18%, 20%);
+        --muted-foreground: hsl(215, 25%, 60%);
+        --destructive: hsl(0, 72%, 55%);
+        --border: hsl(235, 18%, 22%);
+        --why-1: hsl(0, 65%, 62%);
+        --why-2: hsl(15, 70%, 65%);
+        --why-3: hsl(35, 85%, 60%);
+        --why-4: hsl(48, 90%, 58%);
+        --why-5: hsl(145, 55%, 50%);
+        --why-1-muted: hsl(0, 40%, 20%);
+        --why-2-muted: hsl(15, 40%, 22%);
+        --why-3-muted: hsl(35, 45%, 22%);
+        --why-4-muted: hsl(48, 50%, 22%);
+        --why-5-muted: hsl(145, 35%, 20%);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        color-scheme: dark;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: var(--background);
+        color: var(--foreground);
+        font-family: Inter, system-ui, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button,
+      textarea {
+        font: inherit;
+      }
+
+      button {
+        cursor: pointer;
+      }
+
+      button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      button:focus-visible,
+      a:focus-visible {
+        outline: 2px solid var(--primary);
+        outline-offset: 2px;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      .page {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        padding: 2rem 1rem;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 72rem;
+        margin: 0 auto;
+        flex: 1;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        animation: slideDown 0.5s ease-out;
+      }
+
+      .logo {
+        display: block;
+        width: 100%;
+        height: auto;
+        max-width: 20rem;
+        margin: 0 auto;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.55);
+        outline: 1px solid rgb(255 255 255 / 0.1);
+      }
+
+      .tagline {
+        max-width: 32rem;
+        margin: 1rem auto 0;
+        color: var(--muted-foreground);
+        line-height: 1.65;
+      }
+
+      .landing {
+        display: grid;
+        gap: 1.5rem;
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      @media (min-width: 768px) {
+        .landing {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .panel {
+        border: 1px solid hsl(235 18% 22% / 0.5);
+        border-radius: 1rem;
+        padding: 1.25rem;
+      }
+
+      .panel-info {
+        background: hsl(235 22% 14% / 0.6);
+      }
+
+      .panel-form {
+        background: hsl(235 22% 14% / 0.8);
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.35);
+      }
+
+      .panel-title {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 0 0 0.75rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+
+      .panel-title svg {
+        width: 1rem;
+        height: 1rem;
+        color: var(--primary);
+        flex: none;
+      }
+
+      .prose {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+        line-height: 1.65;
+      }
+
+      .prose p {
+        margin: 0;
+      }
+
+      .emphasis {
+        color: var(--foreground);
+        font-weight: 500;
+      }
+
+      .example {
+        background: hsl(235 25% 10% / 0.4);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        margin-top: 0.25rem;
+      }
+
+      .example-label {
+        margin: 0 0 0.5rem;
+        color: var(--foreground);
+        font-size: 0.75rem;
+        font-weight: 500;
+      }
+
+      .example-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.125rem;
+        font-size: 11px;
+      }
+
+      .ex-1 { color: var(--why-1); }
+      .ex-2 { color: var(--why-2); }
+      .ex-3 { color: var(--why-3); }
+      .ex-4 { color: var(--why-4); }
+      .ex-5 { color: var(--why-5); }
+
+      .root-example {
+        margin: 0.5rem 0 0;
+        color: var(--foreground);
+        font-size: 11px;
+      }
+
+      .form-title {
+        margin: 0;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      textarea {
+        width: 100%;
+        resize: vertical;
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+        color: var(--foreground);
+        background: hsl(235 18% 18% / 0.3);
+        border: 1px solid hsl(235 18% 22% / 0.5);
+        min-height: 6.25rem;
+        line-height: 1.5;
+      }
+
+      textarea::placeholder {
+        color: var(--muted-foreground);
+      }
+
+      textarea:focus {
+        outline: none;
+        border-color: hsl(265 70% 70% / 0.5);
+        box-shadow: 0 0 0 2px hsl(265 70% 70% / 0.5);
+      }
+
+      .field-error {
+        margin: 0;
+        min-height: 1.25rem;
+        color: var(--destructive);
+        font-size: 0.875rem;
+      }
+
+      .field-error:empty {
+        display: none;
+      }
+
+      .start-button {
+        width: 100%;
+        border: 0;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        font-weight: 700;
+        color: var(--primary-foreground);
+        background: linear-gradient(90deg, var(--primary), hsl(265 70% 70% / 0.8));
+        box-shadow: 0 10px 15px -3px hsl(265 70% 70% / 0.2);
+      }
+
+      .start-button:hover:not(:disabled) {
+        opacity: 0.9;
+      }
+
+      .analysis {
+        max-width: 48rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .problem-bar {
+        background: hsl(235 22% 14% / 0.6);
+        border: 1px solid hsl(235 18% 22% / 0.5);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        font-size: 0.875rem;
+        overflow-wrap: anywhere;
+      }
+
+      .problem-kicker {
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+      }
+
+      .steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .why-card {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        border-radius: 0.75rem;
+        padding: 1rem;
+        border-left: 4px solid transparent;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.25);
+      }
+
+      .why-card.is-active {
+        box-shadow:
+          0 0 0 2px rgb(255 255 255 / 0.2),
+          0 4px 6px -1px rgb(0 0 0 / 0.25);
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      .why-card-1 {
+        border-left-color: var(--why-1);
+        background: linear-gradient(145deg, hsl(0 40% 20% / 0.8) 0%, var(--card) 60%);
+      }
+
+      .why-card-2 {
+        border-left-color: var(--why-2);
+        background: linear-gradient(145deg, hsl(15 40% 22% / 0.8) 0%, var(--card) 60%);
+      }
+
+      .why-card-3 {
+        border-left-color: var(--why-3);
+        background: linear-gradient(145deg, hsl(35 45% 22% / 0.8) 0%, var(--card) 60%);
+      }
+
+      .why-card-4 {
+        border-left-color: var(--why-4);
+        background: linear-gradient(145deg, hsl(48 50% 22% / 0.8) 0%, var(--card) 60%);
+      }
+
+      .why-card-5 {
+        border-left-color: var(--why-5);
+        background: linear-gradient(145deg, hsl(145 35% 20% / 0.8) 0%, var(--card) 60%);
+      }
+
+      .why-badge {
+        flex: none;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+        color: var(--background);
+        box-shadow: 0 1px 2px rgb(0 0 0 / 0.2);
+      }
+
+      .why-badge-1 { background: var(--why-1); }
+      .why-badge-2 { background: var(--why-2); }
+      .why-badge-3 { background: var(--why-3); }
+      .why-badge-4 { background: var(--why-4); }
+      .why-badge-5 { background: var(--why-5); }
+
+      .why-body {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .why-question {
+        margin: 0;
+        font-size: 0.875rem;
+        font-weight: 500;
+        line-height: 1.6;
+        color: hsl(210 40% 98% / 0.9);
+        overflow-wrap: anywhere;
+      }
+
+      .answer-box {
+        background: rgb(0 0 0 / 0.2);
+        border: 1px solid rgb(255 255 255 / 0.1);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+      }
+
+      .answer-label {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: hsl(210 40% 98% / 0.6);
+        font-size: 0.75rem;
+      }
+
+      .answer-text {
+        display: block;
+        font-size: 0.875rem;
+        color: hsl(210 40% 98% / 0.8);
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+
+      .why-card textarea {
+        min-height: 4.375rem;
+        border-radius: 0.5rem;
+        background: rgb(0 0 0 / 0.3);
+        border: 1px solid rgb(255 255 255 / 0.2);
+        font-size: 0.875rem;
+      }
+
+      .why-card textarea::placeholder {
+        color: hsl(210 40% 98% / 0.4);
+      }
+
+      .why-card textarea:focus {
+        border-color: rgb(255 255 255 / 0.3);
+        box-shadow: 0 0 0 2px rgb(255 255 255 / 0.3);
+      }
+
+      .why-error {
+        margin: 0;
+        color: var(--destructive);
+        font-size: 0.75rem;
+        background: hsl(0 72% 55% / 0.1);
+        border-radius: 0.25rem;
+        padding: 0.375rem 0.5rem;
+      }
+
+      .continue-button {
+        align-self: flex-start;
+        border: 1px solid rgb(255 255 255 / 0.2);
+        border-radius: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgb(255 255 255 / 0.2);
+        color: var(--foreground);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .continue-button:hover:not(:disabled) {
+        background: rgb(255 255 255 / 0.3);
+      }
+
+      .result {
+        text-align: center;
+        border: 2px solid var(--why-5);
+        border-radius: 0.75rem;
+        padding: 1.25rem;
+        background: linear-gradient(to bottom right, var(--card), hsl(235 22% 14% / 0.8));
+        box-shadow: 0 20px 25px -5px hsl(145 55% 50% / 0.1);
+        animation: fadeIn 0.4s ease-out;
+      }
+
+      .result-mark {
+        margin: 0;
+        font-size: 1.875rem;
+        line-height: 1.2;
+      }
+
+      .result h3 {
+        margin: 0.75rem 0 0;
+        font-size: 1.125rem;
+      }
+
+      .result-copy {
+        max-width: 28rem;
+        margin: 0.75rem auto 0;
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+        line-height: 1.6;
+      }
+
+      .result-cause {
+        margin-top: 0.75rem;
+        background: hsl(235 25% 10% / 0.5);
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+      }
+
+      .result-cause span {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: var(--muted-foreground);
+        font-size: 0.75rem;
+      }
+
+      .result-cause strong {
+        display: block;
+        overflow-wrap: anywhere;
+        white-space: pre-wrap;
+      }
+
+      .reset-button {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 0;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+        background: hsl(235 18% 20% / 0.8);
+        color: var(--foreground);
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
+
+      .reset-button:hover {
+        background: var(--secondary);
+      }
+
+      .reset-button svg {
+        width: 1rem;
+        height: 1rem;
+      }
+
+      .footer {
+        margin-top: 2rem;
+        padding: 1rem 0;
+        text-align: center;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: var(--muted-foreground);
+        font-size: 0.875rem;
+      }
+
+      .footer a {
+        display: inline-flex;
+        color: var(--primary);
+      }
+
+      .footer a:hover {
+        color: hsl(265 70% 70% / 0.8);
+      }
+
+      .footer svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      .is-hidden {
+        display: none !important;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <main class="wrap">
+        <h1 class="sr-only">5 Whys</h1>
+        <header class="header">
+          <img class="logo" src="5whys-logo.jpeg" alt="5 Whys" width="640" height="360" />
+          <p class="tagline">
+            A root cause analysis tool — ask "Why?" five times to discover the true source of any problem
+          </p>
+        </header>
+
+        <section id="landing" class="landing">
+          <article class="panel panel-info">
+            <h2 class="panel-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+              </svg>
+              What is the 5 Whys Method?
+            </h2>
+            <div class="prose">
+              <p>
+                The <span class="emphasis">5 Whys</span> is a root cause analysis technique developed by
+                <span class="emphasis">Taiichi Ohno</span> for the Toyota Production System.
+              </p>
+              <p>
+                By repeatedly asking <span class="emphasis">"Why?"</span> (typically five times), you uncover the fundamental cause of a problem.
+              </p>
+              <div class="example">
+                <p class="example-label">Example:</p>
+                <ul class="example-list">
+                  <li><span class="ex-1">Why #1:</span> Car won't start → Battery dead</li>
+                  <li><span class="ex-2">Why #2:</span> Battery dead → Alternator failed</li>
+                  <li><span class="ex-3">Why #3:</span> Alternator failed → Belt broke</li>
+                  <li><span class="ex-4">Why #4:</span> Belt broke → Beyond service life</li>
+                  <li><span class="ex-5">Why #5:</span> Beyond service life → No maintenance</li>
+                </ul>
+                <p class="root-example"><strong>Root cause:</strong> Lack of preventive maintenance</p>
+              </div>
+            </div>
+          </article>
+
+          <form id="problem-form" class="panel panel-form stack" autocomplete="off">
+            <h2 class="form-title" id="problem-heading">What problem do you want to analyze?</h2>
+            <textarea
+              id="problem-input"
+              aria-labelledby="problem-heading"
+              maxlength="500"
+              placeholder="Describe your problem here..."
+              autocomplete="off"
+              autocorrect="off"
+              autocapitalize="off"
+              spellcheck="false"
+            ></textarea>
+            <p id="problem-error" class="field-error" role="alert"></p>
+            <button id="start-button" class="start-button" type="submit" disabled>Start 5 Whys Analysis</button>
+          </form>
+        </section>
+
+        <section id="analysis" class="analysis is-hidden">
+          <div class="problem-bar">
+            <span class="problem-kicker">Problem: </span><span id="problem-label"></span>
+          </div>
+          <div id="steps" class="steps"></div>
+          <div id="result" class="result is-hidden">
+            <p class="result-mark" aria-hidden="true">🎉</p>
+            <h3>Excellent! You've found the root cause!</h3>
+            <p class="result-copy">Your final answer is likely the root cause of the original problem.</p>
+            <div class="result-cause">
+              <span>Root Cause:</span>
+              <strong id="root-cause"></strong>
+            </div>
+          </div>
+          <button id="reset-button" class="reset-button" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
+              <path d="M3 3v5h5"></path>
+            </svg>
+            Start New Analysis
+          </button>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <span>Built by Ophir Oren 2026</span>
+          <a
+            href="https://www.linkedin.com/in/ophiro/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Ophir Oren on LinkedIn"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      "use strict";
+
+      (function () {
+        var PROBLEM_MIN = 3;
+        var ANSWER_MIN = 1;
+        var TEXT_MAX = 500;
+        var EVENTS = [
+          "onabort", "onafterprint", "onanimationcancel", "onanimationend", "onanimationiteration",
+          "onanimationstart", "onauxclick", "onbeforeprint", "onbeforeunload", "onbegin", "onblur",
+          "oncancel", "oncanplay", "oncanplaythrough", "onchange", "onclick", "onclose",
+          "oncontextmenu", "oncopy", "oncuechange", "oncut", "ondblclick", "ondrag", "ondragend",
+          "ondragenter", "ondragleave", "ondragover", "ondragstart", "ondrop", "ondurationchange",
+          "onemptied", "onend", "onended", "onerror", "onfocus", "onfocusin", "onfocusout",
+          "onformdata", "ongotpointercapture", "onhashchange", "oninput", "oninvalid", "onkeydown",
+          "onkeypress", "onkeyup", "onload", "onloadeddata", "onloadedmetadata", "onloadstart",
+          "onlostpointercapture", "onmessage", "onmousedown", "onmouseenter", "onmouseleave",
+          "onmousemove", "onmouseout", "onmouseover", "onmouseup", "onmousewheel", "onoffline",
+          "ononline", "onpagehide", "onpageshow", "onpaste", "onpause", "onplay", "onplaying",
+          "onpointercancel", "onpointerdown", "onpointerenter", "onpointerleave", "onpointermove",
+          "onpointerout", "onpointerover", "onpointerup", "onpopstate", "onprogress", "onratechange",
+          "onrepeat", "onreset", "onresize", "onscroll", "onsearch", "onseeked", "onseeking",
+          "onselect", "onshow", "onstalled", "onstorage", "onsubmit", "onsuspend", "ontimeupdate",
+          "ontoggle", "ontouchcancel", "ontouchend", "ontouchmove", "ontouchstart",
+          "ontransitioncancel", "ontransitionend", "ontransitionrun", "ontransitionstart",
+          "onunload", "onvolumechange", "onwaiting", "onwheel"
+        ];
+        var EVENT_HANDLER = new RegExp("\\b(?:" + EVENTS.join("|") + ")\\s*=", "i");
+        var CONTROL_CHARS = /[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u2028\u2029]/;
+        var BIDI_AND_INVISIBLE = /[\u202A-\u202E\u2066-\u2069\u200B-\u200F\uFEFF\u061C\u180E]/;
+        var SCHEME = /(?:^|[^a-z0-9])(?:javascript|vbscript|data)\s*:/i;
+        var ENCODED_MARKUP = /&(?:lt|gt|colon)\s*;?|&#\s*(?:x0*3[ce]|0*6[02])\s*;?/i;
+
+        var landing = document.getElementById("landing");
+        var analysis = document.getElementById("analysis");
+        var problemForm = document.getElementById("problem-form");
+        var problemInput = document.getElementById("problem-input");
+        var problemError = document.getElementById("problem-error");
+        var startButton = document.getElementById("start-button");
+        var problemLabel = document.getElementById("problem-label");
+        var stepsEl = document.getElementById("steps");
+        var resultEl = document.getElementById("result");
+        var rootCauseEl = document.getElementById("root-cause");
+        var resetButton = document.getElementById("reset-button");
+
+        var started = false;
+        var completed = false;
+        var problem = "";
+        var steps = [];
+
+        function element(tag, className, text) {
+          var node = document.createElement(tag);
+          if (className) node.className = className;
+          if (text !== undefined) node.textContent = text;
+          return node;
+        }
+
+        function dangerousReason(value) {
+          if (CONTROL_CHARS.test(value) || BIDI_AND_INVISIBLE.test(value)) return "Invalid content";
+          if (/[<>]/.test(value)) return "Invalid content";
+          if (/\bscript\b/i.test(value)) return "Invalid content";
+          if (SCHEME.test(value)) return "Invalid content";
+          if (ENCODED_MARKUP.test(value)) return "Invalid content";
+          if (EVENT_HANDLER.test(value)) return "Invalid content";
+          return "";
+        }
+
+        function validationError(value, min) {
+          if (value.length > TEXT_MAX) return "Text too long (max 500 characters)";
+          var danger = dangerousReason(value);
+          if (danger) return danger;
+          if (value.trim().length < min) {
+            return min >= PROBLEM_MIN
+              ? "Problem must be at least 3 characters"
+              : "Write an answer to continue";
+          }
+          return "";
+        }
+
+        function questionFor(text) {
+          return 'Why is "' + text + '" happening?';
+        }
+
+        function syncStartButton() {
+          var value = problemInput.value;
+          var danger = dangerousReason(value);
+          var tooLong = value.length > TEXT_MAX;
+          var trimmedLength = value.trim().length;
+          startButton.disabled = trimmedLength === 0 || !!danger || tooLong;
+          if (danger || tooLong) {
+            problemError.textContent = danger || "Text too long (max 500 characters)";
+          } else if (trimmedLength === 0 || trimmedLength >= PROBLEM_MIN) {
+            problemError.textContent = "";
+          }
+        }
+
+        function showAnalysis(focusAnswer) {
+          landing.classList.add("is-hidden");
+          analysis.classList.remove("is-hidden");
+          problemLabel.textContent = problem;
+          stepsEl.replaceChildren.apply(stepsEl, steps.map(function (step, index) {
+            return createCard(step, index);
+          }));
+          resultEl.classList.toggle("is-hidden", !completed);
+          rootCauseEl.textContent = completed ? steps[4].answer : "";
+          if (focusAnswer) {
+            var area = stepsEl.querySelector("textarea");
+            if (area) area.focus();
+          }
+        }
+
+        function createCard(step, index) {
+          var number = index + 1;
+          var isActive = started && !completed && index === steps.length - 1 && step.answer === "";
+          var card = element("article", "why-card why-card-" + number + (isActive ? " is-active" : ""));
+          card.appendChild(element("span", "why-badge why-badge-" + number, "Why #" + number));
+
+          var body = element("div", "why-body");
+          body.appendChild(element("p", "why-question", step.question));
+
+          if (step.answer) {
+            var box = element("div", "answer-box");
+            box.appendChild(element("span", "answer-label", "Answer:"));
+            box.appendChild(element("span", "answer-text", step.answer));
+            body.appendChild(box);
+          }
+
+          if (isActive) {
+            var area = element("textarea");
+            area.maxLength = TEXT_MAX;
+            area.placeholder = "Write your answer here...";
+            area.setAttribute("aria-label", "Answer for why " + number);
+            area.autocomplete = "off";
+            area.spellcheck = false;
+            area.setAttribute("autocorrect", "off");
+            area.setAttribute("autocapitalize", "off");
+
+            var error = element("p", "why-error");
+            error.setAttribute("role", "alert");
+            error.hidden = true;
+
+            var button = element("button", "continue-button", number < 5 ? "Continue →" : "Complete ✓");
+            button.type = "button";
+            button.disabled = true;
+
+            function refresh() {
+              var blocked = !!dangerousReason(area.value) || area.value.length > TEXT_MAX;
+              button.disabled = area.value.trim().length === 0 || blocked;
+              if (blocked) {
+                error.hidden = false;
+                error.textContent = dangerousReason(area.value) || "Text too long (max 500 characters)";
+              } else {
+                error.hidden = true;
+                error.textContent = "";
+              }
+            }
+
+            function submitAnswer() {
+              var message = validationError(area.value, ANSWER_MIN);
+              if (message) {
+                error.hidden = false;
+                error.textContent = message;
+                return;
+              }
+              var answer = area.value.trim();
+              steps[index].answer = answer;
+              if (index < 4) {
+                steps.push({ question: questionFor(answer), answer: "" });
+              } else {
+                completed = true;
+              }
+              showAnalysis(true);
+            }
+
+            area.addEventListener("input", refresh);
+            area.addEventListener("keydown", function (event) {
+              if (event.key === "Enter" && !event.shiftKey) {
+                event.preventDefault();
+                submitAnswer();
+              }
+            });
+            button.addEventListener("click", submitAnswer);
+            body.appendChild(area);
+            body.appendChild(error);
+            body.appendChild(button);
+          }
+
+          card.appendChild(body);
+          return card;
+        }
+
+        problemInput.addEventListener("input", syncStartButton);
+
+        problemForm.addEventListener("submit", function (event) {
+          event.preventDefault();
+          var message = validationError(problemInput.value, PROBLEM_MIN);
+          if (message) {
+            problemError.textContent = message;
+            return;
+          }
+          problemError.textContent = "";
+          problem = problemInput.value.trim();
+          steps = [{ question: questionFor(problem), answer: "" }];
+          completed = false;
+          started = true;
+          showAnalysis(true);
+        });
+
+        resetButton.addEventListener("click", function () {
+          started = false;
+          completed = false;
+          problem = "";
+          steps = [];
+          problemInput.value = "";
+          problemError.textContent = "";
+          startButton.disabled = true;
+          problemLabel.textContent = "";
+          rootCauseEl.textContent = "";
+          stepsEl.replaceChildren();
+          analysis.classList.add("is-hidden");
+          resultEl.classList.add("is-hidden");
+          landing.classList.remove("is-hidden");
+          problemInput.focus();
+        });
+
+        document.documentElement.dataset.app = "5whys";
+      })();
+    </script>
+  </body>
+</html>
